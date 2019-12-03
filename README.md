@@ -66,4 +66,10 @@ https://gitcoin.co/issue/WalletConnect/walletconnect-monorepo/204/3767
 - WalletConnect Document  
 https://docs.walletconnect.org/quick-start/dapps
 
-- 
+- WalletConnect Github
+https://github.com/WalletConnect
+  - WalletConnect/walletconnect-example-dapp
+   https://github.com/WalletConnect/walletconnect-example-dapp
+
+  - WalletConnect/walletconnect-monorepo
+   https://github.com/WalletConnect/walletconnect-monorepo
