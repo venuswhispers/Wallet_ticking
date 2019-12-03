@@ -1,9 +1,8 @@
-# Stor-demo-v2 / Aggregated Energy Tracking and Exchange Platform
-（Current state is in progress）
+# WalletConnetct Ticket🎫🎟dApp
 
 ***
-## 【Introduction of Stor-demo-v2 / Aggregated Energy Tracking and Exchange Platform】
-- This dApp realize Aggregated Energy Tracking and Exchange Platform
+## 【Introduction of WalletConnetct Ticket dApp】
+- This dApp is walletConnetct based ticket system
 
 
 &nbsp;
