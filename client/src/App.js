@@ -28,7 +28,6 @@ class App extends Component {
         this.state = { 
             web3: null, 
             accounts: null,
-
             ticket_registry: null        
         };
     }
@@ -54,9 +53,9 @@ class App extends Component {
             );
 
             this.setState({ 
-              web3, 
-              accounts, 
-              ticket_registry: ticket_registry,
+              web3,
+              accounts,
+              ticket_registry: ticket_registry
             });
 
             window.ethereum.on('accountsChanged', async (accounts) => {
