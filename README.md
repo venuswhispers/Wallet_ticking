@@ -60,6 +60,10 @@ http://127.0.0.1:3000
 ***
 
 ## 【References】
-- 
-- 
+- Gitcoin  
+https://gitcoin.co/issue/WalletConnect/walletconnect-monorepo/204/3767
+
+- WalletConnect Document  
+https://docs.walletconnect.org/quick-start/dapps
+
 - 
