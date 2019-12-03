@@ -11,7 +11,11 @@ import getWeb3 from "./utils/getWeb3";
 import { theme } from './utils/theme';
 import Header from './components/Header';
 
+// WalletConnect
+import WalletConnect from './components/walletConnect/WalletConnectInitiateConnection.js';
+
 import "./App.css";
+
 
 const GAS = 500000;
 const GAS_PRICE = "20000000000";
@@ -214,6 +218,17 @@ class App extends Component {
                             <Button variant="contained" color="primary" onClick={() => this.handleTestFunc()}>
                                 Test Func
                             </Button>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                            test
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <WalletConnect />
                         </Grid>
                     </Grid>
 
