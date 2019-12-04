@@ -675,6 +675,25 @@ class App extends React.Component<any, any> {
     }
   };
 
+
+  /****************************************
+   * New function
+   ****************************************/
+
+  // public testFunc = async () => {
+  //   const { walletConnector, address } = this.state;
+
+  //   await console.log('=== Result of testFunc ===')
+  // };
+
+
+
+
+
+
+  /****************************************
+   * Render
+   ****************************************/
   public render = () => {
     const {
       assets,
@@ -741,6 +760,10 @@ class App extends React.Component<any, any> {
 
                     <STestButton disabled left onClick={this.testSignTypedData}>
                       {"eth_signTypedData"}
+                    </STestButton>
+
+                    <STestButton disabled left onClick={this.testSignTypedData}>
+                      {"test_func"}
                     </STestButton>
                   </STestButtonContainer>
                 </Column>
