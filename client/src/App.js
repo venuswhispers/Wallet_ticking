@@ -42,8 +42,13 @@ class App extends Component {
 
             // Get the contract instance.
             const networkId = await web3.eth.net.getId();
-            if (networkId !== 3) {
-                throw new Error("Select the Ropsten network from your MetaMask plugin");
+            // if (networkId !== 3) {
+            //     throw new Error("Select the Ropsten network from your MetaMask plugin");
+            // }
+            if (networkId == 3) {
+                console.log('=== Ropsten testnet ===');
+            } else if (networkId == 4) {
+                console.log('=== Rinkeby testnet ===');   
             }
 
             const deployedNetworkTicketRegistry = TicketRegistry.networks[networkId];
