@@ -60,16 +60,16 @@ http://127.0.0.1:3000
 ***
 
 ## 【References】
-- Gitcoin  
+- Gitcoin    
 https://gitcoin.co/issue/WalletConnect/walletconnect-monorepo/204/3767
 
-- WalletConnect Document  
+- WalletConnect Document    
 https://docs.walletconnect.org/quick-start/dapps
 
-- WalletConnect Github
+- WalletConnect Github  
 https://github.com/WalletConnect
-  - WalletConnect/walletconnect-example-dapp
+  - WalletConnect/walletconnect-example-dapp  
    https://github.com/WalletConnect/walletconnect-example-dapp
 
-  - WalletConnect/walletconnect-monorepo
+  - WalletConnect/walletconnect-monorepo  
    https://github.com/WalletConnect/walletconnect-monorepo
