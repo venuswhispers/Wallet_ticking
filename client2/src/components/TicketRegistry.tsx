@@ -5,21 +5,21 @@ import * as Web3 from "web3";
 
 const TicketRegistryContract = require("../contracts/TicketRegistry.json");
 //const MetaCoinContract = TruffleContract(require("../../build/contracts/MetaCoin.json"));
-import IMetaCoin from "../contract-interfaces/IMetaCoin";
+import ITicketRegistry from "../contract-interfaces/ITicketRegistry";
 
-interface IMetaWalletProps {
+interface ITicketRegistryProps {
   web3: Web3;
 }
 
-interface IMetaWalletState {
+interface ITicketRegistryState {
   account: string;
   accountError: boolean;
-  balance: string;
+  //balance: string;
   contractAddress: string;
 }
 
-export default class MetaWallet extends React.Component<IMetaWalletProps, IMetaWalletState> {
-  constructor(props) {
+export default class TicketRegistry extends React.Component<ITicketRegistryProps, ITicketRegistryState> {
+  constructor(props: any) {
     super(props);
     this.state = {
       account: "",
@@ -37,10 +37,10 @@ export default class MetaWallet extends React.Component<IMetaWalletProps, IMetaW
       });
       return;
     }
-    MetaCoinContract.setProvider(this.props.web3.currentProvider);
-    let instance: IMetaCoin;
+    TicketRegistryContract.setProvider(this.props.web3.currentProvider);
+    let instance: ITicketRegistry;
     try {
-      instance = await MetaCoinContract.deployed();
+      instance = await TicketRegistryContract.deployed();
     } catch (err) {
       alert(err);
       return;
@@ -58,7 +58,7 @@ export default class MetaWallet extends React.Component<IMetaWalletProps, IMetaW
   public render() {
     return (
     <div>
-      <h3>MetaCoin</h3>
+      <h3>TicketRegistry</h3>
       <p>Contract address: {this.state.contractAddress}</p>
       <p>Account: {this.state.accountError ? "No accounts found" : this.state.account}</p>
       <p>Balance: {this.state.balance}</p>
