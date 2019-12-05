@@ -34,6 +34,16 @@ import { IAssetData } from "./helpers/types";
 import Banner from "./components/Banner";
 import AccountAssets from "./components/AccountAssets";
 
+
+
+// Import json file for artifact
+import TicketRegistry from "./contracts/TicketRegistry.json";
+import getWeb3 from "./utils/getWeb3";
+
+
+
+
+
 const SLayout = styled.div`
   position: relative;
   width: 100%;
@@ -165,6 +175,24 @@ const INITIAL_STATE: IAppState = {
 };
 
 class App extends React.Component<any, any> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      web3: null,
+    };
+  }
+
+  public async componentWillMount() {
+    const web3 = await getWeb3();
+    this.setState({
+      web3,
+    });
+  }
+
+
+  /***
+   *
+   ****/ 
   public state: IAppState = {
     ...INITIAL_STATE
   };

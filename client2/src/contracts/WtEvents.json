@@ -1,0 +1,326 @@
+{
+  "contractName": "WtEvents",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "exampleId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "exampleName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "exampleAddr",
+          "type": "address"
+        }
+      ],
+      "name": "ExampleEvent",
+      "type": "event"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"exampleId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"exampleName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"exampleAddr\",\"type\":\"address\"}],\"name\":\"ExampleEvent\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtEvents.sol\":\"WtEvents\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtEvents.sol\":{\"keccak256\":\"0x93755fb40d1a74f7de26a3bd52e9d2249730a5532f35c40ca23a633044265e98\",\"urls\":[\"bzz-raw://e860e80f28ef6b75523ac28abe78cbedcab4254d13137770fbdfbb1840d2992f\",\"dweb:/ipfs/QmeoRdUxnFp6Xqj74jFFPDeSZKZtpdx2KnobZuCNwmt1em\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603e80601d6000396000f3fe6080604052600080fdfea265627a7a72315820c88d58626e2100902ba8a8334cfbaa86cc3262c5e07ef5103db834bf53b6978364736f6c634300050c0032",
+  "deployedBytecode": "0x6080604052600080fdfea265627a7a72315820c88d58626e2100902ba8a8334cfbaa86cc3262c5e07ef5103db834bf53b6978364736f6c634300050c0032",
+  "sourceMap": "26:135:4:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;26:135:4;;;;;;;",
+  "deployedSourceMap": "26:135:4:-;;;;;",
+  "source": "pragma solidity ^0.5.0;\n\n\ncontract WtEvents {\n\n    event ExampleEvent (\n        uint exampleId,\n        string exampleName,\n        address exampleAddr\n    );\n\n}\n",
+  "sourcePath": "/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtEvents.sol",
+  "ast": {
+    "absolutePath": "/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtEvents.sol",
+    "exportedSymbols": {
+      "WtEvents": [
+        117
+      ]
+    },
+    "id": 118,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 108,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:4"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 117,
+        "linearizedBaseContracts": [
+          117
+        ],
+        "name": "WtEvents",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 116,
+            "name": "ExampleEvent",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 115,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 110,
+                  "indexed": false,
+                  "name": "exampleId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 116,
+                  "src": "80:14:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 109,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "80:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 112,
+                  "indexed": false,
+                  "name": "exampleName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 116,
+                  "src": "104:18:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 111,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "104:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 114,
+                  "indexed": false,
+                  "name": "exampleAddr",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 116,
+                  "src": "132:19:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 113,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "132:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "70:87:4"
+            },
+            "src": "51:107:4"
+          }
+        ],
+        "scope": 118,
+        "src": "26:135:4"
+      }
+    ],
+    "src": "0:162:4"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtEvents.sol",
+    "exportedSymbols": {
+      "WtEvents": [
+        117
+      ]
+    },
+    "id": 118,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 108,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:4"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 117,
+        "linearizedBaseContracts": [
+          117
+        ],
+        "name": "WtEvents",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 116,
+            "name": "ExampleEvent",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 115,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 110,
+                  "indexed": false,
+                  "name": "exampleId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 116,
+                  "src": "80:14:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 109,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "80:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 112,
+                  "indexed": false,
+                  "name": "exampleName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 116,
+                  "src": "104:18:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 111,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "104:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 114,
+                  "indexed": false,
+                  "name": "exampleAddr",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 116,
+                  "src": "132:19:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 113,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "132:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "70:87:4"
+            },
+            "src": "51:107:4"
+          }
+        ],
+        "scope": 118,
+        "src": "26:135:4"
+      }
+    ],
+    "src": "0:162:4"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.12+commit.7709ece9.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.19",
+  "updatedAt": "2019-12-03T14:56:23.351Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

@@ -1,0 +1,285 @@
+{
+  "contractName": "WtConstants",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{},\"title\":\"Shared constants\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtConstants.sol\":\"WtConstants\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtConstants.sol\":{\"keccak256\":\"0x856f4ccde6bf62a038643e9611b51a20c49b230f1aa5f656f2ac5a11472a20b4\",\"urls\":[\"bzz-raw://4927e7d22971dcddb4bd4a0c212c0453c2061dd79839b4a2e0dcafdf87f4ea95\",\"dweb:/ipfs/QmdahKfJ31K97v3xDwWnLfaebejsqhKU6dAB7oekRF6rUh\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603e80601d6000396000f3fe6080604052600080fdfea265627a7a7231582097839d5146abb7f79271a71b0991de50c53c3387ab12e128da884c96371c7dc264736f6c634300050c0032",
+  "deployedBytecode": "0x6080604052600080fdfea265627a7a7231582097839d5146abb7f79271a71b0991de50c53c3387ab12e128da884c96371c7dc264736f6c634300050c0032",
+  "sourceMap": "61:101:3:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;61:101:3;;;;;;;",
+  "deployedSourceMap": "61:101:3:-;;;;;",
+  "source": "pragma solidity >=0.5.0 <0.6.0;\n\n/// @title Shared constants\ncontract WtConstants {\n\n    bool constant CONFIRMED = true;\n\n    uint8 constant EXAMPLE_VALUE = 0;\n\n}\n",
+  "sourcePath": "/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtConstants.sol",
+  "ast": {
+    "absolutePath": "/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtConstants.sol",
+    "exportedSymbols": {
+      "WtConstants": [
+        106
+      ]
+    },
+    "id": 107,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 99,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:31:3"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@title Shared constants",
+        "fullyImplemented": true,
+        "id": 106,
+        "linearizedBaseContracts": [
+          106
+        ],
+        "name": "WtConstants",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 102,
+            "name": "CONFIRMED",
+            "nodeType": "VariableDeclaration",
+            "scope": 106,
+            "src": "89:30:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bool",
+              "typeString": "bool"
+            },
+            "typeName": {
+              "id": 100,
+              "name": "bool",
+              "nodeType": "ElementaryTypeName",
+              "src": "89:4:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "74727565",
+              "id": 101,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "bool",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "115:4:3",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              },
+              "value": "true"
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": true,
+            "id": 105,
+            "name": "EXAMPLE_VALUE",
+            "nodeType": "VariableDeclaration",
+            "scope": 106,
+            "src": "126:32:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint8",
+              "typeString": "uint8"
+            },
+            "typeName": {
+              "id": 103,
+              "name": "uint8",
+              "nodeType": "ElementaryTypeName",
+              "src": "126:5:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint8",
+                "typeString": "uint8"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "30",
+              "id": 104,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "157:1:3",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_0_by_1",
+                "typeString": "int_const 0"
+              },
+              "value": "0"
+            },
+            "visibility": "internal"
+          }
+        ],
+        "scope": 107,
+        "src": "61:101:3"
+      }
+    ],
+    "src": "0:163:3"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtConstants.sol",
+    "exportedSymbols": {
+      "WtConstants": [
+        106
+      ]
+    },
+    "id": 107,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 99,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:31:3"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@title Shared constants",
+        "fullyImplemented": true,
+        "id": 106,
+        "linearizedBaseContracts": [
+          106
+        ],
+        "name": "WtConstants",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 102,
+            "name": "CONFIRMED",
+            "nodeType": "VariableDeclaration",
+            "scope": 106,
+            "src": "89:30:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bool",
+              "typeString": "bool"
+            },
+            "typeName": {
+              "id": 100,
+              "name": "bool",
+              "nodeType": "ElementaryTypeName",
+              "src": "89:4:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "74727565",
+              "id": 101,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "bool",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "115:4:3",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_bool",
+                "typeString": "bool"
+              },
+              "value": "true"
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": true,
+            "id": 105,
+            "name": "EXAMPLE_VALUE",
+            "nodeType": "VariableDeclaration",
+            "scope": 106,
+            "src": "126:32:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint8",
+              "typeString": "uint8"
+            },
+            "typeName": {
+              "id": 103,
+              "name": "uint8",
+              "nodeType": "ElementaryTypeName",
+              "src": "126:5:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint8",
+                "typeString": "uint8"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "30",
+              "id": 104,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "157:1:3",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_0_by_1",
+                "typeString": "int_const 0"
+              },
+              "value": "0"
+            },
+            "visibility": "internal"
+          }
+        ],
+        "scope": 107,
+        "src": "61:101:3"
+      }
+    ],
+    "src": "0:163:3"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.12+commit.7709ece9.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.19",
+  "updatedAt": "2019-12-03T14:56:23.351Z",
+  "devdoc": {
+    "methods": {},
+    "title": "Shared constants"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
