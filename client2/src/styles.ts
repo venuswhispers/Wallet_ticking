@@ -220,3 +220,4 @@ export const globalStyle = `
     font-size: 16px;
   }
 `;
+

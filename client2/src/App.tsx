@@ -11,6 +11,7 @@ import Modal from "./components/Modal";
 import Header from "./components/Header";
 import Loader from "./components/Loader";
 import { fonts } from "./styles";
+
 import {
   apiGetAccountAssets,
   apiGetGasPrices,
@@ -676,15 +677,26 @@ class App extends React.Component<any, any> {
   };
 
 
+
   /****************************************
    * New function
    ****************************************/
 
-  // public testFunc = async () => {
-  //   const { walletConnector, address } = this.state;
+  public testFunc = async () => {
+    const { walletConnector, address } = this.state;
 
-  //   await console.log('=== Result of testFunc ===')
-  // };
+    // const str: string = "=== Result of testFunc ===";
+
+    if (!walletConnector) {
+      return;
+    }
+
+    if (!address) {
+      return;
+    }
+
+    // console.log(str);
+  };
 
 
 
@@ -762,7 +774,7 @@ class App extends React.Component<any, any> {
                       {"eth_signTypedData"}
                     </STestButton>
 
-                    <STestButton disabled left onClick={this.testSignTypedData}>
+                    <STestButton left onClick={this.testFunc}>
                       {"test_func"}
                     </STestButton>
                   </STestButtonContainer>
