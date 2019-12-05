@@ -685,8 +685,6 @@ class App extends React.Component<any, any> {
   public testFunc = async () => {
     const { walletConnector, address } = this.state;
 
-    // const str: string = "=== Result of testFunc ===";
-
     if (!walletConnector) {
       return;
     }
@@ -695,7 +693,11 @@ class App extends React.Component<any, any> {
       return;
     }
 
-    // console.log(str);
+    // get uri for QR Code modal
+    const uri = "=== testFunc ===";
+
+    // console log the uri for development
+    console.log(uri); // tslint:disable-line
   };
 
 
