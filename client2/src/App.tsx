@@ -37,8 +37,9 @@ import AccountAssets from "./components/AccountAssets";
 
 
 // Import json file for artifact
-import TicketRegistry from "./contracts/TicketRegistry.json";
+//import TicketRegistry from "./contracts/TicketRegistry.json";
 import getWeb3 from "./utils/getWeb3";
+import TicketRegistry from "./components/TicketRegistry";
 
 
 
@@ -174,8 +175,9 @@ const INITIAL_STATE: IAppState = {
   assets: []
 };
 
+
 class App extends React.Component<any, any> {
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.state = {
       web3: null,
@@ -188,6 +190,7 @@ class App extends React.Component<any, any> {
       web3,
     });
   }
+
 
 
   /***
@@ -807,6 +810,11 @@ class App extends React.Component<any, any> {
                     <STestButton left onClick={this.testFunc}>
                       {"test_func"}
                     </STestButton>
+
+                    <STestButton left onClick={this.testFunc}>
+                      { this.state.web3 ? <TicketRegistry web3={this.state.web3} /> : null }
+                    </STestButton>
+
                   </STestButtonContainer>
                 </Column>
                 <h3>Balances</h3>
