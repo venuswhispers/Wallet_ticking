@@ -37,11 +37,10 @@ import AccountAssets from "./components/AccountAssets";
 
 
 // Import json file for artifact
-//import TicketRegistry from "./contracts/TicketRegistry.json";
-import getWeb3 from "./utils/getWeb3";
 import TicketRegistry from "./components/TicketRegistry";
-
-
+//import TicketRegistry from "./contracts/TicketRegistry.json";
+import * as Web3 from "web3";
+import getWeb3 from "./utils/getWeb3";
 
 
 
@@ -159,6 +158,8 @@ interface IAppState {
   address: string;
   result: any | null;
   assets: IAssetData[];
+
+  web3: Web3;
 }
 
 const INITIAL_STATE: IAppState = {
