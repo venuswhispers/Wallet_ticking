@@ -12,7 +12,7 @@ import { theme } from './utils/theme';
 import Header from './components/Header';
 
 // WalletConnect
-import WalletConnectInitialize from './components/walletConnect/WalletConnectInitialize.js';
+//import WalletConnectInitialize from './components/walletConnect/WalletConnectInitialize.js';
 
 import "./App.css";
 
@@ -232,7 +232,7 @@ class App extends Component {
                         <Grid item xs={1}>
                         </Grid>
                         <Grid item xs={3}>
-                            <WalletConnectInitialize />
+                            test
                         </Grid>
                     </Grid>
 
