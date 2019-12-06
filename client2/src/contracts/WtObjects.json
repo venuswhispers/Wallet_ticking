@@ -1,0 +1,286 @@
+{
+  "contractName": "WtObjects",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtObjects.sol\":\"WtObjects\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtObjects.sol\":{\"keccak256\":\"0xaf049185c38542711be0bc176f3c9dee821ad51cf33d895eb4849e8cc7766a29\",\"urls\":[\"bzz-raw://713effb5e12a3d50b74232abfb0841291d6485c8fa79b76ccce635c4e8aaf17b\",\"dweb:/ipfs/QmNN1Ep1NRVtaapgZucPqjexqoM3chYed1WVAXtsbHzs8w\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603e80601d6000396000f3fe6080604052600080fdfea265627a7a72315820162616cf5e0596c2de99988e4c3c2f32f619bfcfd955f58255c612a8c49e684b64736f6c634300050c0032",
+  "deployedBytecode": "0x6080604052600080fdfea265627a7a72315820162616cf5e0596c2de99988e4c3c2f32f619bfcfd955f58255c612a8c49e684b64736f6c634300050c0032",
+  "sourceMap": "26:138:5:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;26:138:5;;;;;;;",
+  "deployedSourceMap": "26:138:5:-;;;;;",
+  "source": "pragma solidity ^0.5.0;\n\n\ncontract WtObjects {\n\n    struct ExampleObject {\n        uint exampleId;\n        string exampleName;\n        address exampleAddr;\n    }\n\n}\n",
+  "sourcePath": "/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtObjects.sol",
+  "ast": {
+    "absolutePath": "/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtObjects.sol",
+    "exportedSymbols": {
+      "WtObjects": [
+        127
+      ]
+    },
+    "id": 128,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 119,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:5"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 127,
+        "linearizedBaseContracts": [
+          127
+        ],
+        "name": "WtObjects",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "WtObjects.ExampleObject",
+            "id": 126,
+            "members": [
+              {
+                "constant": false,
+                "id": 121,
+                "name": "exampleId",
+                "nodeType": "VariableDeclaration",
+                "scope": 126,
+                "src": "83:14:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 120,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "83:4:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 123,
+                "name": "exampleName",
+                "nodeType": "VariableDeclaration",
+                "scope": 126,
+                "src": "107:18:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 122,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "107:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 125,
+                "name": "exampleAddr",
+                "nodeType": "VariableDeclaration",
+                "scope": 126,
+                "src": "135:19:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 124,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "135:7:5",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "ExampleObject",
+            "nodeType": "StructDefinition",
+            "scope": 127,
+            "src": "52:109:5",
+            "visibility": "public"
+          }
+        ],
+        "scope": 128,
+        "src": "26:138:5"
+      }
+    ],
+    "src": "0:165:5"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtObjects.sol",
+    "exportedSymbols": {
+      "WtObjects": [
+        127
+      ]
+    },
+    "id": 128,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 119,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:5"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 127,
+        "linearizedBaseContracts": [
+          127
+        ],
+        "name": "WtObjects",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "WtObjects.ExampleObject",
+            "id": 126,
+            "members": [
+              {
+                "constant": false,
+                "id": 121,
+                "name": "exampleId",
+                "nodeType": "VariableDeclaration",
+                "scope": 126,
+                "src": "83:14:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 120,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "83:4:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 123,
+                "name": "exampleName",
+                "nodeType": "VariableDeclaration",
+                "scope": 126,
+                "src": "107:18:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 122,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "107:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 125,
+                "name": "exampleAddr",
+                "nodeType": "VariableDeclaration",
+                "scope": 126,
+                "src": "135:19:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 124,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "135:7:5",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "ExampleObject",
+            "nodeType": "StructDefinition",
+            "scope": 127,
+            "src": "52:109:5",
+            "visibility": "public"
+          }
+        ],
+        "scope": 128,
+        "src": "26:138:5"
+      }
+    ],
+    "src": "0:165:5"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.12+commit.7709ece9.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.19",
+  "updatedAt": "2019-12-03T14:56:23.352Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

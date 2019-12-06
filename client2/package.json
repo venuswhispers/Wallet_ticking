@@ -35,7 +35,9 @@
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-scripts-ts": "3.1.0",
-    "styled-components": "4.2.0"
+    "styled-components": "4.2.0",
+    "web3": "^1.2.4",
+    "web3-typescript-typings": "^0.10.2"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",

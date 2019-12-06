@@ -7,6 +7,7 @@
     "test": "truffle test ./test/*",
     "start-blank": "rm -rf client/src && cp -rf barebones/src client/",
     "client": "cd client && npm run start",
+    "client2": "cd client2 && npm run start",
     "console": "truffle console --network development",
     "migrate": "truffle migrate --reset --network development",
     "migrate:ropsten": "truffle migrate --reset --network ropsten",

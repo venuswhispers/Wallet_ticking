@@ -11,6 +11,7 @@ import Modal from "./components/Modal";
 import Header from "./components/Header";
 import Loader from "./components/Loader";
 import { fonts } from "./styles";
+
 import {
   apiGetAccountAssets,
   apiGetGasPrices,
@@ -32,6 +33,16 @@ import {
 import { IAssetData } from "./helpers/types";
 import Banner from "./components/Banner";
 import AccountAssets from "./components/AccountAssets";
+
+
+
+// Import json file for artifact
+import TicketRegistry from "./components/TicketRegistry";
+//import TicketRegistry from "./contracts/TicketRegistry.json";
+import * as Web3 from "web3";
+import getWeb3 from "./utils/getWeb3";
+
+
 
 const SLayout = styled.div`
   position: relative;
@@ -136,6 +147,8 @@ const STestButton = styled(Button)`
 `;
 
 interface IAppState {
+  web3: Web3;
+
   walletConnector: WalletConnect | null;
   fetching: boolean;
   connected: boolean;
@@ -149,24 +162,60 @@ interface IAppState {
   assets: IAssetData[];
 }
 
-const INITIAL_STATE: IAppState = {
-  walletConnector: null,
-  fetching: false,
-  connected: false,
-  chainId: 1,
-  showModal: false,
-  pendingRequest: false,
-  uri: "",
-  accounts: [],
-  address: "",
-  result: null,
-  assets: []
-};
+// const INITIAL_STATE: IAppState = {
+//   walletConnector: null,
+//   fetching: false,
+//   connected: false,
+//   chainId: 1,
+//   showModal: false,
+//   pendingRequest: false,
+//   uri: "",
+//   accounts: [],
+//   address: "",
+//   result: null,
+//   assets: [],
 
-class App extends React.Component<any, any> {
-  public state: IAppState = {
-    ...INITIAL_STATE
-  };
+//   web3: null
+// };
+
+
+class App extends React.Component<{}, IAppState> {
+//class App extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      web3: null,
+
+      walletConnector: null,
+      fetching: false,
+      connected: false,
+      chainId: 1,
+      showModal: false,
+      pendingRequest: false,
+      uri: "",
+      accounts: [],
+      address: "",
+      result: null,
+      assets: [],
+    };
+  }
+
+  public async componentWillMount() {
+    const web3 = await getWeb3();
+    this.setState({
+      web3,
+    });
+  }
+
+
+
+  /*****************
+   * Original Code
+   *****************/
+
+  // public state: IAppState = {
+  //   ...INITIAL_STATE
+  // };
 
   public walletConnectInit = async () => {
     // bridge url
@@ -675,6 +724,38 @@ class App extends React.Component<any, any> {
     }
   };
 
+
+
+  /****************************************
+   * New function
+   ****************************************/
+
+  public testFunc = async () => {
+    const { walletConnector, address } = this.state;
+
+    if (!walletConnector) {
+      return;
+    }
+
+    if (!address) {
+      return;
+    }
+
+    // get uri for QR Code modal
+    const uri = "=== testFunc ===";
+
+    // console log the uri for development
+    console.log(uri); // tslint:disable-line
+  };
+
+
+
+
+
+
+  /****************************************
+   * Render
+   ****************************************/
   public render = () => {
     const {
       assets,
@@ -742,6 +823,15 @@ class App extends React.Component<any, any> {
                     <STestButton disabled left onClick={this.testSignTypedData}>
                       {"eth_signTypedData"}
                     </STestButton>
+
+                    <STestButton left onClick={this.testFunc}>
+                      {"test_func"}
+                    </STestButton>
+
+                    <STestButton left onClick={this.testFunc}>
+                      { this.state.web3 ? <TicketRegistry web3={this.state.web3} /> : null }
+                    </STestButton>
+
                   </STestButtonContainer>
                 </Column>
                 <h3>Balances</h3>
