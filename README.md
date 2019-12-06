@@ -1,7 +1,7 @@
-# WalletConnetct Ticket🎫🎟dApp
+# WalletConnect Ticket🎫🎟dApp
 
 ***
-## 【Introduction of WalletConnetct Ticket dApp】
+## 【Introduction of WalletConnect Ticket dApp】
 - This dApp is walletConnetct based ticket system
 
 

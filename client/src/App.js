@@ -126,6 +126,14 @@ class App extends Component {
         console.log("=== _totalSupply() ===", response)
     }
 
+    _mint = async () => {
+        const { accounts, ticket_factory } = this.state;
+
+        const response = await ticket_factory.methods.mint().send({ from: accounts[0] });
+        console.log("=== mint() ===", response)
+    }
+
+
     render() {
         if (!this.state.web3) {
             return (
@@ -228,6 +236,19 @@ class App extends Component {
                         <Grid item xs={3}>
                             <Button variant="contained" color="primary" onClick={() => this.handleTestFunc()}>
                                 Test Func
+                            </Button>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                            test
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Button variant="contained" color="primary" onClick={() => this._mint()}>
+                                Mint
                             </Button>
                         </Grid>
                     </Grid>

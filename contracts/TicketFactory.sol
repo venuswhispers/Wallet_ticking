@@ -31,6 +31,12 @@ contract TicketFactory is ERC721Full, WtConstants, Ownable {
     function _totalSupply() public view returns (uint256) {
         return totalSupply();
     }
+
+    function mint() public returns (bool)  {
+        uint256 _tokenId = _totalSupply() + 1;
+        _mint(msg.sender, _tokenId);
+    }
+    
     
 
 }
