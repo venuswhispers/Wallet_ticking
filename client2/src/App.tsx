@@ -147,6 +147,8 @@ const STestButton = styled(Button)`
 `;
 
 interface IAppState {
+  web3: Web3;
+
   walletConnector: WalletConnect | null;
   fetching: boolean;
   connected: boolean;
@@ -158,30 +160,43 @@ interface IAppState {
   address: string;
   result: any | null;
   assets: IAssetData[];
-
-  web3: Web3;
 }
 
-const INITIAL_STATE: IAppState = {
-  walletConnector: null,
-  fetching: false,
-  connected: false,
-  chainId: 1,
-  showModal: false,
-  pendingRequest: false,
-  uri: "",
-  accounts: [],
-  address: "",
-  result: null,
-  assets: [],
-};
+// const INITIAL_STATE: IAppState = {
+//   walletConnector: null,
+//   fetching: false,
+//   connected: false,
+//   chainId: 1,
+//   showModal: false,
+//   pendingRequest: false,
+//   uri: "",
+//   accounts: [],
+//   address: "",
+//   result: null,
+//   assets: [],
+
+//   web3: null
+// };
 
 
-class App extends React.Component<any, any> {
+class App extends React.Component<{}, IAppState> {
+//class App extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
       web3: null,
+
+      walletConnector: null,
+      fetching: false,
+      connected: false,
+      chainId: 1,
+      showModal: false,
+      pendingRequest: false,
+      uri: "",
+      accounts: [],
+      address: "",
+      result: null,
+      assets: [],
     };
   }
 
@@ -194,12 +209,13 @@ class App extends React.Component<any, any> {
 
 
 
-  /***
-   *
-   ****/ 
-  public state: IAppState = {
-    ...INITIAL_STATE
-  };
+  /*****************
+   * Original Code
+   *****************/
+
+  // public state: IAppState = {
+  //   ...INITIAL_STATE
+  // };
 
   public walletConnectInit = async () => {
     // bridge url

@@ -3,7 +3,7 @@ import { Button, Typography, Grid, TextField } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 
 // Import json file for artifact
-import TicketRegistry from "./contracts/TicketRegistry.json";
+import TicketFactory from "./contracts/TicketFactory.json";
 
 
 import getWeb3 from "./utils/getWeb3";
@@ -28,7 +28,7 @@ class App extends Component {
         this.state = { 
             web3: null, 
             accounts: null,
-            ticket_registry: null        
+            ticket_factory: null        
         };
     }
 
@@ -51,16 +51,16 @@ class App extends Component {
                 console.log('=== Rinkeby testnet ===');   
             }
 
-            const deployedNetworkTicketRegistry = TicketRegistry.networks[networkId];
-            const ticket_registry = new web3.eth.Contract(
-                TicketRegistry.abi,
-                deployedNetworkTicketRegistry && deployedNetworkTicketRegistry.address,
+            const deployedNetworkTicketFactory = TicketFactory.networks[networkId];
+            const ticket_factory = new web3.eth.Contract(
+                TicketFactory.abi,
+                deployedNetworkTicketFactory && deployedNetworkTicketFactory.address,
             );
 
             this.setState({ 
               web3,
               accounts,
-              ticket_registry: ticket_registry
+              ticket_factory: ticket_factory
             });
 
             window.ethereum.on('accountsChanged', async (accounts) => {
@@ -90,7 +90,7 @@ class App extends Component {
      * WalletConnect Ticket dApp
      ***********************************************************************/
     refreshState = async () => {
-        const { accounts, ticket_registry } = this.state;
+        const { accounts, ticket_factory } = this.state;
 
         this.setState({});
     }
@@ -100,15 +100,15 @@ class App extends Component {
     }
 
     handleFund = async (fundResultString) => {
-        const { accounts, ticket_registry } = this.state;
+        const { accounts, ticket_factory } = this.state;
     }
 
     handleTestFunc = async () => {
-        const { accounts, ticket_registry } = this.state;
+        const { accounts, ticket_factory } = this.state;
         try {
             //let walletAddr = accounts[0];
             //let ipAddress = "185.199.104.14";
-            const response = await ticket_registry.methods.testFunc().send({ from: accounts[0] });
+            const response = await ticket_factory.methods.testFunc().send({ from: accounts[0] });
             console.log("=== testFunc() ===", response)
 
             await this.setState({ message: "Success to create beneficiary" });
