@@ -119,6 +119,13 @@ class App extends Component {
         }
     }
 
+    totalSupply = async() => {
+        const { accounts, ticket_factory } = this.state;
+
+        const response = await ticket_factory.methods._totalSupply().call();
+        console.log("=== _totalSupply() ===", response)
+    }
+
     render() {
         if (!this.state.web3) {
             return (
@@ -206,8 +213,8 @@ class App extends Component {
                         <Grid item xs={1}>
                         </Grid>
                         <Grid item xs={3}>
-                            <Button variant="contained" color="primary" onClick={() => this.handleFund("true")}>
-                               Button 1
+                            <Button variant="contained" color="primary" onClick={() => this.totalSupply()}>
+                               Total Supply
                             </Button>
                         </Grid>
                     </Grid>
