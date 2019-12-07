@@ -10,6 +10,8 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 contract TicketFactory is ERC721Full, WtConstants, Ownable {
 
+    uint256 ticketCap = 100;
+
     constructor(
         string memory name, 
         string memory symbol,
@@ -33,10 +35,12 @@ contract TicketFactory is ERC721Full, WtConstants, Ownable {
     }
 
     function mint() public returns (bool)  {
+
+        require (ticketCap <= 100, "Ticket is sold out!");
+        
         uint256 _tokenId = _totalSupply() + 1;
         _mint(msg.sender, _tokenId);
     }
-    
-    
+
 
 }
