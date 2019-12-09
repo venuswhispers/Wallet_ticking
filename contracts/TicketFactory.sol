@@ -50,5 +50,10 @@ contract TicketFactory is ERC721Full, WtConstants, Ownable {
         _mint(msg.sender, _tokenId);
     }
 
+    function _transferTicketFrom(address _from, address _to, uint256 _ticketId) public returns (bool) {
+        transferFrom(_from , _to, _ticketId);
+    }
+    
+
 
 }
