@@ -27,7 +27,7 @@ contract TicketMarket is WtStorage, WtConstants {
 
     // @notice owner address of ERC721 token which is specified
     // @param _ticketId is tokenId
-    function ownerOf(uint _ticketId) public returns (address) {
+    function ownerOfTicket(uint _ticketId) public returns (address) {
         return factory._ownerOf(_ticketId);
     }
     
@@ -57,11 +57,13 @@ contract TicketMarket is WtStorage, WtConstants {
         uint purchasePrice = 10;
 
         //IERC20 erc20 = IERC20(erc20Token);
-        erc20Token.transferFrom(buyer, factory.ownerOf(_ticketId), purchasePrice);
+        erc20Token.transferFrom(buyer, ownerOfTicket(_ticketId), purchasePrice);
+        //erc20Token.transferFrom(buyer, factory._ownerOf(_ticketId), purchasePrice);
         //erc20.transferFrom(buyer, factory.ownerOf(_ticketId), pTicket.PurchasePrice);
    
-
-        factory.transferFrom(factory.ownerOf(_ticketId), buyer, _ticketId);
+        factory.transferFrom(ownerOfTicket(_ticketId), buyer, _ticketId);
+        //factory.transferFrom(factory.ownerOf(_ticketId), buyer, _ticketId);
+        
         //_removeTokenAndPrice(_ticketId);
 
         //unpublishForSale(_ticketId);

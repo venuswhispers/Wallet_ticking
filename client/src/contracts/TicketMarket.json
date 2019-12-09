@@ -226,7 +226,7 @@
           "type": "uint256"
         }
       ],
-      "name": "ownerOf",
+      "name": "ownerOfTicket",
       "outputs": [
         {
           "internalType": "address",
@@ -292,21 +292,21 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_ticketFactoryContract\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_erc20TestTokenContract\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"exampleId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"exampleName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"exampleAddr\",\"type\":\"address\"}],\"name\":\"ExampleEvent\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"_ticketId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_token\",\"type\":\"address\"}],\"name\":\"LogPublishForSale\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_ticketId\",\"type\":\"uint256\"}],\"name\":\"buyTicket\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"erc20Token\",\"outputs\":[{\"internalType\":\"contract Erc20TestToken\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"factory\",\"outputs\":[{\"internalType\":\"contract TicketFactory\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"ticketId\",\"type\":\"uint256\"}],\"name\":\"getPurchasableTicket\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"forSale\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"acceptedToken\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"PurchasePrice\",\"type\":\"uint256\"}],\"internalType\":\"struct WtObjects.PurchasableTicket\",\"name\":\"\",\"type\":\"tuple\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_ticketId\",\"type\":\"uint256\"}],\"name\":\"ownerOf\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"purchasableTickets\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"forSale\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"acceptedToken\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"PurchasePrice\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"testFunc\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"buyTicket(uint256)\":{\"params\":{\"_ticketId\":\"the id of the ticket \"}},\"isOwner()\":{\"return\":\"true if `msg.sender` is the owner of the contract.\"},\"owner()\":{\"return\":\"the address of the owner.\"},\"renounceOwnership()\":{\"details\":\"Allows the current owner to relinquish control of the contract.\"},\"transferOwnership(address)\":{\"details\":\"Allows the current owner to transfer control of the contract to a newOwner.\",\"params\":{\"newOwner\":\"The address to transfer ownership to.\"}}}},\"userdoc\":{\"methods\":{\"buyTicket(uint256)\":{\"notice\":\"buys a certificate\"},\"renounceOwnership()\":{\"notice\":\"Renouncing to ownership will leave the contract without an owner. It will not be possible to call the functions with the `onlyOwner` modifier anymore.\"}}}},\"settings\":{\"compilationTarget\":{\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/TicketMarket.sol\":\"TicketMarket\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/Erc20TestToken.sol\":{\"keccak256\":\"0x449363be1ee88588239be299d6e66d1efae057e5c55de7c6e2454316fffcbb89\",\"urls\":[\"bzz-raw://077c02da5e89e55529e2b2ee92f299fd4d0d3bee952d76a45daae1a061c4a87a\",\"dweb:/ipfs/QmcLLPhEewDC9mYgAKUZxVJRcPYXkdXFusTXKS7Sov5gfZ\"]},\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/TicketFactory.sol\":{\"keccak256\":\"0xbc9f9401a341320cebcd5f70f5694b9e91faf94e29aee8b8d8667da774a6c880\",\"urls\":[\"bzz-raw://edb97d7506543c0da9d3a4fbf3379ee8b025d2552fb3045d9a550aaf96e99688\",\"dweb:/ipfs/QmP9N6d5ZL8wNLjAedY8Bd8NSoTM8Ntedu18f8fWSbWw6L\"]},\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/TicketMarket.sol\":{\"keccak256\":\"0x41626834890d6551fa687aac5b1c1d6f552545a51c610f5f74dea910e8cb01fd\",\"urls\":[\"bzz-raw://bd199fb15f014a14cef5baa4dfb71ccefc3afa822af3f8194f2381e1e9456479\",\"dweb:/ipfs/QmQ1tzfJb6kP8VUf2JzG4KvGCnyrtaFERKozSbyRyarTDF\"]},\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtConstants.sol\":{\"keccak256\":\"0x856f4ccde6bf62a038643e9611b51a20c49b230f1aa5f656f2ac5a11472a20b4\",\"urls\":[\"bzz-raw://4927e7d22971dcddb4bd4a0c212c0453c2061dd79839b4a2e0dcafdf87f4ea95\",\"dweb:/ipfs/QmdahKfJ31K97v3xDwWnLfaebejsqhKU6dAB7oekRF6rUh\"]},\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtEvents.sol\":{\"keccak256\":\"0x6d0370cb0dc2ff15903f8a3551df8fde78a783d623a6ddd33ea1fa5fdfd95549\",\"urls\":[\"bzz-raw://c132f0b5818949abc8ebc2d543f908f4fd0deee1ec329e9bb9a566f53eb772e6\",\"dweb:/ipfs/QmaYFJb4gm2oXGzXjKcZKZ793rxkdAuEfkR19MVzYLRmtW\"]},\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtObjects.sol\":{\"keccak256\":\"0x2c43e9b0195130f2c60ef1de0410a9e385d1e0225eb16100eeab940b47f70a0a\",\"urls\":[\"bzz-raw://b05d6969643e07d73369ec34ab6cb31152dba6f0ea4fcd0bff47e2062385666e\",\"dweb:/ipfs/QmXAkHtRjmPS6ur1jUZmt2ujQ2gUm4qZ5AF5fG8XLzQKiC\"]},\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtStorage.sol\":{\"keccak256\":\"0xdf3abcc47f8a6855c31af9c491ca55a6e8f7dbf376a557e32bf58e2101a9be18\",\"urls\":[\"bzz-raw://7b8c9883218342757511f43c932fef0a64cf3e4c922ded05d9252bbacb809326\",\"dweb:/ipfs/QmYXyF2x7bdneHiQSCeYcM1JH7mb7zERmYQ32UF12gQdRP\"]},\"openzeppelin-solidity/contracts/introspection/ERC165.sol\":{\"keccak256\":\"0x9da23588f58d0fa67097984e151bdaa6aa69c5e192bae17b44a90b0cfc194736\",\"urls\":[\"bzz-raw://5e88c7dbb4d1e6d3f133112b9994491b8531f5d9103cf41becd1c267d2cd67af\",\"dweb:/ipfs/QmNuSmDBgv616hXRshbHx48ufdZoSrcFHpwqP4iPg2ac4X\"]},\"openzeppelin-solidity/contracts/introspection/IERC165.sol\":{\"keccak256\":\"0xbbb6159006ae3639daea09f7d63987816d6cf3a99f52af919363e025d3abf3b8\",\"urls\":[\"bzz-raw://35e7d742ee71461779df12a0ab1ad4701144d98eb6401182838c8daf40b008dd\",\"dweb:/ipfs/QmY4t7pxcX2cfk6VsGJWZLBgoKMpRctY8X1HPxykLjptSi\"]},\"openzeppelin-solidity/contracts/math/SafeMath.sol\":{\"keccak256\":\"0x965012d27b4262d7a41f5028cbb30c51ebd9ecd4be8fb30380aaa7a3c64fbc8b\",\"urls\":[\"bzz-raw://1eb493553b27efd46c231a836a83ce50d215639feb97b4aac9f301d0fd034ff5\",\"dweb:/ipfs/QmbMdvSXcqGKxeeYvzF3VrWpoHQyVzMXBhzhAokF2Gdymv\"]},\"openzeppelin-solidity/contracts/ownership/Ownable.sol\":{\"keccak256\":\"0x980de387a1a020a498f53d00f89fecebb12c949a17e8f160093c0303ede2b786\",\"urls\":[\"bzz-raw://f07a2c393caa85f62f0aaa461e3edd50aa59371d4209778ba0558d7f8b4b856c\",\"dweb:/ipfs/QmeN3ZiYGSjCnQFeYaJNgoXjF9eDue1g3e9pqManRkeBtV\"]},\"openzeppelin-solidity/contracts/token/ERC20/ERC20.sol\":{\"keccak256\":\"0xba431353cb4fe70777ac026231eb5468e41aa1e81240a2b8136917acc5fff4dc\",\"urls\":[\"bzz-raw://f40c91ca270bdc9b156f339081a0fc2bbcf73cf5f62b8c73ba555df753ff6619\",\"dweb:/ipfs/QmT8y2VVjGaFdGphpcXrgvdPi2EgF9LuCDgJiJ89LvpFRV\"]},\"openzeppelin-solidity/contracts/token/ERC20/ERC20Detailed.sol\":{\"keccak256\":\"0xe195405e9993d575173cdb5dd408db7459a026b9a98085c1a3b676f020f46584\",\"urls\":[\"bzz-raw://f6beab874b52e710d2c42334e34bb5592146f7dd148d96ff32c0c474412bf2f4\",\"dweb:/ipfs/QmUKmVUX4Fif7dguPgC459cpGegiJd1s24YhgZUrBUkkDN\"]},\"openzeppelin-solidity/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x079c4e23ee448f529e43bfa3c4e8fb4be52cd0318ee923a276835bedf45b93d8\",\"urls\":[\"bzz-raw://ee762ff5b7746e41d27dcbcea00c7a3034b58adb1b45ddadddb5b721aff450df\",\"dweb:/ipfs/QmdxqtgEFZjHCoiYyz6pUAQ5iBm7As25jcyEbZoTaAgyDa\"]},\"openzeppelin-solidity/contracts/token/ERC721/ERC721.sol\":{\"keccak256\":\"0x0546fa662082b36ac9cbd418c0722a3c52718b9dc3fe3e284081d73f48036228\",\"urls\":[\"bzz-raw://a50dd4c1c7afa4ade53ee47bc782eaad72a45091ed9756081616b33eb6c150c4\",\"dweb:/ipfs/Qmb88e4EnSbJv2BbayFg6wZpFMJ9aPF7r4cwMjnZkUu4VK\"]},\"openzeppelin-solidity/contracts/token/ERC721/ERC721Enumerable.sol\":{\"keccak256\":\"0x6c1899ddf6ca192150b58ce0ad2a890d981282a3ec2620700fa1c9a381b79ba0\",\"urls\":[\"bzz-raw://d898fb28a61ef52f03fcc3be772b09aeb4c88ebe6e57b79d7275da94758d6afa\",\"dweb:/ipfs/QmRFuDxB532sYwB8JXq5LdHLAfGigcAHMvh4T4TBVrHPwK\"]},\"openzeppelin-solidity/contracts/token/ERC721/ERC721Full.sol\":{\"keccak256\":\"0x21b8368e133ed2ee80f5feb602ff6bad7e3b9110b1ae90ea0faabf9c00527224\",\"urls\":[\"bzz-raw://ac1f35c6b92a163e16498daa3d471bfd218fad71f8067ae357950ddd31add718\",\"dweb:/ipfs/QmPk2WQbNXPW1jnnpDZXVxhgXATBU6fGwYFejWi21oL94M\"]},\"openzeppelin-solidity/contracts/token/ERC721/ERC721Metadata.sol\":{\"keccak256\":\"0xb8deb41bb234969070dc362c144191f2781178c33cf6b434fd68aa3692834105\",\"urls\":[\"bzz-raw://83ef717ae1d047085d6ce2d63ed987c3282ba22190c09fa75f52346af2ac67bb\",\"dweb:/ipfs/QmQqQJor8zVE9kvYiCZscmerKrdLGgiELrn199zQEm7kZp\"]},\"openzeppelin-solidity/contracts/token/ERC721/IERC721.sol\":{\"keccak256\":\"0x1f059ee943273719130df645fa38069b792988e8b732585528d5b1265f5aa046\",\"urls\":[\"bzz-raw://31e4d99091a83a42a6ea14d74ceae2ec3ffb2905c7ee07358875af72ea188333\",\"dweb:/ipfs/Qmf7nHc6BwhbyawapCVRZHzhBHNoA8ftpQWmGSyToVKVzN\"]},\"openzeppelin-solidity/contracts/token/ERC721/IERC721Enumerable.sol\":{\"keccak256\":\"0x1cded69b7f4e17fe634fecbf2bf43320beb11a95ba924c3665a11fc8f47dffc4\",\"urls\":[\"bzz-raw://013a7b38cce9bf8d10af9ec8b5e09be1ea6645da2e1958bf6ed8a875942ac6d6\",\"dweb:/ipfs/Qme9TC1YrXMpNHFoM8GHRjWtRWJ1LxRcYJCPSfoqY4yYri\"]},\"openzeppelin-solidity/contracts/token/ERC721/IERC721Metadata.sol\":{\"keccak256\":\"0xa0bb72e035727b0631aac6380e899ad48511073a3d67f1da528f845d4a3121fb\",\"urls\":[\"bzz-raw://aa3f398156da37e868c7d22967457a70aa840097c7d532b0155208a0d2dbf63f\",\"dweb:/ipfs/QmUfBdHdyzY5FzhZPC46RDsqJfaqT9oLhsknP92pYqtM2g\"]},\"openzeppelin-solidity/contracts/token/ERC721/IERC721Receiver.sol\":{\"keccak256\":\"0x5e7281dbd14cf07af0974ce830c6242062cd430b70658878d49b5f5c1e2ec0aa\",\"urls\":[\"bzz-raw://3c9374b456bf5fde2c473331ff75bed9c6be3634948ba6a6507e4c19c2abf605\",\"dweb:/ipfs/QmUm5NKd1ToSr8MHVVanQv3XEkQpmYKw2441KXYyXPE6np\"]},\"openzeppelin-solidity/contracts/utils/Address.sol\":{\"keccak256\":\"0x5c731061b804fa256fc8c05150eafe5d20b6bb94541a8f187912bf84f7033f34\",\"urls\":[\"bzz-raw://a3c2d9f046beebab7fb41b1b124a6a124a36f510f7c67365861402ac831bdc71\",\"dweb:/ipfs/QmUtASRgitregbKH83anopLtF9vFQe3BKeAjhUa6F7t9YV\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b5060405161099138038061099183398101604081905261002f916100ba565b600080546001600160a01b03191633178082556040516001600160a01b039190911691907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908290a3600380546001600160a01b039384166001600160a01b0319918216179091556004805492909316911617905561011c565b80516100b481610105565b92915050565b600080604083850312156100cd57600080fd5b60006100d985856100a9565b92505060206100ea858286016100a9565b9150509250929050565b60006001600160a01b0382166100b4565b61010e816100f4565b811461011957600080fd5b50565b6108668061012b6000396000f3fe608060405234801561001057600080fd5b50600436106100a95760003560e01c80638a13eea7116100715780638a13eea7146101295780638da5cb5b1461013e5780638f32d59b14610146578063c45a01551461014e578063d544bce414610156578063f2fde38b14610178576100a9565b8063037a417c146100ae57806311d5c546146100cc5780636352211e146100ec57806367dd74ca1461010c578063715018a614610121575b600080fd5b6100b661018b565b6040516100c3919061078d565b60405180910390f35b6100df6100da3660046106dc565b610190565b6040516100c391906107b7565b6100ff6100fa3660046106dc565b6101e0565b6040516100c39190610757565b61011f61011a3660046106dc565b610269565b005b61011f610276565b6101316102d1565b6040516100c391906107a9565b6100ff6102e0565b6100b66102ef565b610131610300565b6101696101643660046106dc565b61030f565b6040516100c39392919061079b565b61011f61018636600461067a565b61033c565b600190565b61019861062e565b506000908152600160208181526040928390208351606081018552815460ff81161515825261010090046001600160a01b031692810192909252909101549181019190915290565b600354604051633835054160e01b81526000916001600160a01b0316906338350541906102119085906004016107c5565b602060405180830381600087803b15801561022b57600080fd5b505af115801561023f573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525061026391908101906106a0565b92915050565b6102738133610356565b50565b61027e6102ef565b61028757600080fd5b600080546040516001600160a01b03909116907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a3600080546001600160a01b0319169055565b6004546001600160a01b031681565b6000546001600160a01b031690565b6000546001600160a01b0316331490565b6003546001600160a01b031681565b6001602081905260009182526040909120805491015460ff82169161010090046001600160a01b03169083565b6103446102ef565b61034d57600080fd5b610273816105c0565b600480546003546040516331a9108f60e11b8152600a936001600160a01b03938416936323b872dd938793911691636352211e91610396918a91016107c5565b60206040518083038186803b1580156103ae57600080fd5b505afa1580156103c2573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506103e691908101906106a0565b846040518463ffffffff1660e01b815260040161040593929190610765565b602060405180830381600087803b15801561041f57600080fd5b505af1158015610433573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525061045791908101906106be565b506003546040516331a9108f60e11b81526001600160a01b03909116906323b872dd908290636352211e906104909088906004016107c5565b60206040518083038186803b1580156104a857600080fd5b505afa1580156104bc573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506104e091908101906106a0565b84866040518463ffffffff1660e01b815260040161050093929190610765565b600060405180830381600087803b15801561051a57600080fd5b505af115801561052e573d6000803e3d6000fd5b50505050600360009054906101000a90046001600160a01b03166001600160a01b0316631249c58b6040518163ffffffff1660e01b8152600401602060405180830381600087803b15801561058257600080fd5b505af1158015610596573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506105ba91908101906106be565b50505050565b6001600160a01b0381166105d357600080fd5b600080546040516001600160a01b03808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a3600080546001600160a01b0319166001600160a01b0392909216919091179055565b604080516060810182526000808252602082018190529181019190915290565b8035610263816107fd565b8051610263816107fd565b805161026381610811565b80356102638161081a565b60006020828403121561068c57600080fd5b6000610698848461064e565b949350505050565b6000602082840312156106b257600080fd5b60006106988484610659565b6000602082840312156106d057600080fd5b60006106988484610664565b6000602082840312156106ee57600080fd5b6000610698848461066f565b610703816107d3565b82525050565b610703816107de565b610703816107f2565b8051606083019061072c8482610709565b50602082015161073f60208501826106fa565b5060408201516105ba60408501825b610703816107ef565b6020810161026382846106fa565b6060810161077382866106fa565b61078060208301856106fa565b610698604083018461074e565b602081016102638284610709565b606081016107738286610709565b602081016102638284610712565b60608101610263828461071b565b60208101610263828461074e565b6000610263826107e3565b151590565b6001600160a01b031690565b90565b6000610263826107d3565b610806816107d3565b811461027357600080fd5b610806816107de565b610806816107ef56fea365627a7a72315820b549597c9347e0c24d74ab2e0fa736122ff6f4f969b588a664230aed58710f636c6578706572696d656e74616cf564736f6c634300050c0040",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100a95760003560e01c80638a13eea7116100715780638a13eea7146101295780638da5cb5b1461013e5780638f32d59b14610146578063c45a01551461014e578063d544bce414610156578063f2fde38b14610178576100a9565b8063037a417c146100ae57806311d5c546146100cc5780636352211e146100ec57806367dd74ca1461010c578063715018a614610121575b600080fd5b6100b661018b565b6040516100c3919061078d565b60405180910390f35b6100df6100da3660046106dc565b610190565b6040516100c391906107b7565b6100ff6100fa3660046106dc565b6101e0565b6040516100c39190610757565b61011f61011a3660046106dc565b610269565b005b61011f610276565b6101316102d1565b6040516100c391906107a9565b6100ff6102e0565b6100b66102ef565b610131610300565b6101696101643660046106dc565b61030f565b6040516100c39392919061079b565b61011f61018636600461067a565b61033c565b600190565b61019861062e565b506000908152600160208181526040928390208351606081018552815460ff81161515825261010090046001600160a01b031692810192909252909101549181019190915290565b600354604051633835054160e01b81526000916001600160a01b0316906338350541906102119085906004016107c5565b602060405180830381600087803b15801561022b57600080fd5b505af115801561023f573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525061026391908101906106a0565b92915050565b6102738133610356565b50565b61027e6102ef565b61028757600080fd5b600080546040516001600160a01b03909116907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a3600080546001600160a01b0319169055565b6004546001600160a01b031681565b6000546001600160a01b031690565b6000546001600160a01b0316331490565b6003546001600160a01b031681565b6001602081905260009182526040909120805491015460ff82169161010090046001600160a01b03169083565b6103446102ef565b61034d57600080fd5b610273816105c0565b600480546003546040516331a9108f60e11b8152600a936001600160a01b03938416936323b872dd938793911691636352211e91610396918a91016107c5565b60206040518083038186803b1580156103ae57600080fd5b505afa1580156103c2573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506103e691908101906106a0565b846040518463ffffffff1660e01b815260040161040593929190610765565b602060405180830381600087803b15801561041f57600080fd5b505af1158015610433573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525061045791908101906106be565b506003546040516331a9108f60e11b81526001600160a01b03909116906323b872dd908290636352211e906104909088906004016107c5565b60206040518083038186803b1580156104a857600080fd5b505afa1580156104bc573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506104e091908101906106a0565b84866040518463ffffffff1660e01b815260040161050093929190610765565b600060405180830381600087803b15801561051a57600080fd5b505af115801561052e573d6000803e3d6000fd5b50505050600360009054906101000a90046001600160a01b03166001600160a01b0316631249c58b6040518163ffffffff1660e01b8152600401602060405180830381600087803b15801561058257600080fd5b505af1158015610596573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506105ba91908101906106be565b50505050565b6001600160a01b0381166105d357600080fd5b600080546040516001600160a01b03808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a3600080546001600160a01b0319166001600160a01b0392909216919091179055565b604080516060810182526000808252602082018190529181019190915290565b8035610263816107fd565b8051610263816107fd565b805161026381610811565b80356102638161081a565b60006020828403121561068c57600080fd5b6000610698848461064e565b949350505050565b6000602082840312156106b257600080fd5b60006106988484610659565b6000602082840312156106d057600080fd5b60006106988484610664565b6000602082840312156106ee57600080fd5b6000610698848461066f565b610703816107d3565b82525050565b610703816107de565b610703816107f2565b8051606083019061072c8482610709565b50602082015161073f60208501826106fa565b5060408201516105ba60408501825b610703816107ef565b6020810161026382846106fa565b6060810161077382866106fa565b61078060208301856106fa565b610698604083018461074e565b602081016102638284610709565b606081016107738286610709565b602081016102638284610712565b60608101610263828461071b565b60208101610263828461074e565b6000610263826107e3565b151590565b6001600160a01b031690565b90565b6000610263826107d3565b610806816107d3565b811461027357600080fd5b610806816107de565b610806816107ef56fea365627a7a72315820b549597c9347e0c24d74ab2e0fa736122ff6f4f969b588a664230aed58710f636c6578706572696d656e74616cf564736f6c634300050c0040",
-  "sourceMap": "205:1674:3:-;;;333:210;8:9:-1;5:2;;;30:1;27;20:12;5:2;333:210:3;;;;;;;;;;;;;;;;;;;;;515:6:12;:19;;-1:-1:-1;;;;;;515:19:12;524:10;515:19;;;;549:40;;-1:-1:-1;;;;;582:6:12;;;;;515;549:40;;515:6;;549:40;427:7:3;:47;;-1:-1:-1;;;;;427:47:3;;;-1:-1:-1;;;;;;427:47:3;;;;;;;484:10;:52;;;;;;;;;;;205:1674;;5:134:-1;83:13;;101:33;83:13;101:33;;;68:71;;;;;146:399;;;278:2;266:9;257:7;253:23;249:32;246:2;;;294:1;291;284:12;246:2;329:1;346:64;402:7;382:9;346:64;;;336:74;;308:108;447:2;465:64;521:7;512:6;501:9;497:22;465:64;;;455:74;;426:109;240:305;;;;;;552:91;;-1:-1;;;;;712:54;;614:24;695:76;778:117;847:24;865:5;847:24;;;840:5;837:35;827:2;;886:1;883;876:12;827:2;821:74;;;205:1674:3;;;;;;",
-  "deployedSourceMap": "205:1674:3:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;205:1674:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;550:87;;;:::i;:::-;;;;;;;;;;;;;;;;1044:157;;;;;;;;;:::i;:::-;;;;;;;;742:109;;;;;;;;;:::i;:::-;;;;;;;;945:92;;;;;;;;;:::i;:::-;;1347:137:12;;;:::i;294:32:3:-;;;:::i;:::-;;;;;;;;659:77:12;;;:::i;979:90::-;;;:::i;260:28:3:-;;;:::i;266:63:8:-;;;;;;;;;:::i;:::-;;;;;;;;;;1655:107:12;;;;;;;;;:::i;550:87:3:-;115:4:5;550:87:3;:::o;1044:157::-;1118:24;;:::i;:::-;-1:-1:-1;1166:28:3;;;;:18;:28;;;;;;;;;1159:35;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;1159:35:3;;;;;;;;;;;;;;;;;;;;1044:157::o;742:109::-;817:7;;:27;;-1:-1:-1;;;817:27:3;;791:7;;-1:-1:-1;;;;;817:7:3;;:16;;:27;;834:9;;817:27;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;817:27:3;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;817:27:3;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;817:27:3;;;;;;;;;810:34;742:109;-1:-1:-1;;742:109:3:o;945:92::-;997:33;1008:9;1019:10;997;:33::i;:::-;945:92;:::o;1347:137:12:-;863:9;:7;:9::i;:::-;855:18;;;;;;1445:1;1429:6;;1408:40;;-1:-1:-1;;;;;1429:6:12;;;;1408:40;;1445:1;;1408:40;1475:1;1458:19;;-1:-1:-1;;;;;;1458:19:12;;;1347:137::o;294:32:3:-;;;-1:-1:-1;;;;;294:32:3;;:::o;659:77:12:-;697:7;723:6;-1:-1:-1;;;;;723:6:12;659:77;:::o;979:90::-;1019:4;1056:6;-1:-1:-1;;;;;1056:6:12;1042:10;:20;;979:90::o;260:28:3:-;;;-1:-1:-1;;;;;260:28:3;;:::o;266:63:8:-;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;266:63:8;;;:::o;1655:107:12:-;863:9;:7;:9::i;:::-;855:18;;;;;;1727:28;1746:8;1727:18;:28::i;1292:584:3:-;1519:10;;;1550:7;;:26;;-1:-1:-1;;;1550:26:3;;1461:2;;-1:-1:-1;;;;;1519:10:3;;;;:23;;1543:5;;1550:7;;;:15;;:26;;1566:9;;1550:26;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1550:26:3;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1550:26:3;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;1550:26:3;;;;;;;;;1578:13;1519:73;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1519:73:3;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1519:73:3;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;1519:73:3;;;;;;;;;-1:-1:-1;1695:7:3;;1716:26;;-1:-1:-1;;;1716:26:3;;-1:-1:-1;;;;;1695:7:3;;;;:20;;:7;;1716:15;;:26;;1732:9;;1716:26;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1716:26:3;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1716:26:3;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;1716:26:3;;;;;;;;;1744:5;1751:9;1695:66;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1695:66:3;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1695:66:3;;;;1855:7;;;;;;;;;-1:-1:-1;;;;;1855:7:3;-1:-1:-1;;;;;1855:12:3;;:14;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1855:14:3;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1855:14:3;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;1855:14:3;;;;;;;;;;1292:584;;;:::o;1906:183:12:-;-1:-1:-1;;;;;1979:22:12;;1971:31;;;;;;2038:6;;;2017:38;;-1:-1:-1;;;;;2017:38:12;;;;2038:6;;;2017:38;;;2065:6;:17;;-1:-1:-1;;;;;;2065:17:12;-1:-1:-1;;;;;2065:17:12;;;;;;;;;;1906:183::o;205:1674:3:-;;;;;;;;;-1:-1:-1;205:1674:3;;;;;;;;;;;;;;;;;:::o;5:130:-1:-;72:20;;97:33;72:20;97:33;;142:134;220:13;;238:33;220:13;238:33;;283:128;358:13;;376:30;358:13;376:30;;418:130;485:20;;510:33;485:20;510:33;;555:241;;659:2;647:9;638:7;634:23;630:32;627:2;;;675:1;672;665:12;627:2;710:1;727:53;772:7;752:9;727:53;;;717:63;621:175;-1:-1;;;;621:175;803:263;;918:2;906:9;897:7;893:23;889:32;886:2;;;934:1;931;924:12;886:2;969:1;986:64;1042:7;1022:9;986:64;;1073:257;;1185:2;1173:9;1164:7;1160:23;1156:32;1153:2;;;1201:1;1198;1191:12;1153:2;1236:1;1253:61;1306:7;1286:9;1253:61;;1337:241;;1441:2;1429:9;1420:7;1416:23;1412:32;1409:2;;;1457:1;1454;1447:12;1409:2;1492:1;1509:53;1554:7;1534:9;1509:53;;1585:103;1658:24;1676:5;1658:24;;;1653:3;1646:37;1640:48;;;1815:94;1882:21;1897:5;1882:21;;2027:168;2131:58;2183:5;2131:58;;2456:661;2686:22;;2617:4;2608:14;;;2714:56;2612:3;2686:22;2714:56;;;2637:139;2858:4;2851:5;2847:16;2841:23;2870:63;2927:4;2922:3;2918:14;2904:12;2870:63;;;2786:153;3021:4;3014:5;3010:16;3004:23;3033:63;3090:4;3085:3;3081:14;3067:12;3124:103;3197:24;3215:5;3197:24;;3354:213;3472:2;3457:18;;3486:71;3461:9;3530:6;3486:71;;3574:435;3748:2;3733:18;;3762:71;3737:9;3806:6;3762:71;;;3844:72;3912:2;3901:9;3897:18;3888:6;3844:72;;;3927;3995:2;3984:9;3980:18;3971:6;3927:72;;4016:201;4128:2;4113:18;;4142:65;4117:9;4180:6;4142:65;;4224:423;4392:2;4377:18;;4406:65;4381:9;4444:6;4406:65;;4654:255;4793:2;4778:18;;4807:92;4782:9;4872:6;4807:92;;5178:349;5364:2;5349:18;;5378:139;5353:9;5490:6;5378:139;;5534:213;5652:2;5637:18;;5666:71;5641:9;5710:6;5666:71;;5754:91;;5816:24;5834:5;5816:24;;5852:85;5918:13;5911:21;;5894:43;5944:121;-1:-1;;;;;6006:54;;5989:76;6072:72;6134:5;6117:27;6151:163;;6251:58;6303:5;6251:58;;6763:117;6832:24;6850:5;6832:24;;;6825:5;6822:35;6812:2;;6871:1;6868;6861:12;6887:111;6953:21;6968:5;6953:21;;7005:117;7074:24;7092:5;7074:24;",
-  "source": "pragma solidity ^0.5.2;\npragma experimental ABIEncoderV2;\n\nimport \"./TicketFactory.sol\";\n\n// Storage\nimport \"./storage/WtConstants.sol\";\nimport \"./storage/WtStorage.sol\";\n\nimport \"./Erc20TestToken.sol\";\n\n\ncontract TicketMarket is WtStorage, WtConstants {\n\n    TicketFactory public factory;\n    Erc20TestToken public erc20Token;\n\n    constructor(address _ticketFactoryContract, address _erc20TestTokenContract) public {\n        factory = TicketFactory(_ticketFactoryContract);\n        erc20Token = Erc20TestToken(_erc20TestTokenContract);\n    }\n\n\n    function testFunc() public returns (bool) {\n        return WtConstants.CONFIRMED;\n    }\n\n    // @notice owner address of ERC721 token which is specified\n    // @param _ticketId is tokenId\n    function ownerOf(uint _ticketId) public returns (address) {\n        return factory._ownerOf(_ticketId);\n    }\n    \n\n\n    /// @notice buys a certificate\n    /// @param _ticketId the id of the ticket \n    function buyTicket(uint _ticketId) public {\n        _buyTicket(_ticketId, msg.sender);\n    }\n\n\n    function getPurchasableTicket(uint ticketId)\n        public view returns (PurchasableTicket memory)\n    {\n\n        return purchasableTickets[ticketId];\n    }\n\n\n    /**********************\n     * internal functions\n    ***********************/\n\n    function _buyTicket(uint _ticketId, address buyer) internal {\n        //PurchasableTicket memory pTicket = getPurchasableTicket(_ticketId);\n        uint purchasePrice = 10;\n\n        //IERC20 erc20 = IERC20(erc20Token);\n        erc20Token.transferFrom(buyer, factory.ownerOf(_ticketId), purchasePrice);\n        //erc20.transferFrom(buyer, factory.ownerOf(_ticketId), pTicket.PurchasePrice);\n   \n\n        factory.transferFrom(factory.ownerOf(_ticketId), buyer, _ticketId);\n        //_removeTokenAndPrice(_ticketId);\n\n        //unpublishForSale(_ticketId);\n\n        factory.mint();\n    }\n\n}\n",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_ticketFactoryContract\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_erc20TestTokenContract\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"exampleId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"exampleName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"exampleAddr\",\"type\":\"address\"}],\"name\":\"ExampleEvent\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"_ticketId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_token\",\"type\":\"address\"}],\"name\":\"LogPublishForSale\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_ticketId\",\"type\":\"uint256\"}],\"name\":\"buyTicket\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"erc20Token\",\"outputs\":[{\"internalType\":\"contract Erc20TestToken\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"factory\",\"outputs\":[{\"internalType\":\"contract TicketFactory\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"ticketId\",\"type\":\"uint256\"}],\"name\":\"getPurchasableTicket\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"forSale\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"acceptedToken\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"PurchasePrice\",\"type\":\"uint256\"}],\"internalType\":\"struct WtObjects.PurchasableTicket\",\"name\":\"\",\"type\":\"tuple\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_ticketId\",\"type\":\"uint256\"}],\"name\":\"ownerOfTicket\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"purchasableTickets\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"forSale\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"acceptedToken\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"PurchasePrice\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"testFunc\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"buyTicket(uint256)\":{\"params\":{\"_ticketId\":\"the id of the ticket \"}},\"isOwner()\":{\"return\":\"true if `msg.sender` is the owner of the contract.\"},\"owner()\":{\"return\":\"the address of the owner.\"},\"renounceOwnership()\":{\"details\":\"Allows the current owner to relinquish control of the contract.\"},\"transferOwnership(address)\":{\"details\":\"Allows the current owner to transfer control of the contract to a newOwner.\",\"params\":{\"newOwner\":\"The address to transfer ownership to.\"}}}},\"userdoc\":{\"methods\":{\"buyTicket(uint256)\":{\"notice\":\"buys a certificate\"},\"renounceOwnership()\":{\"notice\":\"Renouncing to ownership will leave the contract without an owner. It will not be possible to call the functions with the `onlyOwner` modifier anymore.\"}}}},\"settings\":{\"compilationTarget\":{\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/TicketMarket.sol\":\"TicketMarket\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/Erc20TestToken.sol\":{\"keccak256\":\"0x449363be1ee88588239be299d6e66d1efae057e5c55de7c6e2454316fffcbb89\",\"urls\":[\"bzz-raw://077c02da5e89e55529e2b2ee92f299fd4d0d3bee952d76a45daae1a061c4a87a\",\"dweb:/ipfs/QmcLLPhEewDC9mYgAKUZxVJRcPYXkdXFusTXKS7Sov5gfZ\"]},\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/TicketFactory.sol\":{\"keccak256\":\"0xbc9f9401a341320cebcd5f70f5694b9e91faf94e29aee8b8d8667da774a6c880\",\"urls\":[\"bzz-raw://edb97d7506543c0da9d3a4fbf3379ee8b025d2552fb3045d9a550aaf96e99688\",\"dweb:/ipfs/QmP9N6d5ZL8wNLjAedY8Bd8NSoTM8Ntedu18f8fWSbWw6L\"]},\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/TicketMarket.sol\":{\"keccak256\":\"0x9445dc11532ae505d1758a366f654bf40a924ef890fd0bfed3fcf61e51cc2b86\",\"urls\":[\"bzz-raw://c1f45c4ee87e115adb1c775f17ff04e8ac40881ad712490d5733e6e708d59c86\",\"dweb:/ipfs/Qme9i2pgyrELmkMvQ4BhuoUbaSoNjAcP75kJsiBFtRBwjJ\"]},\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtConstants.sol\":{\"keccak256\":\"0x856f4ccde6bf62a038643e9611b51a20c49b230f1aa5f656f2ac5a11472a20b4\",\"urls\":[\"bzz-raw://4927e7d22971dcddb4bd4a0c212c0453c2061dd79839b4a2e0dcafdf87f4ea95\",\"dweb:/ipfs/QmdahKfJ31K97v3xDwWnLfaebejsqhKU6dAB7oekRF6rUh\"]},\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtEvents.sol\":{\"keccak256\":\"0x6d0370cb0dc2ff15903f8a3551df8fde78a783d623a6ddd33ea1fa5fdfd95549\",\"urls\":[\"bzz-raw://c132f0b5818949abc8ebc2d543f908f4fd0deee1ec329e9bb9a566f53eb772e6\",\"dweb:/ipfs/QmaYFJb4gm2oXGzXjKcZKZ793rxkdAuEfkR19MVzYLRmtW\"]},\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtObjects.sol\":{\"keccak256\":\"0x2c43e9b0195130f2c60ef1de0410a9e385d1e0225eb16100eeab940b47f70a0a\",\"urls\":[\"bzz-raw://b05d6969643e07d73369ec34ab6cb31152dba6f0ea4fcd0bff47e2062385666e\",\"dweb:/ipfs/QmXAkHtRjmPS6ur1jUZmt2ujQ2gUm4qZ5AF5fG8XLzQKiC\"]},\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtStorage.sol\":{\"keccak256\":\"0xdf3abcc47f8a6855c31af9c491ca55a6e8f7dbf376a557e32bf58e2101a9be18\",\"urls\":[\"bzz-raw://7b8c9883218342757511f43c932fef0a64cf3e4c922ded05d9252bbacb809326\",\"dweb:/ipfs/QmYXyF2x7bdneHiQSCeYcM1JH7mb7zERmYQ32UF12gQdRP\"]},\"openzeppelin-solidity/contracts/introspection/ERC165.sol\":{\"keccak256\":\"0x9da23588f58d0fa67097984e151bdaa6aa69c5e192bae17b44a90b0cfc194736\",\"urls\":[\"bzz-raw://5e88c7dbb4d1e6d3f133112b9994491b8531f5d9103cf41becd1c267d2cd67af\",\"dweb:/ipfs/QmNuSmDBgv616hXRshbHx48ufdZoSrcFHpwqP4iPg2ac4X\"]},\"openzeppelin-solidity/contracts/introspection/IERC165.sol\":{\"keccak256\":\"0xbbb6159006ae3639daea09f7d63987816d6cf3a99f52af919363e025d3abf3b8\",\"urls\":[\"bzz-raw://35e7d742ee71461779df12a0ab1ad4701144d98eb6401182838c8daf40b008dd\",\"dweb:/ipfs/QmY4t7pxcX2cfk6VsGJWZLBgoKMpRctY8X1HPxykLjptSi\"]},\"openzeppelin-solidity/contracts/math/SafeMath.sol\":{\"keccak256\":\"0x965012d27b4262d7a41f5028cbb30c51ebd9ecd4be8fb30380aaa7a3c64fbc8b\",\"urls\":[\"bzz-raw://1eb493553b27efd46c231a836a83ce50d215639feb97b4aac9f301d0fd034ff5\",\"dweb:/ipfs/QmbMdvSXcqGKxeeYvzF3VrWpoHQyVzMXBhzhAokF2Gdymv\"]},\"openzeppelin-solidity/contracts/ownership/Ownable.sol\":{\"keccak256\":\"0x980de387a1a020a498f53d00f89fecebb12c949a17e8f160093c0303ede2b786\",\"urls\":[\"bzz-raw://f07a2c393caa85f62f0aaa461e3edd50aa59371d4209778ba0558d7f8b4b856c\",\"dweb:/ipfs/QmeN3ZiYGSjCnQFeYaJNgoXjF9eDue1g3e9pqManRkeBtV\"]},\"openzeppelin-solidity/contracts/token/ERC20/ERC20.sol\":{\"keccak256\":\"0xba431353cb4fe70777ac026231eb5468e41aa1e81240a2b8136917acc5fff4dc\",\"urls\":[\"bzz-raw://f40c91ca270bdc9b156f339081a0fc2bbcf73cf5f62b8c73ba555df753ff6619\",\"dweb:/ipfs/QmT8y2VVjGaFdGphpcXrgvdPi2EgF9LuCDgJiJ89LvpFRV\"]},\"openzeppelin-solidity/contracts/token/ERC20/ERC20Detailed.sol\":{\"keccak256\":\"0xe195405e9993d575173cdb5dd408db7459a026b9a98085c1a3b676f020f46584\",\"urls\":[\"bzz-raw://f6beab874b52e710d2c42334e34bb5592146f7dd148d96ff32c0c474412bf2f4\",\"dweb:/ipfs/QmUKmVUX4Fif7dguPgC459cpGegiJd1s24YhgZUrBUkkDN\"]},\"openzeppelin-solidity/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x079c4e23ee448f529e43bfa3c4e8fb4be52cd0318ee923a276835bedf45b93d8\",\"urls\":[\"bzz-raw://ee762ff5b7746e41d27dcbcea00c7a3034b58adb1b45ddadddb5b721aff450df\",\"dweb:/ipfs/QmdxqtgEFZjHCoiYyz6pUAQ5iBm7As25jcyEbZoTaAgyDa\"]},\"openzeppelin-solidity/contracts/token/ERC721/ERC721.sol\":{\"keccak256\":\"0x0546fa662082b36ac9cbd418c0722a3c52718b9dc3fe3e284081d73f48036228\",\"urls\":[\"bzz-raw://a50dd4c1c7afa4ade53ee47bc782eaad72a45091ed9756081616b33eb6c150c4\",\"dweb:/ipfs/Qmb88e4EnSbJv2BbayFg6wZpFMJ9aPF7r4cwMjnZkUu4VK\"]},\"openzeppelin-solidity/contracts/token/ERC721/ERC721Enumerable.sol\":{\"keccak256\":\"0x6c1899ddf6ca192150b58ce0ad2a890d981282a3ec2620700fa1c9a381b79ba0\",\"urls\":[\"bzz-raw://d898fb28a61ef52f03fcc3be772b09aeb4c88ebe6e57b79d7275da94758d6afa\",\"dweb:/ipfs/QmRFuDxB532sYwB8JXq5LdHLAfGigcAHMvh4T4TBVrHPwK\"]},\"openzeppelin-solidity/contracts/token/ERC721/ERC721Full.sol\":{\"keccak256\":\"0x21b8368e133ed2ee80f5feb602ff6bad7e3b9110b1ae90ea0faabf9c00527224\",\"urls\":[\"bzz-raw://ac1f35c6b92a163e16498daa3d471bfd218fad71f8067ae357950ddd31add718\",\"dweb:/ipfs/QmPk2WQbNXPW1jnnpDZXVxhgXATBU6fGwYFejWi21oL94M\"]},\"openzeppelin-solidity/contracts/token/ERC721/ERC721Metadata.sol\":{\"keccak256\":\"0xb8deb41bb234969070dc362c144191f2781178c33cf6b434fd68aa3692834105\",\"urls\":[\"bzz-raw://83ef717ae1d047085d6ce2d63ed987c3282ba22190c09fa75f52346af2ac67bb\",\"dweb:/ipfs/QmQqQJor8zVE9kvYiCZscmerKrdLGgiELrn199zQEm7kZp\"]},\"openzeppelin-solidity/contracts/token/ERC721/IERC721.sol\":{\"keccak256\":\"0x1f059ee943273719130df645fa38069b792988e8b732585528d5b1265f5aa046\",\"urls\":[\"bzz-raw://31e4d99091a83a42a6ea14d74ceae2ec3ffb2905c7ee07358875af72ea188333\",\"dweb:/ipfs/Qmf7nHc6BwhbyawapCVRZHzhBHNoA8ftpQWmGSyToVKVzN\"]},\"openzeppelin-solidity/contracts/token/ERC721/IERC721Enumerable.sol\":{\"keccak256\":\"0x1cded69b7f4e17fe634fecbf2bf43320beb11a95ba924c3665a11fc8f47dffc4\",\"urls\":[\"bzz-raw://013a7b38cce9bf8d10af9ec8b5e09be1ea6645da2e1958bf6ed8a875942ac6d6\",\"dweb:/ipfs/Qme9TC1YrXMpNHFoM8GHRjWtRWJ1LxRcYJCPSfoqY4yYri\"]},\"openzeppelin-solidity/contracts/token/ERC721/IERC721Metadata.sol\":{\"keccak256\":\"0xa0bb72e035727b0631aac6380e899ad48511073a3d67f1da528f845d4a3121fb\",\"urls\":[\"bzz-raw://aa3f398156da37e868c7d22967457a70aa840097c7d532b0155208a0d2dbf63f\",\"dweb:/ipfs/QmUfBdHdyzY5FzhZPC46RDsqJfaqT9oLhsknP92pYqtM2g\"]},\"openzeppelin-solidity/contracts/token/ERC721/IERC721Receiver.sol\":{\"keccak256\":\"0x5e7281dbd14cf07af0974ce830c6242062cd430b70658878d49b5f5c1e2ec0aa\",\"urls\":[\"bzz-raw://3c9374b456bf5fde2c473331ff75bed9c6be3634948ba6a6507e4c19c2abf605\",\"dweb:/ipfs/QmUm5NKd1ToSr8MHVVanQv3XEkQpmYKw2441KXYyXPE6np\"]},\"openzeppelin-solidity/contracts/utils/Address.sol\":{\"keccak256\":\"0x5c731061b804fa256fc8c05150eafe5d20b6bb94541a8f187912bf84f7033f34\",\"urls\":[\"bzz-raw://a3c2d9f046beebab7fb41b1b124a6a124a36f510f7c67365861402ac831bdc71\",\"dweb:/ipfs/QmUtASRgitregbKH83anopLtF9vFQe3BKeAjhUa6F7t9YV\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506040516108b13803806108b183398101604081905261002f916100ba565b600080546001600160a01b03191633178082556040516001600160a01b039190911691907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908290a3600380546001600160a01b039384166001600160a01b0319918216179091556004805492909316911617905561011c565b80516100b481610105565b92915050565b600080604083850312156100cd57600080fd5b60006100d985856100a9565b92505060206100ea858286016100a9565b9150509250929050565b60006001600160a01b0382166100b4565b61010e816100f4565b811461011957600080fd5b50565b6107868061012b6000396000f3fe608060405234801561001057600080fd5b50600436106100a95760003560e01c80638da5cb5b116100715780638da5cb5b1461011e5780638f32d59b14610133578063c0860c2c1461013b578063c45a01551461014e578063d544bce414610156578063f2fde38b14610178576100a9565b8063037a417c146100ae57806311d5c546146100cc57806367dd74ca146100ec578063715018a6146101015780638a13eea714610109575b600080fd5b6100b661018b565b6040516100c391906106ad565b60405180910390f35b6100df6100da3660046105fc565b610190565b6040516100c391906106d7565b6100ff6100fa3660046105fc565b6101e0565b005b6100ff6101ed565b610111610248565b6040516100c391906106c9565b610126610257565b6040516100c39190610677565b6100b6610266565b6101266101493660046105fc565b610277565b610111610300565b6101696101643660046105fc565b61030f565b6040516100c3939291906106bb565b6100ff61018636600461059a565b61033c565b600190565b61019861054e565b506000908152600160208181526040928390208351606081018552815460ff81161515825261010090046001600160a01b031692810192909252909101549181019190915290565b6101ea8133610356565b50565b6101f5610266565b6101fe57600080fd5b600080546040516001600160a01b03909116907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a3600080546001600160a01b0319169055565b6004546001600160a01b031681565b6000546001600160a01b031690565b6000546001600160a01b0316331490565b600354604051633835054160e01b81526000916001600160a01b0316906338350541906102a89085906004016106e5565b602060405180830381600087803b1580156102c257600080fd5b505af11580156102d6573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506102fa91908101906105c0565b92915050565b6003546001600160a01b031681565b6001602081905260009182526040909120805491015460ff82169161010090046001600160a01b03169083565b610344610266565b61034d57600080fd5b6101ea816104e0565b600454600a906001600160a01b03166323b872dd8361037486610277565b846040518463ffffffff1660e01b815260040161039393929190610685565b602060405180830381600087803b1580156103ad57600080fd5b505af11580156103c1573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506103e591908101906105de565b506003546001600160a01b03166323b872dd61040085610277565b84866040518463ffffffff1660e01b815260040161042093929190610685565b600060405180830381600087803b15801561043a57600080fd5b505af115801561044e573d6000803e3d6000fd5b50505050600360009054906101000a90046001600160a01b03166001600160a01b0316631249c58b6040518163ffffffff1660e01b8152600401602060405180830381600087803b1580156104a257600080fd5b505af11580156104b6573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506104da91908101906105de565b50505050565b6001600160a01b0381166104f357600080fd5b600080546040516001600160a01b03808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a3600080546001600160a01b0319166001600160a01b0392909216919091179055565b604080516060810182526000808252602082018190529181019190915290565b80356102fa8161071d565b80516102fa8161071d565b80516102fa81610731565b80356102fa8161073a565b6000602082840312156105ac57600080fd5b60006105b8848461056e565b949350505050565b6000602082840312156105d257600080fd5b60006105b88484610579565b6000602082840312156105f057600080fd5b60006105b88484610584565b60006020828403121561060e57600080fd5b60006105b8848461058f565b610623816106f3565b82525050565b610623816106fe565b61062381610712565b8051606083019061064c8482610629565b50602082015161065f602085018261061a565b5060408201516104da60408501825b6106238161070f565b602081016102fa828461061a565b60608101610693828661061a565b6106a0602083018561061a565b6105b8604083018461066e565b602081016102fa8284610629565b606081016106938286610629565b602081016102fa8284610632565b606081016102fa828461063b565b602081016102fa828461066e565b60006102fa82610703565b151590565b6001600160a01b031690565b90565b60006102fa826106f3565b610726816106f3565b81146101ea57600080fd5b610726816106fe565b6107268161070f56fea365627a7a72315820d1afa70ffb03592c52903c0c93914c113d014f36b34585493619518d8106b5d66c6578706572696d656e74616cf564736f6c634300050c0040",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100a95760003560e01c80638da5cb5b116100715780638da5cb5b1461011e5780638f32d59b14610133578063c0860c2c1461013b578063c45a01551461014e578063d544bce414610156578063f2fde38b14610178576100a9565b8063037a417c146100ae57806311d5c546146100cc57806367dd74ca146100ec578063715018a6146101015780638a13eea714610109575b600080fd5b6100b661018b565b6040516100c391906106ad565b60405180910390f35b6100df6100da3660046105fc565b610190565b6040516100c391906106d7565b6100ff6100fa3660046105fc565b6101e0565b005b6100ff6101ed565b610111610248565b6040516100c391906106c9565b610126610257565b6040516100c39190610677565b6100b6610266565b6101266101493660046105fc565b610277565b610111610300565b6101696101643660046105fc565b61030f565b6040516100c3939291906106bb565b6100ff61018636600461059a565b61033c565b600190565b61019861054e565b506000908152600160208181526040928390208351606081018552815460ff81161515825261010090046001600160a01b031692810192909252909101549181019190915290565b6101ea8133610356565b50565b6101f5610266565b6101fe57600080fd5b600080546040516001600160a01b03909116907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a3600080546001600160a01b0319169055565b6004546001600160a01b031681565b6000546001600160a01b031690565b6000546001600160a01b0316331490565b600354604051633835054160e01b81526000916001600160a01b0316906338350541906102a89085906004016106e5565b602060405180830381600087803b1580156102c257600080fd5b505af11580156102d6573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506102fa91908101906105c0565b92915050565b6003546001600160a01b031681565b6001602081905260009182526040909120805491015460ff82169161010090046001600160a01b03169083565b610344610266565b61034d57600080fd5b6101ea816104e0565b600454600a906001600160a01b03166323b872dd8361037486610277565b846040518463ffffffff1660e01b815260040161039393929190610685565b602060405180830381600087803b1580156103ad57600080fd5b505af11580156103c1573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506103e591908101906105de565b506003546001600160a01b03166323b872dd61040085610277565b84866040518463ffffffff1660e01b815260040161042093929190610685565b600060405180830381600087803b15801561043a57600080fd5b505af115801561044e573d6000803e3d6000fd5b50505050600360009054906101000a90046001600160a01b03166001600160a01b0316631249c58b6040518163ffffffff1660e01b8152600401602060405180830381600087803b1580156104a257600080fd5b505af11580156104b6573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052506104da91908101906105de565b50505050565b6001600160a01b0381166104f357600080fd5b600080546040516001600160a01b03808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a3600080546001600160a01b0319166001600160a01b0392909216919091179055565b604080516060810182526000808252602082018190529181019190915290565b80356102fa8161071d565b80516102fa8161071d565b80516102fa81610731565b80356102fa8161073a565b6000602082840312156105ac57600080fd5b60006105b8848461056e565b949350505050565b6000602082840312156105d257600080fd5b60006105b88484610579565b6000602082840312156105f057600080fd5b60006105b88484610584565b60006020828403121561060e57600080fd5b60006105b8848461058f565b610623816106f3565b82525050565b610623816106fe565b61062381610712565b8051606083019061064c8482610629565b50602082015161065f602085018261061a565b5060408201516104da60408501825b6106238161070f565b602081016102fa828461061a565b60608101610693828661061a565b6106a0602083018561061a565b6105b8604083018461066e565b602081016102fa8284610629565b606081016106938286610629565b602081016102fa8284610632565b606081016102fa828461063b565b602081016102fa828461066e565b60006102fa82610703565b151590565b6001600160a01b031690565b90565b60006102fa826106f3565b610726816106f3565b81146101ea57600080fd5b610726816106fe565b6107268161070f56fea365627a7a72315820d1afa70ffb03592c52903c0c93914c113d014f36b34585493619518d8106b5d66c6578706572696d656e74616cf564736f6c634300050c0040",
+  "sourceMap": "205:1848:3:-;;;333:210;8:9:-1;5:2;;;30:1;27;20:12;5:2;333:210:3;;;;;;;;;;;;;;;;;;;;;515:6:12;:19;;-1:-1:-1;;;;;;515:19:12;524:10;515:19;;;;549:40;;-1:-1:-1;;;;;582:6:12;;;;;515;549:40;;515:6;;549:40;427:7:3;:47;;-1:-1:-1;;;;;427:47:3;;;-1:-1:-1;;;;;;427:47:3;;;;;;;484:10;:52;;;;;;;;;;;205:1848;;5:134:-1;83:13;;101:33;83:13;101:33;;;68:71;;;;;146:399;;;278:2;266:9;257:7;253:23;249:32;246:2;;;294:1;291;284:12;246:2;329:1;346:64;402:7;382:9;346:64;;;336:74;;308:108;447:2;465:64;521:7;512:6;501:9;497:22;465:64;;;455:74;;426:109;240:305;;;;;;552:91;;-1:-1;;;;;712:54;;614:24;695:76;778:117;847:24;865:5;847:24;;;840:5;837:35;827:2;;886:1;883;876:12;827:2;821:74;;;205:1848:3;;;;;;",
+  "deployedSourceMap": "205:1848:3:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;205:1848:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;550:87;;;:::i;:::-;;;;;;;;;;;;;;;;1050:157;;;;;;;;;:::i;:::-;;;;;;;;951:92;;;;;;;;;:::i;:::-;;1347:137:12;;;:::i;294:32:3:-;;;:::i;:::-;;;;;;;;659:77:12;;;:::i;:::-;;;;;;;;979:90;;;:::i;742:115:3:-;;;;;;;;;:::i;260:28::-;;;:::i;266:63:8:-;;;;;;;;;:::i;:::-;;;;;;;;;;1655:107:12;;;;;;;;;:::i;550:87:3:-;115:4:5;550:87:3;:::o;1050:157::-;1124:24;;:::i;:::-;-1:-1:-1;1172:28:3;;;;:18;:28;;;;;;;;;1165:35;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;1165:35:3;;;;;;;;;;;;;;;;;;;;1050:157::o;951:92::-;1003:33;1014:9;1025:10;1003;:33::i;:::-;951:92;:::o;1347:137:12:-;863:9;:7;:9::i;:::-;855:18;;;;;;1445:1;1429:6;;1408:40;;-1:-1:-1;;;;;1429:6:12;;;;1408:40;;1445:1;;1408:40;1475:1;1458:19;;-1:-1:-1;;;;;;1458:19:12;;;1347:137::o;294:32:3:-;;;-1:-1:-1;;;;;294:32:3;;:::o;659:77:12:-;697:7;723:6;-1:-1:-1;;;;;723:6:12;659:77;:::o;979:90::-;1019:4;1056:6;-1:-1:-1;;;;;1056:6:12;1042:10;:20;;979:90::o;742:115:3:-;823:7;;:27;;-1:-1:-1;;;823:27:3;;797:7;;-1:-1:-1;;;;;823:7:3;;:16;;:27;;840:9;;823:27;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;823:27:3;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;823:27:3;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;823:27:3;;;;;;;;;816:34;742:115;-1:-1:-1;;742:115:3:o;260:28::-;;;-1:-1:-1;;;;;260:28:3;;:::o;266:63:8:-;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;266:63:8;;;:::o;1655:107:12:-;863:9;:7;:9::i;:::-;855:18;;;;;;1727:28;1746:8;1727:18;:28::i;1298:752:3:-;1525:10;;1467:2;;-1:-1:-1;;;;;1525:10:3;:23;1549:5;1556:24;1570:9;1556:13;:24::i;:::-;1582:13;1525:71;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1525:71:3;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1525:71:3;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;1525:71:3;;;;;;;;;-1:-1:-1;1784:7:3;;-1:-1:-1;;;;;1784:7:3;:20;1805:24;1819:9;1805:13;:24::i;:::-;1831:5;1838:9;1784:64;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1784:64:3;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1784:64:3;;;;2029:7;;;;;;;;;-1:-1:-1;;;;;2029:7:3;-1:-1:-1;;;;;2029:12:3;;:14;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2029:14:3;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;2029:14:3;;;;;;;101:4:-1;97:9;90:4;84;80:15;76:31;69:5;65:43;126:6;120:4;113:20;0:138;2029:14:3;;;;;;;;;;1298:752;;;:::o;1906:183:12:-;-1:-1:-1;;;;;1979:22:12;;1971:31;;;;;;2038:6;;;2017:38;;-1:-1:-1;;;;;2017:38:12;;;;2038:6;;;2017:38;;;2065:6;:17;;-1:-1:-1;;;;;;2065:17:12;-1:-1:-1;;;;;2065:17:12;;;;;;;;;;1906:183::o;205:1848:3:-;;;;;;;;;-1:-1:-1;205:1848:3;;;;;;;;;;;;;;;;;:::o;5:130:-1:-;72:20;;97:33;72:20;97:33;;142:134;220:13;;238:33;220:13;238:33;;283:128;358:13;;376:30;358:13;376:30;;418:130;485:20;;510:33;485:20;510:33;;555:241;;659:2;647:9;638:7;634:23;630:32;627:2;;;675:1;672;665:12;627:2;710:1;727:53;772:7;752:9;727:53;;;717:63;621:175;-1:-1;;;;621:175;803:263;;918:2;906:9;897:7;893:23;889:32;886:2;;;934:1;931;924:12;886:2;969:1;986:64;1042:7;1022:9;986:64;;1073:257;;1185:2;1173:9;1164:7;1160:23;1156:32;1153:2;;;1201:1;1198;1191:12;1153:2;1236:1;1253:61;1306:7;1286:9;1253:61;;1337:241;;1441:2;1429:9;1420:7;1416:23;1412:32;1409:2;;;1457:1;1454;1447:12;1409:2;1492:1;1509:53;1554:7;1534:9;1509:53;;1585:103;1658:24;1676:5;1658:24;;;1653:3;1646:37;1640:48;;;1815:94;1882:21;1897:5;1882:21;;2027:168;2131:58;2183:5;2131:58;;2456:661;2686:22;;2617:4;2608:14;;;2714:56;2612:3;2686:22;2714:56;;;2637:139;2858:4;2851:5;2847:16;2841:23;2870:63;2927:4;2922:3;2918:14;2904:12;2870:63;;;2786:153;3021:4;3014:5;3010:16;3004:23;3033:63;3090:4;3085:3;3081:14;3067:12;3124:103;3197:24;3215:5;3197:24;;3354:213;3472:2;3457:18;;3486:71;3461:9;3530:6;3486:71;;3574:435;3748:2;3733:18;;3762:71;3737:9;3806:6;3762:71;;;3844:72;3912:2;3901:9;3897:18;3888:6;3844:72;;;3927;3995:2;3984:9;3980:18;3971:6;3927:72;;4016:201;4128:2;4113:18;;4142:65;4117:9;4180:6;4142:65;;4224:423;4392:2;4377:18;;4406:65;4381:9;4444:6;4406:65;;4654:255;4793:2;4778:18;;4807:92;4782:9;4872:6;4807:92;;5178:349;5364:2;5349:18;;5378:139;5353:9;5490:6;5378:139;;5534:213;5652:2;5637:18;;5666:71;5641:9;5710:6;5666:71;;5754:91;;5816:24;5834:5;5816:24;;5852:85;5918:13;5911:21;;5894:43;5944:121;-1:-1;;;;;6006:54;;5989:76;6072:72;6134:5;6117:27;6151:163;;6251:58;6303:5;6251:58;;6763:117;6832:24;6850:5;6832:24;;;6825:5;6822:35;6812:2;;6871:1;6868;6861:12;6887:111;6953:21;6968:5;6953:21;;7005:117;7074:24;7092:5;7074:24;",
+  "source": "pragma solidity ^0.5.2;\npragma experimental ABIEncoderV2;\n\nimport \"./TicketFactory.sol\";\n\n// Storage\nimport \"./storage/WtConstants.sol\";\nimport \"./storage/WtStorage.sol\";\n\nimport \"./Erc20TestToken.sol\";\n\n\ncontract TicketMarket is WtStorage, WtConstants {\n\n    TicketFactory public factory;\n    Erc20TestToken public erc20Token;\n\n    constructor(address _ticketFactoryContract, address _erc20TestTokenContract) public {\n        factory = TicketFactory(_ticketFactoryContract);\n        erc20Token = Erc20TestToken(_erc20TestTokenContract);\n    }\n\n\n    function testFunc() public returns (bool) {\n        return WtConstants.CONFIRMED;\n    }\n\n    // @notice owner address of ERC721 token which is specified\n    // @param _ticketId is tokenId\n    function ownerOfTicket(uint _ticketId) public returns (address) {\n        return factory._ownerOf(_ticketId);\n    }\n    \n\n\n    /// @notice buys a certificate\n    /// @param _ticketId the id of the ticket \n    function buyTicket(uint _ticketId) public {\n        _buyTicket(_ticketId, msg.sender);\n    }\n\n\n    function getPurchasableTicket(uint ticketId)\n        public view returns (PurchasableTicket memory)\n    {\n\n        return purchasableTickets[ticketId];\n    }\n\n\n    /**********************\n     * internal functions\n    ***********************/\n\n    function _buyTicket(uint _ticketId, address buyer) internal {\n        //PurchasableTicket memory pTicket = getPurchasableTicket(_ticketId);\n        uint purchasePrice = 10;\n\n        //IERC20 erc20 = IERC20(erc20Token);\n        erc20Token.transferFrom(buyer, ownerOfTicket(_ticketId), purchasePrice);\n        //erc20Token.transferFrom(buyer, factory._ownerOf(_ticketId), purchasePrice);\n        //erc20.transferFrom(buyer, factory.ownerOf(_ticketId), pTicket.PurchasePrice);\n   \n        factory.transferFrom(ownerOfTicket(_ticketId), buyer, _ticketId);\n        //factory.transferFrom(factory.ownerOf(_ticketId), buyer, _ticketId);\n        \n        //_removeTokenAndPrice(_ticketId);\n\n        //unpublishForSale(_ticketId);\n\n        factory.mint();\n    }\n\n}\n",
   "sourcePath": "/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/TicketMarket.sol",
   "ast": {
     "absolutePath": "/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/TicketMarket.sol",
     "exportedSymbols": {
       "TicketMarket": [
-        310
+        308
       ]
     },
-    "id": 311,
+    "id": 309,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -334,7 +334,7 @@
         "file": "./TicketFactory.sol",
         "id": 193,
         "nodeType": "ImportDirective",
-        "scope": 311,
+        "scope": 309,
         "sourceUnit": 190,
         "src": "59:29:3",
         "symbolAliases": [],
@@ -345,8 +345,8 @@
         "file": "./storage/WtConstants.sol",
         "id": 194,
         "nodeType": "ImportDirective",
-        "scope": 311,
-        "sourceUnit": 338,
+        "scope": 309,
+        "sourceUnit": 336,
         "src": "101:35:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -356,8 +356,8 @@
         "file": "./storage/WtStorage.sol",
         "id": 195,
         "nodeType": "ImportDirective",
-        "scope": 311,
-        "sourceUnit": 394,
+        "scope": 309,
+        "sourceUnit": 392,
         "src": "137:33:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -367,7 +367,7 @@
         "file": "./Erc20TestToken.sol",
         "id": 196,
         "nodeType": "ImportDirective",
-        "scope": 311,
+        "scope": 309,
         "sourceUnit": 34,
         "src": "172:30:3",
         "symbolAliases": [],
@@ -382,10 +382,10 @@
               "id": 197,
               "name": "WtStorage",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 393,
+              "referencedDeclaration": 391,
               "src": "230:9:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_WtStorage_$393",
+                "typeIdentifier": "t_contract$_WtStorage_$391",
                 "typeString": "contract WtStorage"
               }
             },
@@ -400,10 +400,10 @@
               "id": 199,
               "name": "WtConstants",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 337,
+              "referencedDeclaration": 335,
               "src": "241:11:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_WtConstants_$337",
+                "typeIdentifier": "t_contract$_WtConstants_$335",
                 "typeString": "contract WtConstants"
               }
             },
@@ -413,23 +413,23 @@
           }
         ],
         "contractDependencies": [
-          337,
-          356,
-          373,
-          393,
-          691
+          335,
+          354,
+          371,
+          391,
+          689
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 310,
+        "id": 308,
         "linearizedBaseContracts": [
-          310,
-          337,
-          393,
-          691,
-          356,
-          373
+          308,
+          335,
+          391,
+          689,
+          354,
+          371
         ],
         "name": "TicketMarket",
         "nodeType": "ContractDefinition",
@@ -439,7 +439,7 @@
             "id": 202,
             "name": "factory",
             "nodeType": "VariableDeclaration",
-            "scope": 310,
+            "scope": 308,
             "src": "260:28:3",
             "stateVariable": true,
             "storageLocation": "default",
@@ -467,7 +467,7 @@
             "id": 204,
             "name": "erc20Token",
             "nodeType": "VariableDeclaration",
-            "scope": 310,
+            "scope": 308,
             "src": "294:32:3",
             "stateVariable": true,
             "storageLocation": "default",
@@ -736,7 +736,7 @@
               "parameters": [],
               "src": "417:0:3"
             },
-            "scope": 310,
+            "scope": 308,
             "src": "333:210:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -757,10 +757,10 @@
                       "name": "WtConstants",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 337,
+                      "referencedDeclaration": 335,
                       "src": "609:11:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_contract$_WtConstants_$337_$",
+                        "typeIdentifier": "t_type$_t_contract$_WtConstants_$335_$",
                         "typeString": "type(contract WtConstants)"
                       }
                     },
@@ -771,7 +771,7 @@
                     "lValueRequested": false,
                     "memberName": "CONFIRMED",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 333,
+                    "referencedDeclaration": 331,
                     "src": "609:21:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -831,7 +831,7 @@
               ],
               "src": "585:6:3"
             },
-            "scope": 310,
+            "scope": 308,
             "src": "550:87:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -841,7 +841,7 @@
             "body": {
               "id": 245,
               "nodeType": "Block",
-              "src": "800:51:3",
+              "src": "806:51:3",
               "statements": [
                 {
                   "expression": {
@@ -854,7 +854,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 235,
-                        "src": "834:9:3",
+                        "src": "840:9:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -875,7 +875,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 202,
-                        "src": "817:7:3",
+                        "src": "823:7:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_contract$_TicketFactory_$189",
                           "typeString": "contract TicketFactory"
@@ -889,7 +889,7 @@
                       "memberName": "_ownerOf",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 162,
-                      "src": "817:16:3",
+                      "src": "823:16:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$returns$_t_address_$",
                         "typeString": "function (uint256) external returns (address)"
@@ -903,7 +903,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "817:27:3",
+                    "src": "823:27:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -912,7 +912,7 @@
                   "functionReturnParameters": 239,
                   "id": 244,
                   "nodeType": "Return",
-                  "src": "810:34:3"
+                  "src": "816:34:3"
                 }
               ]
             },
@@ -921,7 +921,7 @@
             "implemented": true,
             "kind": "function",
             "modifiers": [],
-            "name": "ownerOf",
+            "name": "ownerOfTicket",
             "nodeType": "FunctionDefinition",
             "parameters": {
               "id": 236,
@@ -933,7 +933,7 @@
                   "name": "_ticketId",
                   "nodeType": "VariableDeclaration",
                   "scope": 246,
-                  "src": "759:14:3",
+                  "src": "765:14:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -944,7 +944,7 @@
                     "id": 234,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "759:4:3",
+                    "src": "765:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -954,7 +954,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "758:16:3"
+              "src": "764:16:3"
             },
             "returnParameters": {
               "id": 239,
@@ -966,7 +966,7 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "scope": 246,
-                  "src": "791:7:3",
+                  "src": "797:7:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -977,7 +977,7 @@
                     "id": 237,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "791:7:3",
+                    "src": "797:7:3",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -988,10 +988,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "790:9:3"
+              "src": "796:9:3"
             },
-            "scope": 310,
-            "src": "742:109:3",
+            "scope": 308,
+            "src": "742:115:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -1000,7 +1000,7 @@
             "body": {
               "id": 257,
               "nodeType": "Block",
-              "src": "987:50:3",
+              "src": "993:50:3",
               "statements": [
                 {
                   "expression": {
@@ -1013,7 +1013,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 248,
-                        "src": "1008:9:3",
+                        "src": "1014:9:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -1027,8 +1027,8 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2498,
-                          "src": "1019:3:3",
+                          "referencedDeclaration": 2496,
+                          "src": "1025:3:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
@@ -1042,7 +1042,7 @@
                         "memberName": "sender",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": null,
-                        "src": "1019:10:3",
+                        "src": "1025:10:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address_payable",
                           "typeString": "address payable"
@@ -1064,8 +1064,8 @@
                       "name": "_buyTicket",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 309,
-                      "src": "997:10:3",
+                      "referencedDeclaration": 307,
+                      "src": "1003:10:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$_t_address_$returns$__$",
                         "typeString": "function (uint256,address)"
@@ -1079,7 +1079,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "997:33:3",
+                    "src": "1003:33:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
@@ -1087,7 +1087,7 @@
                   },
                   "id": 256,
                   "nodeType": "ExpressionStatement",
-                  "src": "997:33:3"
+                  "src": "1003:33:3"
                 }
               ]
             },
@@ -1108,7 +1108,7 @@
                   "name": "_ticketId",
                   "nodeType": "VariableDeclaration",
                   "scope": 258,
-                  "src": "964:14:3",
+                  "src": "970:14:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1119,7 +1119,7 @@
                     "id": 247,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "964:4:3",
+                    "src": "970:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1129,16 +1129,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "963:16:3"
+              "src": "969:16:3"
             },
             "returnParameters": {
               "id": 250,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "987:0:3"
+              "src": "993:0:3"
             },
-            "scope": 310,
-            "src": "945:92:3",
+            "scope": 308,
+            "src": "951:92:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -1147,7 +1147,7 @@
             "body": {
               "id": 269,
               "nodeType": "Block",
-              "src": "1148:53:3",
+              "src": "1154:53:3",
               "statements": [
                 {
                   "expression": {
@@ -1158,10 +1158,10 @@
                       "name": "purchasableTickets",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 388,
-                      "src": "1166:18:3",
+                      "referencedDeclaration": 386,
+                      "src": "1172:18:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_PurchasableTicket_$365_storage_$",
+                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_PurchasableTicket_$363_storage_$",
                         "typeString": "mapping(uint256 => struct WtObjects.PurchasableTicket storage ref)"
                       }
                     },
@@ -1173,7 +1173,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 260,
-                      "src": "1185:8:3",
+                      "src": "1191:8:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -1184,16 +1184,16 @@
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "IndexAccess",
-                    "src": "1166:28:3",
+                    "src": "1172:28:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_PurchasableTicket_$365_storage",
+                      "typeIdentifier": "t_struct$_PurchasableTicket_$363_storage",
                       "typeString": "struct WtObjects.PurchasableTicket storage ref"
                     }
                   },
                   "functionReturnParameters": 264,
                   "id": 268,
                   "nodeType": "Return",
-                  "src": "1159:35:3"
+                  "src": "1165:35:3"
                 }
               ]
             },
@@ -1214,7 +1214,7 @@
                   "name": "ticketId",
                   "nodeType": "VariableDeclaration",
                   "scope": 270,
-                  "src": "1074:13:3",
+                  "src": "1080:13:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1225,7 +1225,7 @@
                     "id": 259,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1074:4:3",
+                    "src": "1080:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1235,7 +1235,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1073:15:3"
+              "src": "1079:15:3"
             },
             "returnParameters": {
               "id": 264,
@@ -1247,11 +1247,11 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "scope": 270,
-                  "src": "1118:24:3",
+                  "src": "1124:24:3",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_PurchasableTicket_$365_memory_ptr",
+                    "typeIdentifier": "t_struct$_PurchasableTicket_$363_memory_ptr",
                     "typeString": "struct WtObjects.PurchasableTicket"
                   },
                   "typeName": {
@@ -1259,10 +1259,10 @@
                     "id": 262,
                     "name": "PurchasableTicket",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 365,
-                    "src": "1118:17:3",
+                    "referencedDeclaration": 363,
+                    "src": "1124:17:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_PurchasableTicket_$365_storage_ptr",
+                      "typeIdentifier": "t_struct$_PurchasableTicket_$363_storage_ptr",
                       "typeString": "struct WtObjects.PurchasableTicket"
                     }
                   },
@@ -1270,19 +1270,19 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1117:26:3"
+              "src": "1123:26:3"
             },
-            "scope": 310,
-            "src": "1044:157:3",
+            "scope": 308,
+            "src": "1050:157:3",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 308,
+              "id": 306,
               "nodeType": "Block",
-              "src": "1352:524:3",
+              "src": "1358:692:3",
               "statements": [
                 {
                   "assignments": [
@@ -1294,8 +1294,8 @@
                       "id": 278,
                       "name": "purchasePrice",
                       "nodeType": "VariableDeclaration",
-                      "scope": 308,
-                      "src": "1440:18:3",
+                      "scope": 306,
+                      "src": "1446:18:3",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
@@ -1306,7 +1306,7 @@
                         "id": 277,
                         "name": "uint",
                         "nodeType": "ElementaryTypeName",
-                        "src": "1440:4:3",
+                        "src": "1446:4:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -1327,7 +1327,7 @@
                     "kind": "number",
                     "lValueRequested": false,
                     "nodeType": "Literal",
-                    "src": "1461:2:3",
+                    "src": "1467:2:3",
                     "subdenomination": null,
                     "typeDescriptions": {
                       "typeIdentifier": "t_rational_10_by_1",
@@ -1336,7 +1336,7 @@
                     "value": "10"
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "1440:23:3"
+                  "src": "1446:23:3"
                 },
                 {
                   "expression": {
@@ -1349,7 +1349,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 274,
-                        "src": "1543:5:3",
+                        "src": "1549:5:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -1360,12 +1360,12 @@
                         "arguments": [
                           {
                             "argumentTypes": null,
-                            "id": 287,
+                            "id": 286,
                             "name": "_ticketId",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 272,
-                            "src": "1566:9:3",
+                            "src": "1570:9:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -1379,34 +1379,18 @@
                               "typeString": "uint256"
                             }
                           ],
-                          "expression": {
-                            "argumentTypes": null,
-                            "id": 285,
-                            "name": "factory",
-                            "nodeType": "Identifier",
-                            "overloadedDeclarations": [],
-                            "referencedDeclaration": 202,
-                            "src": "1550:7:3",
-                            "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_TicketFactory_$189",
-                              "typeString": "contract TicketFactory"
-                            }
-                          },
-                          "id": 286,
-                          "isConstant": false,
-                          "isLValue": false,
-                          "isPure": false,
-                          "lValueRequested": false,
-                          "memberName": "ownerOf",
-                          "nodeType": "MemberAccess",
-                          "referencedDeclaration": 1343,
-                          "src": "1550:15:3",
+                          "id": 285,
+                          "name": "ownerOfTicket",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 246,
+                          "src": "1556:13:3",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_address_$",
-                            "typeString": "function (uint256) view external returns (address)"
+                            "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$returns$_t_address_$",
+                            "typeString": "function (uint256) returns (address)"
                           }
                         },
-                        "id": 288,
+                        "id": 287,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1414,7 +1398,7 @@
                         "lValueRequested": false,
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "1550:26:3",
+                        "src": "1556:24:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -1422,12 +1406,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 289,
+                        "id": 288,
                         "name": "purchasePrice",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 278,
-                        "src": "1578:13:3",
+                        "src": "1582:13:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -1456,7 +1440,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 204,
-                        "src": "1519:10:3",
+                        "src": "1525:10:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_contract$_Erc20TestToken_$33",
                           "typeString": "contract Erc20TestToken"
@@ -1469,14 +1453,14 @@
                       "lValueRequested": false,
                       "memberName": "transferFrom",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 852,
-                      "src": "1519:23:3",
+                      "referencedDeclaration": 850,
+                      "src": "1525:23:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$_t_bool_$",
                         "typeString": "function (address,address,uint256) external returns (bool)"
                       }
                     },
-                    "id": 290,
+                    "id": 289,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1484,15 +1468,15 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1519:73:3",
+                    "src": "1525:71:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "id": 291,
+                  "id": 290,
                   "nodeType": "ExpressionStatement",
-                  "src": "1519:73:3"
+                  "src": "1525:71:3"
                 },
                 {
                   "expression": {
@@ -1503,12 +1487,12 @@
                         "arguments": [
                           {
                             "argumentTypes": null,
-                            "id": 297,
+                            "id": 295,
                             "name": "_ticketId",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 272,
-                            "src": "1732:9:3",
+                            "src": "1819:9:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -1522,34 +1506,18 @@
                               "typeString": "uint256"
                             }
                           ],
-                          "expression": {
-                            "argumentTypes": null,
-                            "id": 295,
-                            "name": "factory",
-                            "nodeType": "Identifier",
-                            "overloadedDeclarations": [],
-                            "referencedDeclaration": 202,
-                            "src": "1716:7:3",
-                            "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_TicketFactory_$189",
-                              "typeString": "contract TicketFactory"
-                            }
-                          },
-                          "id": 296,
-                          "isConstant": false,
-                          "isLValue": false,
-                          "isPure": false,
-                          "lValueRequested": false,
-                          "memberName": "ownerOf",
-                          "nodeType": "MemberAccess",
-                          "referencedDeclaration": 1343,
-                          "src": "1716:15:3",
+                          "id": 294,
+                          "name": "ownerOfTicket",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 246,
+                          "src": "1805:13:3",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_address_$",
-                            "typeString": "function (uint256) view external returns (address)"
+                            "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$returns$_t_address_$",
+                            "typeString": "function (uint256) returns (address)"
                           }
                         },
-                        "id": 298,
+                        "id": 296,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1557,7 +1525,7 @@
                         "lValueRequested": false,
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "1716:26:3",
+                        "src": "1805:24:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -1565,12 +1533,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 299,
+                        "id": 297,
                         "name": "buyer",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 274,
-                        "src": "1744:5:3",
+                        "src": "1831:5:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -1578,12 +1546,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 300,
+                        "id": 298,
                         "name": "_ticketId",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 272,
-                        "src": "1751:9:3",
+                        "src": "1838:9:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -1607,32 +1575,32 @@
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 292,
+                        "id": 291,
                         "name": "factory",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 202,
-                        "src": "1695:7:3",
+                        "src": "1784:7:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_contract$_TicketFactory_$189",
                           "typeString": "contract TicketFactory"
                         }
                       },
-                      "id": 294,
+                      "id": 293,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "transferFrom",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1477,
-                      "src": "1695:20:3",
+                      "referencedDeclaration": 1475,
+                      "src": "1784:20:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
                         "typeString": "function (address,address,uint256) external"
                       }
                     },
-                    "id": 301,
+                    "id": 299,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1640,15 +1608,15 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1695:66:3",
+                    "src": "1784:64:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 302,
+                  "id": 300,
                   "nodeType": "ExpressionStatement",
-                  "src": "1695:66:3"
+                  "src": "1784:64:3"
                 },
                 {
                   "expression": {
@@ -1658,18 +1626,18 @@
                       "argumentTypes": [],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 303,
+                        "id": 301,
                         "name": "factory",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 202,
-                        "src": "1855:7:3",
+                        "src": "2029:7:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_contract$_TicketFactory_$189",
                           "typeString": "contract TicketFactory"
                         }
                       },
-                      "id": 305,
+                      "id": 303,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1677,13 +1645,13 @@
                       "memberName": "mint",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 188,
-                      "src": "1855:12:3",
+                      "src": "2029:12:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$__$returns$_t_bool_$",
                         "typeString": "function () external returns (bool)"
                       }
                     },
-                    "id": 306,
+                    "id": 304,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1691,20 +1659,20 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1855:14:3",
+                    "src": "2029:14:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "id": 307,
+                  "id": 305,
                   "nodeType": "ExpressionStatement",
-                  "src": "1855:14:3"
+                  "src": "2029:14:3"
                 }
               ]
             },
             "documentation": "********************\ninternal functions**********************",
-            "id": 309,
+            "id": 307,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -1719,8 +1687,8 @@
                   "id": 272,
                   "name": "_ticketId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 309,
-                  "src": "1312:14:3",
+                  "scope": 307,
+                  "src": "1318:14:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1731,7 +1699,7 @@
                     "id": 271,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1312:4:3",
+                    "src": "1318:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1745,8 +1713,8 @@
                   "id": 274,
                   "name": "buyer",
                   "nodeType": "VariableDeclaration",
-                  "scope": 309,
-                  "src": "1328:13:3",
+                  "scope": 307,
+                  "src": "1334:13:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1757,7 +1725,7 @@
                     "id": 273,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1328:7:3",
+                    "src": "1334:7:3",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1768,35 +1736,35 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1311:31:3"
+              "src": "1317:31:3"
             },
             "returnParameters": {
               "id": 276,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1352:0:3"
+              "src": "1358:0:3"
             },
-            "scope": 310,
-            "src": "1292:584:3",
+            "scope": 308,
+            "src": "1298:752:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "internal"
           }
         ],
-        "scope": 311,
-        "src": "205:1674:3"
+        "scope": 309,
+        "src": "205:1848:3"
       }
     ],
-    "src": "0:1880:3"
+    "src": "0:2054:3"
   },
   "legacyAST": {
     "absolutePath": "/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/TicketMarket.sol",
     "exportedSymbols": {
       "TicketMarket": [
-        310
+        308
       ]
     },
-    "id": 311,
+    "id": 309,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -1824,7 +1792,7 @@
         "file": "./TicketFactory.sol",
         "id": 193,
         "nodeType": "ImportDirective",
-        "scope": 311,
+        "scope": 309,
         "sourceUnit": 190,
         "src": "59:29:3",
         "symbolAliases": [],
@@ -1835,8 +1803,8 @@
         "file": "./storage/WtConstants.sol",
         "id": 194,
         "nodeType": "ImportDirective",
-        "scope": 311,
-        "sourceUnit": 338,
+        "scope": 309,
+        "sourceUnit": 336,
         "src": "101:35:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1846,8 +1814,8 @@
         "file": "./storage/WtStorage.sol",
         "id": 195,
         "nodeType": "ImportDirective",
-        "scope": 311,
-        "sourceUnit": 394,
+        "scope": 309,
+        "sourceUnit": 392,
         "src": "137:33:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1857,7 +1825,7 @@
         "file": "./Erc20TestToken.sol",
         "id": 196,
         "nodeType": "ImportDirective",
-        "scope": 311,
+        "scope": 309,
         "sourceUnit": 34,
         "src": "172:30:3",
         "symbolAliases": [],
@@ -1872,10 +1840,10 @@
               "id": 197,
               "name": "WtStorage",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 393,
+              "referencedDeclaration": 391,
               "src": "230:9:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_WtStorage_$393",
+                "typeIdentifier": "t_contract$_WtStorage_$391",
                 "typeString": "contract WtStorage"
               }
             },
@@ -1890,10 +1858,10 @@
               "id": 199,
               "name": "WtConstants",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 337,
+              "referencedDeclaration": 335,
               "src": "241:11:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_WtConstants_$337",
+                "typeIdentifier": "t_contract$_WtConstants_$335",
                 "typeString": "contract WtConstants"
               }
             },
@@ -1903,23 +1871,23 @@
           }
         ],
         "contractDependencies": [
-          337,
-          356,
-          373,
-          393,
-          691
+          335,
+          354,
+          371,
+          391,
+          689
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 310,
+        "id": 308,
         "linearizedBaseContracts": [
-          310,
-          337,
-          393,
-          691,
-          356,
-          373
+          308,
+          335,
+          391,
+          689,
+          354,
+          371
         ],
         "name": "TicketMarket",
         "nodeType": "ContractDefinition",
@@ -1929,7 +1897,7 @@
             "id": 202,
             "name": "factory",
             "nodeType": "VariableDeclaration",
-            "scope": 310,
+            "scope": 308,
             "src": "260:28:3",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1957,7 +1925,7 @@
             "id": 204,
             "name": "erc20Token",
             "nodeType": "VariableDeclaration",
-            "scope": 310,
+            "scope": 308,
             "src": "294:32:3",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2226,7 +2194,7 @@
               "parameters": [],
               "src": "417:0:3"
             },
-            "scope": 310,
+            "scope": 308,
             "src": "333:210:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -2247,10 +2215,10 @@
                       "name": "WtConstants",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 337,
+                      "referencedDeclaration": 335,
                       "src": "609:11:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_contract$_WtConstants_$337_$",
+                        "typeIdentifier": "t_type$_t_contract$_WtConstants_$335_$",
                         "typeString": "type(contract WtConstants)"
                       }
                     },
@@ -2261,7 +2229,7 @@
                     "lValueRequested": false,
                     "memberName": "CONFIRMED",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 333,
+                    "referencedDeclaration": 331,
                     "src": "609:21:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
@@ -2321,7 +2289,7 @@
               ],
               "src": "585:6:3"
             },
-            "scope": 310,
+            "scope": 308,
             "src": "550:87:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -2331,7 +2299,7 @@
             "body": {
               "id": 245,
               "nodeType": "Block",
-              "src": "800:51:3",
+              "src": "806:51:3",
               "statements": [
                 {
                   "expression": {
@@ -2344,7 +2312,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 235,
-                        "src": "834:9:3",
+                        "src": "840:9:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -2365,7 +2333,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 202,
-                        "src": "817:7:3",
+                        "src": "823:7:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_contract$_TicketFactory_$189",
                           "typeString": "contract TicketFactory"
@@ -2379,7 +2347,7 @@
                       "memberName": "_ownerOf",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 162,
-                      "src": "817:16:3",
+                      "src": "823:16:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$returns$_t_address_$",
                         "typeString": "function (uint256) external returns (address)"
@@ -2393,7 +2361,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "817:27:3",
+                    "src": "823:27:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -2402,7 +2370,7 @@
                   "functionReturnParameters": 239,
                   "id": 244,
                   "nodeType": "Return",
-                  "src": "810:34:3"
+                  "src": "816:34:3"
                 }
               ]
             },
@@ -2411,7 +2379,7 @@
             "implemented": true,
             "kind": "function",
             "modifiers": [],
-            "name": "ownerOf",
+            "name": "ownerOfTicket",
             "nodeType": "FunctionDefinition",
             "parameters": {
               "id": 236,
@@ -2423,7 +2391,7 @@
                   "name": "_ticketId",
                   "nodeType": "VariableDeclaration",
                   "scope": 246,
-                  "src": "759:14:3",
+                  "src": "765:14:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2434,7 +2402,7 @@
                     "id": 234,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "759:4:3",
+                    "src": "765:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2444,7 +2412,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "758:16:3"
+              "src": "764:16:3"
             },
             "returnParameters": {
               "id": 239,
@@ -2456,7 +2424,7 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "scope": 246,
-                  "src": "791:7:3",
+                  "src": "797:7:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2467,7 +2435,7 @@
                     "id": 237,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "791:7:3",
+                    "src": "797:7:3",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -2478,10 +2446,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "790:9:3"
+              "src": "796:9:3"
             },
-            "scope": 310,
-            "src": "742:109:3",
+            "scope": 308,
+            "src": "742:115:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -2490,7 +2458,7 @@
             "body": {
               "id": 257,
               "nodeType": "Block",
-              "src": "987:50:3",
+              "src": "993:50:3",
               "statements": [
                 {
                   "expression": {
@@ -2503,7 +2471,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 248,
-                        "src": "1008:9:3",
+                        "src": "1014:9:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -2517,8 +2485,8 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2498,
-                          "src": "1019:3:3",
+                          "referencedDeclaration": 2496,
+                          "src": "1025:3:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
@@ -2532,7 +2500,7 @@
                         "memberName": "sender",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": null,
-                        "src": "1019:10:3",
+                        "src": "1025:10:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address_payable",
                           "typeString": "address payable"
@@ -2554,8 +2522,8 @@
                       "name": "_buyTicket",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 309,
-                      "src": "997:10:3",
+                      "referencedDeclaration": 307,
+                      "src": "1003:10:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$_t_address_$returns$__$",
                         "typeString": "function (uint256,address)"
@@ -2569,7 +2537,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "997:33:3",
+                    "src": "1003:33:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
@@ -2577,7 +2545,7 @@
                   },
                   "id": 256,
                   "nodeType": "ExpressionStatement",
-                  "src": "997:33:3"
+                  "src": "1003:33:3"
                 }
               ]
             },
@@ -2598,7 +2566,7 @@
                   "name": "_ticketId",
                   "nodeType": "VariableDeclaration",
                   "scope": 258,
-                  "src": "964:14:3",
+                  "src": "970:14:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2609,7 +2577,7 @@
                     "id": 247,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "964:4:3",
+                    "src": "970:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2619,16 +2587,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "963:16:3"
+              "src": "969:16:3"
             },
             "returnParameters": {
               "id": 250,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "987:0:3"
+              "src": "993:0:3"
             },
-            "scope": 310,
-            "src": "945:92:3",
+            "scope": 308,
+            "src": "951:92:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -2637,7 +2605,7 @@
             "body": {
               "id": 269,
               "nodeType": "Block",
-              "src": "1148:53:3",
+              "src": "1154:53:3",
               "statements": [
                 {
                   "expression": {
@@ -2648,10 +2616,10 @@
                       "name": "purchasableTickets",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 388,
-                      "src": "1166:18:3",
+                      "referencedDeclaration": 386,
+                      "src": "1172:18:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_PurchasableTicket_$365_storage_$",
+                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_PurchasableTicket_$363_storage_$",
                         "typeString": "mapping(uint256 => struct WtObjects.PurchasableTicket storage ref)"
                       }
                     },
@@ -2663,7 +2631,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 260,
-                      "src": "1185:8:3",
+                      "src": "1191:8:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -2674,16 +2642,16 @@
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "IndexAccess",
-                    "src": "1166:28:3",
+                    "src": "1172:28:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_PurchasableTicket_$365_storage",
+                      "typeIdentifier": "t_struct$_PurchasableTicket_$363_storage",
                       "typeString": "struct WtObjects.PurchasableTicket storage ref"
                     }
                   },
                   "functionReturnParameters": 264,
                   "id": 268,
                   "nodeType": "Return",
-                  "src": "1159:35:3"
+                  "src": "1165:35:3"
                 }
               ]
             },
@@ -2704,7 +2672,7 @@
                   "name": "ticketId",
                   "nodeType": "VariableDeclaration",
                   "scope": 270,
-                  "src": "1074:13:3",
+                  "src": "1080:13:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2715,7 +2683,7 @@
                     "id": 259,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1074:4:3",
+                    "src": "1080:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2725,7 +2693,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1073:15:3"
+              "src": "1079:15:3"
             },
             "returnParameters": {
               "id": 264,
@@ -2737,11 +2705,11 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "scope": 270,
-                  "src": "1118:24:3",
+                  "src": "1124:24:3",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_PurchasableTicket_$365_memory_ptr",
+                    "typeIdentifier": "t_struct$_PurchasableTicket_$363_memory_ptr",
                     "typeString": "struct WtObjects.PurchasableTicket"
                   },
                   "typeName": {
@@ -2749,10 +2717,10 @@
                     "id": 262,
                     "name": "PurchasableTicket",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 365,
-                    "src": "1118:17:3",
+                    "referencedDeclaration": 363,
+                    "src": "1124:17:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_PurchasableTicket_$365_storage_ptr",
+                      "typeIdentifier": "t_struct$_PurchasableTicket_$363_storage_ptr",
                       "typeString": "struct WtObjects.PurchasableTicket"
                     }
                   },
@@ -2760,19 +2728,19 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1117:26:3"
+              "src": "1123:26:3"
             },
-            "scope": 310,
-            "src": "1044:157:3",
+            "scope": 308,
+            "src": "1050:157:3",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 308,
+              "id": 306,
               "nodeType": "Block",
-              "src": "1352:524:3",
+              "src": "1358:692:3",
               "statements": [
                 {
                   "assignments": [
@@ -2784,8 +2752,8 @@
                       "id": 278,
                       "name": "purchasePrice",
                       "nodeType": "VariableDeclaration",
-                      "scope": 308,
-                      "src": "1440:18:3",
+                      "scope": 306,
+                      "src": "1446:18:3",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
@@ -2796,7 +2764,7 @@
                         "id": 277,
                         "name": "uint",
                         "nodeType": "ElementaryTypeName",
-                        "src": "1440:4:3",
+                        "src": "1446:4:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -2817,7 +2785,7 @@
                     "kind": "number",
                     "lValueRequested": false,
                     "nodeType": "Literal",
-                    "src": "1461:2:3",
+                    "src": "1467:2:3",
                     "subdenomination": null,
                     "typeDescriptions": {
                       "typeIdentifier": "t_rational_10_by_1",
@@ -2826,7 +2794,7 @@
                     "value": "10"
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "1440:23:3"
+                  "src": "1446:23:3"
                 },
                 {
                   "expression": {
@@ -2839,7 +2807,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 274,
-                        "src": "1543:5:3",
+                        "src": "1549:5:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -2850,12 +2818,12 @@
                         "arguments": [
                           {
                             "argumentTypes": null,
-                            "id": 287,
+                            "id": 286,
                             "name": "_ticketId",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 272,
-                            "src": "1566:9:3",
+                            "src": "1570:9:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -2869,34 +2837,18 @@
                               "typeString": "uint256"
                             }
                           ],
-                          "expression": {
-                            "argumentTypes": null,
-                            "id": 285,
-                            "name": "factory",
-                            "nodeType": "Identifier",
-                            "overloadedDeclarations": [],
-                            "referencedDeclaration": 202,
-                            "src": "1550:7:3",
-                            "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_TicketFactory_$189",
-                              "typeString": "contract TicketFactory"
-                            }
-                          },
-                          "id": 286,
-                          "isConstant": false,
-                          "isLValue": false,
-                          "isPure": false,
-                          "lValueRequested": false,
-                          "memberName": "ownerOf",
-                          "nodeType": "MemberAccess",
-                          "referencedDeclaration": 1343,
-                          "src": "1550:15:3",
+                          "id": 285,
+                          "name": "ownerOfTicket",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 246,
+                          "src": "1556:13:3",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_address_$",
-                            "typeString": "function (uint256) view external returns (address)"
+                            "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$returns$_t_address_$",
+                            "typeString": "function (uint256) returns (address)"
                           }
                         },
-                        "id": 288,
+                        "id": 287,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -2904,7 +2856,7 @@
                         "lValueRequested": false,
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "1550:26:3",
+                        "src": "1556:24:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -2912,12 +2864,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 289,
+                        "id": 288,
                         "name": "purchasePrice",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 278,
-                        "src": "1578:13:3",
+                        "src": "1582:13:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -2946,7 +2898,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 204,
-                        "src": "1519:10:3",
+                        "src": "1525:10:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_contract$_Erc20TestToken_$33",
                           "typeString": "contract Erc20TestToken"
@@ -2959,14 +2911,14 @@
                       "lValueRequested": false,
                       "memberName": "transferFrom",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 852,
-                      "src": "1519:23:3",
+                      "referencedDeclaration": 850,
+                      "src": "1525:23:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$_t_bool_$",
                         "typeString": "function (address,address,uint256) external returns (bool)"
                       }
                     },
-                    "id": 290,
+                    "id": 289,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2974,15 +2926,15 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1519:73:3",
+                    "src": "1525:71:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "id": 291,
+                  "id": 290,
                   "nodeType": "ExpressionStatement",
-                  "src": "1519:73:3"
+                  "src": "1525:71:3"
                 },
                 {
                   "expression": {
@@ -2993,12 +2945,12 @@
                         "arguments": [
                           {
                             "argumentTypes": null,
-                            "id": 297,
+                            "id": 295,
                             "name": "_ticketId",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 272,
-                            "src": "1732:9:3",
+                            "src": "1819:9:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -3012,34 +2964,18 @@
                               "typeString": "uint256"
                             }
                           ],
-                          "expression": {
-                            "argumentTypes": null,
-                            "id": 295,
-                            "name": "factory",
-                            "nodeType": "Identifier",
-                            "overloadedDeclarations": [],
-                            "referencedDeclaration": 202,
-                            "src": "1716:7:3",
-                            "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_TicketFactory_$189",
-                              "typeString": "contract TicketFactory"
-                            }
-                          },
-                          "id": 296,
-                          "isConstant": false,
-                          "isLValue": false,
-                          "isPure": false,
-                          "lValueRequested": false,
-                          "memberName": "ownerOf",
-                          "nodeType": "MemberAccess",
-                          "referencedDeclaration": 1343,
-                          "src": "1716:15:3",
+                          "id": 294,
+                          "name": "ownerOfTicket",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 246,
+                          "src": "1805:13:3",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_address_$",
-                            "typeString": "function (uint256) view external returns (address)"
+                            "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$returns$_t_address_$",
+                            "typeString": "function (uint256) returns (address)"
                           }
                         },
-                        "id": 298,
+                        "id": 296,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -3047,7 +2983,7 @@
                         "lValueRequested": false,
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "1716:26:3",
+                        "src": "1805:24:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -3055,12 +2991,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 299,
+                        "id": 297,
                         "name": "buyer",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 274,
-                        "src": "1744:5:3",
+                        "src": "1831:5:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -3068,12 +3004,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 300,
+                        "id": 298,
                         "name": "_ticketId",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 272,
-                        "src": "1751:9:3",
+                        "src": "1838:9:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -3097,32 +3033,32 @@
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 292,
+                        "id": 291,
                         "name": "factory",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 202,
-                        "src": "1695:7:3",
+                        "src": "1784:7:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_contract$_TicketFactory_$189",
                           "typeString": "contract TicketFactory"
                         }
                       },
-                      "id": 294,
+                      "id": 293,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "transferFrom",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1477,
-                      "src": "1695:20:3",
+                      "referencedDeclaration": 1475,
+                      "src": "1784:20:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
                         "typeString": "function (address,address,uint256) external"
                       }
                     },
-                    "id": 301,
+                    "id": 299,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3130,15 +3066,15 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1695:66:3",
+                    "src": "1784:64:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 302,
+                  "id": 300,
                   "nodeType": "ExpressionStatement",
-                  "src": "1695:66:3"
+                  "src": "1784:64:3"
                 },
                 {
                   "expression": {
@@ -3148,18 +3084,18 @@
                       "argumentTypes": [],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 303,
+                        "id": 301,
                         "name": "factory",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 202,
-                        "src": "1855:7:3",
+                        "src": "2029:7:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_contract$_TicketFactory_$189",
                           "typeString": "contract TicketFactory"
                         }
                       },
-                      "id": 305,
+                      "id": 303,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -3167,13 +3103,13 @@
                       "memberName": "mint",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": 188,
-                      "src": "1855:12:3",
+                      "src": "2029:12:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$__$returns$_t_bool_$",
                         "typeString": "function () external returns (bool)"
                       }
                     },
-                    "id": 306,
+                    "id": 304,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3181,20 +3117,20 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1855:14:3",
+                    "src": "2029:14:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "id": 307,
+                  "id": 305,
                   "nodeType": "ExpressionStatement",
-                  "src": "1855:14:3"
+                  "src": "2029:14:3"
                 }
               ]
             },
             "documentation": "********************\ninternal functions**********************",
-            "id": 309,
+            "id": 307,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -3209,8 +3145,8 @@
                   "id": 272,
                   "name": "_ticketId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 309,
-                  "src": "1312:14:3",
+                  "scope": 307,
+                  "src": "1318:14:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3221,7 +3157,7 @@
                     "id": 271,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1312:4:3",
+                    "src": "1318:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -3235,8 +3171,8 @@
                   "id": 274,
                   "name": "buyer",
                   "nodeType": "VariableDeclaration",
-                  "scope": 309,
-                  "src": "1328:13:3",
+                  "scope": 307,
+                  "src": "1334:13:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3247,7 +3183,7 @@
                     "id": 273,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1328:7:3",
+                    "src": "1334:7:3",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -3258,26 +3194,26 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1311:31:3"
+              "src": "1317:31:3"
             },
             "returnParameters": {
               "id": 276,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1352:0:3"
+              "src": "1358:0:3"
             },
-            "scope": 310,
-            "src": "1292:584:3",
+            "scope": 308,
+            "src": "1298:752:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "internal"
           }
         ],
-        "scope": 311,
-        "src": "205:1674:3"
+        "scope": 309,
+        "src": "205:1848:3"
       }
     ],
-    "src": "0:1880:3"
+    "src": "0:2054:3"
   },
   "compiler": {
     "name": "solc",
@@ -3365,8 +3301,7 @@
     }
   },
   "schemaVersion": "3.0.19",
-  "updatedAt": "2019-12-09T09:43:23.088Z",
-  "networkType": "ethereum",
+  "updatedAt": "2019-12-09T09:47:45.842Z",
   "devdoc": {
     "methods": {
       "buyTicket(uint256)": {
