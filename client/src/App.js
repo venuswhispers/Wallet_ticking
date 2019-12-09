@@ -160,9 +160,17 @@ class App extends Component {
         console.log("=== _transferTicketFrom() ===", response)
     }
 
+    _testTransferFrom = async () => {
+        const { accounts, ticket_market } = this.state;
+        let _ticketId = 3
+
+        const response = await ticket_market.methods.testTransferFrom(_ticketId).send({ from: accounts[0] });
+        console.log("=== testTransferFrom() ===", response)
+    }
+
     _buyTicket = async () => {
         const { accounts, ticket_market } = this.state;
-        let _ticketId = 1
+        let _ticketId = 2
 
         const response = await ticket_market.methods.buyTicket(_ticketId).send({ from: accounts[0] });
         console.log("=== buyTicket() ===", response)
@@ -309,6 +317,19 @@ class App extends Component {
                         <Grid item xs={3}>
                           <Button variant="contained" color="primary" onClick={() => this.transferTicketFrom()}>
                                 Transfer TicketFrom
+                          </Button>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                            test
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={3}>
+                          <Button variant="contained" color="primary" onClick={() => this._testTransferFrom()}>
+                                Test TransferFrom
                           </Button>
                         </Grid>
                     </Grid>

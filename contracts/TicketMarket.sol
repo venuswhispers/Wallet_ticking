@@ -65,7 +65,7 @@ contract TicketMarket is WtStorage, WtConstants {
         uint purchasePrice = 10;
 
         //IERC20 erc20 = IERC20(erc20Token);
-        erc20Token.transferFrom(buyer, ownerOfTicket(_ticketId), purchasePrice);
+        erc20Token._transferFrom(buyer, ownerOfTicket(_ticketId), purchasePrice);
         //erc20Token.transferFrom(buyer, factory._ownerOf(_ticketId), purchasePrice);
         //erc20.transferFrom(buyer, factory.ownerOf(_ticketId), pTicket.PurchasePrice);
    
