@@ -40,10 +40,9 @@ contract TicketMarket is WtStorage, WtConstants {
     }
 
 
-    function testTransferFrom(uint _ticketId) public returns(bool) {
-        address buyer = msg.sender;
+    function testTransferFrom(address from, address to, uint256 value) public returns(bool) {
         uint purchasePrice = 10;
-        erc20Token._transferFrom(buyer, ownerOfTicket(_ticketId), purchasePrice);
+        erc20Token._transferFrom(from, to, value);
     }
     
 
