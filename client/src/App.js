@@ -146,7 +146,7 @@ class App extends Component {
         const { accounts, ticket_market } = this.state;
         let _ticketId = 1
 
-        const response = await ticket_market.methods.ownerOf(_ticketI).call();
+        const response = await ticket_market.methods.ownerOf(_ticketId).call();
         console.log("=== ownerOf() ===", response)
     }
 

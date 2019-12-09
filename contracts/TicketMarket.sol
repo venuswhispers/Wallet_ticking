@@ -27,8 +27,8 @@ contract TicketMarket is WtStorage, WtConstants {
 
     // @notice owner address of ERC721 token which is specified
     // @param _ticketId is tokenId
-    function _ownerOf(uint _ticketId) public returns (address) {
-        return factory.ownerOf(_ticketId);
+    function ownerOf(uint _ticketId) public returns (address) {
+        return factory._ownerOf(_ticketId);
     }
     
 

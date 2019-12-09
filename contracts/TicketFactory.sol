@@ -34,6 +34,14 @@ contract TicketFactory is ERC721Full, WtConstants, Ownable {
         return totalSupply();
     }
 
+
+    // @notice owner address of ERC721 token which is specified
+    // @param _ticketId is tokenId
+    function _ownerOf(uint _ticketId) public returns (address) {
+        return ownerOf(_ticketId);
+    }
+
+
     function mint() public returns (bool)  {
 
         require (ticketCap <= 100, "Ticket is sold out!");
