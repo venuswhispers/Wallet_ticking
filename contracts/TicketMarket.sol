@@ -9,8 +9,6 @@ import "./storage/WtStorage.sol";
 
 import "./Erc20TestToken.sol";
 
-import "openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
-
 
 contract TicketMarket is WtStorage, WtConstants {
 
@@ -26,6 +24,13 @@ contract TicketMarket is WtStorage, WtConstants {
     function testFunc() public returns (bool) {
         return WtConstants.CONFIRMED;
     }
+
+    // @notice owner address of ERC721 token which is specified
+    // @param _ticketId is tokenId
+    function _ownerOf(uint _ticketId) public returns (address) {
+        return factory.ownerOf(_ticketId);
+    }
+    
 
 
     /// @notice buys a certificate
@@ -51,8 +56,8 @@ contract TicketMarket is WtStorage, WtConstants {
         //PurchasableTicket memory pTicket = getPurchasableTicket(_ticketId);
         uint purchasePrice = 10;
 
-        IERC20 erc20 = IERC20(erc20Token);
-        erc20.transferFrom(buyer, factory.ownerOf(_ticketId), purchasePrice);
+        //IERC20 erc20 = IERC20(erc20Token);
+        erc20Token.transferFrom(buyer, factory.ownerOf(_ticketId), purchasePrice);
         //erc20.transferFrom(buyer, factory.ownerOf(_ticketId), pTicket.PurchasePrice);
    
 

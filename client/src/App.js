@@ -142,6 +142,14 @@ class App extends Component {
         console.log("=== mint() ===", response)
     }
 
+    _ownerOf = async () => {
+        const { accounts, ticket_market } = this.state;
+        let _ticketId = 1
+
+        const response = await ticket_market.methods.ownerOf(_ticketI).call();
+        console.log("=== ownerOf() ===", response)
+    }
+
     _buyTicket = async () => {
         const { accounts, ticket_market } = this.state;
         let _ticketId = 1
@@ -276,12 +284,24 @@ class App extends Component {
                         <Grid item xs={1}>
                         </Grid>
                         <Grid item xs={3}>
+                          <Button variant="contained" color="primary" onClick={() => this._ownerOf()}>
+                                Owner of ticketId
+                          </Button>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                            test
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={3}>
                           <Button variant="contained" color="primary" onClick={() => this._buyTicket()}>
                                 Buy Ticket
                           </Button>
                         </Grid>
                     </Grid>
-
                     <Typography variant="h5" style={{ marginTop: 32 }}>
                         {this.state.message}
                     </Typography>
