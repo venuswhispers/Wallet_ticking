@@ -4,7 +4,7 @@ import { ThemeProvider } from '@material-ui/styles';
 
 // Import json file for artifact
 import TicketFactory from "./contracts/TicketFactory.json";
-
+import TicketMarket from "./contracts/TicketMarket.json";
 
 import getWeb3 from "./utils/getWeb3";
 
@@ -52,15 +52,24 @@ class App extends Component {
             }
 
             const deployedNetworkTicketFactory = TicketFactory.networks[networkId];
+
+            const deployedNetworkTicketMarket = TicketMarket.networks[networkId];
+
             const ticket_factory = new web3.eth.Contract(
                 TicketFactory.abi,
                 deployedNetworkTicketFactory && deployedNetworkTicketFactory.address,
             );
 
+            const ticket_market = new web3.eth.Contract(
+                TicketMarket.abi,
+                deployedNetworkTicketMarket && deployedNetworkTicketMarket.address,
+            );
+
             this.setState({ 
               web3,
               accounts,
-              ticket_factory: ticket_factory
+              ticket_factory: ticket_factory,
+              ticket_market: ticket_market
             });
 
             window.ethereum.on('accountsChanged', async (accounts) => {
@@ -133,6 +142,13 @@ class App extends Component {
         console.log("=== mint() ===", response)
     }
 
+    _buyTicket = async () => {
+        const { accounts, ticket_market } = this.state;
+        let _ticketId = 1
+
+        const response = await ticket_market.methods.buyTicket(_ticketId).send({ from: accounts[0] });
+        console.log("=== buyTicket() ===", response)
+    }
 
     render() {
         if (!this.state.web3) {
@@ -260,7 +276,9 @@ class App extends Component {
                         <Grid item xs={1}>
                         </Grid>
                         <Grid item xs={3}>
-                            test
+                          <Button variant="contained" color="primary" onClick={() => this._buyTicket()}>
+                                Buy Ticket
+                          </Button>
                         </Grid>
                     </Grid>
 

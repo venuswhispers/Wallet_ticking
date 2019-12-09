@@ -10,7 +10,7 @@ import "./WtEvents.sol";
 contract WtStorage is WtObjects, WtEvents, Ownable {
 
     // Mapping of tokenId to PurchasableTicket
-    mapping(uint256 => PurchasableTicket) private purchasableTickets;
+    mapping(uint256 => PurchasableTicket) public purchasableTickets;
 
     mapping (uint => ExampleObject) examples;
 

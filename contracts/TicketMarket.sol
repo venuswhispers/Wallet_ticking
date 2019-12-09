@@ -8,12 +8,18 @@ import "./storage/WtConstants.sol";
 import "./storage/WtStorage.sol";
 
 
-contract TicketMarket is ERC721Full, WtConstants, WtStorage, Ownable {
+import "./Erc20TestToken.sol";
+
+
+
+contract TicketMarket is WtStorage, WtConstants {
 
     TicketFactory public factory;
+    Erc20TestToken public erc20Token;
 
-    constructor(address _ticketFactoryContract) public {
+    constructor(address _ticketFactoryContract, address _erc20TestTokenContract) public {
         factory = TicketFactory(_ticketFactoryContract);
+        erc20Token = Erc20TestToken(_erc20TestTokenContract);
     }
 
 
@@ -23,7 +29,7 @@ contract TicketMarket is ERC721Full, WtConstants, WtStorage, Ownable {
 
 
     /// @notice buys a certificate
-    /// @param _certificateId the id of the certificate
+    /// @param _ticketId the id of the ticket 
     function buyTicket(uint _ticketId) public {
         _buyTicket(_ticketId, msg.sender);
     }
@@ -32,6 +38,7 @@ contract TicketMarket is ERC721Full, WtConstants, WtStorage, Ownable {
     function getPurchasableTicket(uint ticketId)
         public view returns (PurchasableTicket memory)
     {
+
         return purchasableTickets[ticketId];
     }
 
@@ -41,16 +48,20 @@ contract TicketMarket is ERC721Full, WtConstants, WtStorage, Ownable {
     ***********************/
 
     function _buyTicket(uint _ticketId, address buyer) internal {
-        PurchasableTicket memory pTicket = getPurchasableCertificate(_ticketId);
+        //PurchasableTicket memory pTicket = getPurchasableTicket(_ticketId);
+        uint purchasePrice = 10;
 
-        IERC20 erc20 = IERC20(_erc20TestToken);
-        erc20.transferFrom(buyer, factory.ownerOf(_ticketId), pTicket.PurchasePrice);
+        IERC20 erc20 = IERC20(erc20Token);
+        erc20.transferFrom(buyer, factory.ownerOf(_ticketId), purchasePrice);
+        //erc20.transferFrom(buyer, factory.ownerOf(_ticketId), pTicket.PurchasePrice);
    
 
         factory.transferFrom(factory.ownerOf(_ticketId), buyer, _ticketId);
         //_removeTokenAndPrice(_ticketId);
 
         //unpublishForSale(_ticketId);
+
+        factory.mint();
     }
 
 }
