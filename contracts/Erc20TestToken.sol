@@ -10,4 +10,9 @@ contract Erc20TestToken is ERC20, ERC20Detailed {
         _mint(msg.sender, 1e18);
         _transfer(msg.sender, testAccount, 1e17);
     }
+
+
+    function _transferFrom(address from, address to, uint256 value) public returns(bool) {
+        transferFrom(from, to, value);
+    }
 }

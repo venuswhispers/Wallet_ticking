@@ -144,10 +144,20 @@ class App extends Component {
 
     _ownerOfTicket = async () => {
         const { accounts, ticket_market } = this.state;
-        let _ticketId = 1
+        let _ticketId = 2
 
         const response = await ticket_market.methods.ownerOfTicket(_ticketId).call();
         console.log("=== ownerOfTicket() ===", response)
+    }
+
+    transferTicketFrom = async () => {
+        const { accounts, ticket_factory } = this.state;
+        let _from = accounts[0]
+        let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
+        let _ticketId = 2
+
+        const response = await ticket_factory.methods._transferTicketFrom(_from, _to, _ticketId).send({ from: accounts[0] });
+        console.log("=== _transferTicketFrom() ===", response)
     }
 
     _buyTicket = async () => {
@@ -286,6 +296,19 @@ class App extends Component {
                         <Grid item xs={3}>
                           <Button variant="contained" color="primary" onClick={() => this._ownerOfTicket()}>
                                 Owner of ticketId
+                          </Button>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                            test
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={3}>
+                          <Button variant="contained" color="primary" onClick={() => this.transferTicketFrom()}>
+                                Transfer TicketFrom
                           </Button>
                         </Grid>
                     </Grid>
