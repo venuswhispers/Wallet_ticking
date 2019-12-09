@@ -7,9 +7,9 @@ import "./TicketFactory.sol";
 import "./storage/WtConstants.sol";
 import "./storage/WtStorage.sol";
 
-
 import "./Erc20TestToken.sol";
 
+import "openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
 
 
 contract TicketMarket is WtStorage, WtConstants {

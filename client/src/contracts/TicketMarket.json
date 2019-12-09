@@ -3195,12 +3195,13 @@
         }
       },
       "links": {},
-      "address": "0x8cAd0c65b41974Ef24236663dF1B7e20A34626C0",
-      "transactionHash": "0xe5b7e4ade1a99c7f4c5890ba235a8a7cac55c50364ec74bf3c2e1a0b09ba1782"
+      "address": "0x5296751C9C3C6d9cC1f73C631b8df0Ff9968e53c",
+      "transactionHash": "0x85eeda6d8c26bdf7a8e2617d7ef9570950bb980a17f885cffa5e4b68e0c79b12"
     }
   },
   "schemaVersion": "3.0.19",
-  "updatedAt": "2019-12-09T09:09:00.950Z",
+  "updatedAt": "2019-12-09T09:12:06.569Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {
       "buyTicket(uint256)": {
