@@ -18,6 +18,7 @@ contract TicketMarket is WtStorage, WtConstants {
     Erc20TestToken public erc20Token;
     OceanToken public oceanToken;
 
+
     constructor(address _ticketFactoryContract, address _erc20TestTokenContract, address _oceanTokenContract) public {
         factory = TicketFactory(_ticketFactoryContract);
         erc20Token = Erc20TestToken(_erc20TestTokenContract);
@@ -36,6 +37,12 @@ contract TicketMarket is WtStorage, WtConstants {
     }
     
 
+    // @notice test of inherited mint() from TicketFactory.sol
+    function factoryMint() public {
+        factory.mint();
+    }
+    
+
 
     /// @notice buys a certificate
     /// @param _ticketId the id of the ticket 
@@ -50,7 +57,7 @@ contract TicketMarket is WtStorage, WtConstants {
     }
     
 
-    function testTransferFrom(address from, address to, uint256 value) public payable returns(bool) {
+    function testTransferFrom(address from, address to, uint256 value) public returns(bool) {
         uint purchasePrice = 10;
 
         //return erc20Token._transferFrom(from, to, value);
@@ -58,7 +65,7 @@ contract TicketMarket is WtStorage, WtConstants {
     }
     
 
-    function testTransfer(address to, uint256 value) public payable returns(bool) {
+    function testTransfer(address to, uint256 value) public returns(bool) {
         //return erc20Token._transferFrom(from, to, value);
         return oceanToken._transfer(to, value);
     }
@@ -81,7 +88,7 @@ contract TicketMarket is WtStorage, WtConstants {
         uint purchasePrice = 10;
 
         //IERC20 erc20 = IERC20(erc20Token);
-        erc20Token._transferFrom(buyer, ownerOfTicket(_ticketId), purchasePrice);
+        //erc20Token._transferFrom(buyer, ownerOfTicket(_ticketId), purchasePrice);
         //erc20Token.transferFrom(buyer, factory._ownerOf(_ticketId), purchasePrice);
         //erc20.transferFrom(buyer, factory.ownerOf(_ticketId), pTicket.PurchasePrice);
    

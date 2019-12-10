@@ -161,6 +161,13 @@ class App extends Component {
         console.log("=== ownerOfTicket() ===", response)
     }
 
+    _factoryMint = async () => {
+        const { accounts, ticket_market } = this.state;
+
+        const response = await ticket_market.methods.factoryMint().send({ from: accounts[0] });
+        console.log("=== factoryMint() ===", response)
+    }
+
     transferTicketFrom = async () => {
         const { accounts, ticket_factory } = this.state;
         let _from = accounts[0]
@@ -184,7 +191,7 @@ class App extends Component {
         const { accounts, ticket_market } = this.state;
         let _from = accounts[0]
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
-        let _value = 1e8
+        let _value = 0
 
         const response = await ticket_market.methods.testTransferFrom(_from, _to, _value).send({ from: accounts[0] });
         console.log("=== testTransferFrom() ===", response)
@@ -193,7 +200,7 @@ class App extends Component {
     _testTransfer = async () => {
         const { accounts, ticket_market } = this.state;
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
-        let _value = 1e8
+        let _value = 1e5
 
         const response = await ticket_market.methods.testTransfer(_to, _value).send({ from: accounts[0] });
         console.log("=== testTransfer() ===", response)
@@ -203,7 +210,8 @@ class App extends Component {
     _transferOceanToken = async () => {
         const { accounts, ocean_token } = this.state;
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
-        let _value = 1e5
+        //let _value = 1e5
+        let _value = 10e12
 
         const response = await ocean_token.methods._transfer(_to, _value).send({ from: accounts[0] });
         console.log("=== _transfer() ===", response)
@@ -212,7 +220,8 @@ class App extends Component {
 
     _buyTicket = async () => {
         const { accounts, ticket_market } = this.state;
-        let _ticketId = 2
+        //let _buyer = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
+        let _ticketId = 1
 
         const response = await ticket_market.methods.buyTicket(_ticketId).send({ from: accounts[0] });
         console.log("=== buyTicket() ===", response)
@@ -346,6 +355,19 @@ class App extends Component {
                         <Grid item xs={3}>
                           <Button variant="contained" color="primary" onClick={() => this._ownerOfTicket()}>
                                 Owner of ticketId
+                          </Button>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                            test
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={3}>
+                          <Button variant="contained" color="primary" onClick={() => this._factoryMint()}>
+                                Factory Mint
                           </Button>
                         </Grid>
                     </Grid>
