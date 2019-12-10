@@ -25,16 +25,16 @@ contract OceanToken is Ownable, ERC20Detailed, ERC20Capped {
     }
 
 
-    function _transferFrom(address from, address to, uint256 value) public {
-        transferFrom(from, to, value);
+    function _transferFrom(address from, address to, uint256 value) public returns(bool) {
+        return transferFrom(from, to, value);
     }
 
-    function _transfer(address to, uint256 value) public {
-        transfer(to, value);
+    function _transfer(address to, uint256 value) public returns(bool) {
+        return transfer(to, value);
     }
 
-    function _approve(address spender, uint256 value) public {
-        approve(spender, value);
+    function _approve(address spender, uint256 value) public returns(bool) {
+        return approve(spender, value);
     }
 
     function _totalSupply() public view returns (uint256) {
