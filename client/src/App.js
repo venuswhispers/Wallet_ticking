@@ -160,6 +160,15 @@ class App extends Component {
         console.log("=== _transferTicketFrom() ===", response)
     }
 
+
+
+    totalSupplyERC20 = async () => {
+        const { accounts, ticket_market } = this.state;
+   
+        const response = await ticket_market.methods.totalSupplyERC20().call()
+        console.log("=== totalSupply() / ERC20 ===", response)
+    }
+
     _testTransferFrom = async () => {
         const { accounts, ticket_market } = this.state;
         let _from = accounts[0]
@@ -327,7 +336,20 @@ class App extends Component {
                         </Grid>
                         <Grid item xs={3}>
                           <Button variant="contained" color="primary" onClick={() => this.transferTicketFrom()}>
-                                Transfer TicketFrom
+                                Transfer TicketFrom（ERC721）
+                          </Button>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                            test
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={3}>
+                          <Button variant="contained" color="primary" onClick={() => this.totalSupplyERC20()}>
+                                Total Supply（ERC20）
                           </Button>
                         </Grid>
                     </Grid>
@@ -340,7 +362,7 @@ class App extends Component {
                         </Grid>
                         <Grid item xs={3}>
                           <Button variant="contained" color="primary" onClick={() => this._testTransferFrom()}>
-                                Test TransferFrom
+                                Test TransferFrom（ERC20）
                           </Button>
                         </Grid>
                     </Grid>
@@ -353,7 +375,7 @@ class App extends Component {
                         </Grid>
                         <Grid item xs={3}>
                           <Button variant="contained" color="primary" onClick={() => this._testTransfer()}>
-                                Test TransferFrom
+                                Test Transfer（ERC20）
                           </Button>
                         </Grid>
                     </Grid>
