@@ -182,7 +182,7 @@ class App extends Component {
     _testTransfer = async () => {
         const { accounts, ticket_market } = this.state;
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
-        let _value = 1
+        let _value = 0
 
         const response = await ticket_market.methods.testTransfer(_to, _value).send({ from: accounts[0] });
         console.log("=== testTransfer() ===", response)
