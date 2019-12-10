@@ -31,6 +31,31 @@
       "inputs": [
         {
           "indexed": true,
+          "internalType": "uint256",
+          "name": "_ticketId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_price",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_token",
+          "type": "address"
+        }
+      ],
+      "name": "LogPublishForSale",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
           "internalType": "address",
           "name": "previousOwner",
           "type": "address"
@@ -76,6 +101,37 @@
       "type": "function"
     },
     {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "purchasableTickets",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "forSale",
+          "type": "bool"
+        },
+        {
+          "internalType": "address",
+          "name": "acceptedToken",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "PurchasePrice",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "constant": false,
       "inputs": [],
       "name": "renounceOwnership",
@@ -100,25 +156,25 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"exampleId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"exampleName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"exampleAddr\",\"type\":\"address\"}],\"name\":\"ExampleEvent\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"isOwner()\":{\"return\":\"true if `msg.sender` is the owner of the contract.\"},\"owner()\":{\"return\":\"the address of the owner.\"},\"renounceOwnership()\":{\"details\":\"Allows the current owner to relinquish control of the contract.\"},\"transferOwnership(address)\":{\"details\":\"Allows the current owner to transfer control of the contract to a newOwner.\",\"params\":{\"newOwner\":\"The address to transfer ownership to.\"}}}},\"userdoc\":{\"methods\":{\"renounceOwnership()\":{\"notice\":\"Renouncing to ownership will leave the contract without an owner. It will not be possible to call the functions with the `onlyOwner` modifier anymore.\"}}}},\"settings\":{\"compilationTarget\":{\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtStorage.sol\":\"WtStorage\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtEvents.sol\":{\"keccak256\":\"0x93755fb40d1a74f7de26a3bd52e9d2249730a5532f35c40ca23a633044265e98\",\"urls\":[\"bzz-raw://e860e80f28ef6b75523ac28abe78cbedcab4254d13137770fbdfbb1840d2992f\",\"dweb:/ipfs/QmeoRdUxnFp6Xqj74jFFPDeSZKZtpdx2KnobZuCNwmt1em\"]},\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtObjects.sol\":{\"keccak256\":\"0xaf049185c38542711be0bc176f3c9dee821ad51cf33d895eb4849e8cc7766a29\",\"urls\":[\"bzz-raw://713effb5e12a3d50b74232abfb0841291d6485c8fa79b76ccce635c4e8aaf17b\",\"dweb:/ipfs/QmNN1Ep1NRVtaapgZucPqjexqoM3chYed1WVAXtsbHzs8w\"]},\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtStorage.sol\":{\"keccak256\":\"0x14eec382999c1e9d198525c45958147125810d285accb4be77273b8d91d44b04\",\"urls\":[\"bzz-raw://bf6d3f46a92a215a9e51f8fa4086fff1d15494914cbe3212d364614de8712f64\",\"dweb:/ipfs/QmeeSqvfwQASEA8SUfseeuz5TRQht7SsAYbL5gcSauUPmf\"]},\"openzeppelin-solidity/contracts/ownership/Ownable.sol\":{\"keccak256\":\"0x980de387a1a020a498f53d00f89fecebb12c949a17e8f160093c0303ede2b786\",\"urls\":[\"bzz-raw://f07a2c393caa85f62f0aaa461e3edd50aa59371d4209778ba0558d7f8b4b856c\",\"dweb:/ipfs/QmeN3ZiYGSjCnQFeYaJNgoXjF9eDue1g3e9pqManRkeBtV\"]}},\"version\":1}",
-  "bytecode": "0x60806040819052600080546001600160a01b03191633178082556001600160a01b0316917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908290a36101fc806100576000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c8063715018a6146100515780638da5cb5b1461005b5780638f32d59b1461007f578063f2fde38b1461009b575b600080fd5b6100596100c1565b005b61006361011c565b604080516001600160a01b039092168252519081900360200190f35b61008761012b565b604080519115158252519081900360200190f35b610059600480360360208110156100b157600080fd5b50356001600160a01b031661013c565b6100c961012b565b6100d257600080fd5b600080546040516001600160a01b03909116907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a3600080546001600160a01b0319169055565b6000546001600160a01b031690565b6000546001600160a01b0316331490565b61014461012b565b61014d57600080fd5b61015681610159565b50565b6001600160a01b03811661016c57600080fd5b600080546040516001600160a01b03808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a3600080546001600160a01b0319166001600160a01b039290921691909117905556fea265627a7a723158207344c103d368fa2409eb3d239e03d173cb27e7fd9980b9d686f9a94524fee7dc64736f6c634300050c0032",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c8063715018a6146100515780638da5cb5b1461005b5780638f32d59b1461007f578063f2fde38b1461009b575b600080fd5b6100596100c1565b005b61006361011c565b604080516001600160a01b039092168252519081900360200190f35b61008761012b565b604080519115158252519081900360200190f35b610059600480360360208110156100b157600080fd5b50356001600160a01b031661013c565b6100c961012b565b6100d257600080fd5b600080546040516001600160a01b03909116907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a3600080546001600160a01b0319169055565b6000546001600160a01b031690565b6000546001600160a01b0316331490565b61014461012b565b61014d57600080fd5b61015681610159565b50565b6001600160a01b03811661016c57600080fd5b600080546040516001600160a01b03808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a3600080546001600160a01b0319166001600160a01b039290921691909117905556fea265627a7a723158207344c103d368fa2409eb3d239e03d173cb27e7fd9980b9d686f9a94524fee7dc64736f6c634300050c0032",
-  "sourceMap": "161:194:6:-;;;;;515:6:7;:19;;-1:-1:-1;;;;;;515:19:7;524:10;515:19;;;;-1:-1:-1;;;;;582:6:7;;549:40;;515:6;;549:40;161:194:6;;;;;;",
-  "deployedSourceMap": "161:194:6:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;161:194:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1347:137:7;;;:::i;:::-;;659:77;;;:::i;:::-;;;;-1:-1:-1;;;;;659:77:7;;;;;;;;;;;;;;979:90;;;:::i;:::-;;;;;;;;;;;;;;;;;;1655:107;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;1655:107:7;-1:-1:-1;;;;;1655:107:7;;:::i;1347:137::-;863:9;:7;:9::i;:::-;855:18;;;;;;1445:1;1429:6;;1408:40;;-1:-1:-1;;;;;1429:6:7;;;;1408:40;;1445:1;;1408:40;1475:1;1458:19;;-1:-1:-1;;;;;;1458:19:7;;;1347:137::o;659:77::-;697:7;723:6;-1:-1:-1;;;;;723:6:7;659:77;:::o;979:90::-;1019:4;1056:6;-1:-1:-1;;;;;1056:6:7;1042:10;:20;;979:90::o;1655:107::-;863:9;:7;:9::i;:::-;855:18;;;;;;1727:28;1746:8;1727:18;:28::i;:::-;1655:107;:::o;1906:183::-;-1:-1:-1;;;;;1979:22:7;;1971:31;;;;;;2038:6;;;2017:38;;-1:-1:-1;;;;;2017:38:7;;;;2038:6;;;2017:38;;;2065:6;:17;;-1:-1:-1;;;;;;2065:17:7;-1:-1:-1;;;;;2065:17:7;;;;;;;;;;1906:183::o",
-  "source": "pragma solidity ^0.5.0;\n\nimport \"openzeppelin-solidity/contracts/ownership/Ownable.sol\";\n\nimport \"./WtObjects.sol\";\nimport \"./WtEvents.sol\";\n\n\n// shared storage\ncontract WtStorage is WtObjects, WtEvents, Ownable {\n\n    //mapping(uint256 => CreateLoan) public loans;  // Notice: This is from CreateLoan.sol\n\n    mapping (uint => ExampleObject) examples;\n\n}\n\n",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"exampleId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"exampleName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"exampleAddr\",\"type\":\"address\"}],\"name\":\"ExampleEvent\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"_ticketId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_token\",\"type\":\"address\"}],\"name\":\"LogPublishForSale\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"purchasableTickets\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"forSale\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"acceptedToken\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"PurchasePrice\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"isOwner()\":{\"return\":\"true if `msg.sender` is the owner of the contract.\"},\"owner()\":{\"return\":\"the address of the owner.\"},\"renounceOwnership()\":{\"details\":\"Allows the current owner to relinquish control of the contract.\"},\"transferOwnership(address)\":{\"details\":\"Allows the current owner to transfer control of the contract to a newOwner.\",\"params\":{\"newOwner\":\"The address to transfer ownership to.\"}}}},\"userdoc\":{\"methods\":{\"renounceOwnership()\":{\"notice\":\"Renouncing to ownership will leave the contract without an owner. It will not be possible to call the functions with the `onlyOwner` modifier anymore.\"}}}},\"settings\":{\"compilationTarget\":{\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtStorage.sol\":\"WtStorage\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtEvents.sol\":{\"keccak256\":\"0x6d0370cb0dc2ff15903f8a3551df8fde78a783d623a6ddd33ea1fa5fdfd95549\",\"urls\":[\"bzz-raw://c132f0b5818949abc8ebc2d543f908f4fd0deee1ec329e9bb9a566f53eb772e6\",\"dweb:/ipfs/QmaYFJb4gm2oXGzXjKcZKZ793rxkdAuEfkR19MVzYLRmtW\"]},\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtObjects.sol\":{\"keccak256\":\"0x2c43e9b0195130f2c60ef1de0410a9e385d1e0225eb16100eeab940b47f70a0a\",\"urls\":[\"bzz-raw://b05d6969643e07d73369ec34ab6cb31152dba6f0ea4fcd0bff47e2062385666e\",\"dweb:/ipfs/QmXAkHtRjmPS6ur1jUZmt2ujQ2gUm4qZ5AF5fG8XLzQKiC\"]},\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtStorage.sol\":{\"keccak256\":\"0xdf3abcc47f8a6855c31af9c491ca55a6e8f7dbf376a557e32bf58e2101a9be18\",\"urls\":[\"bzz-raw://7b8c9883218342757511f43c932fef0a64cf3e4c922ded05d9252bbacb809326\",\"dweb:/ipfs/QmYXyF2x7bdneHiQSCeYcM1JH7mb7zERmYQ32UF12gQdRP\"]},\"openzeppelin-solidity/contracts/ownership/Ownable.sol\":{\"keccak256\":\"0x980de387a1a020a498f53d00f89fecebb12c949a17e8f160093c0303ede2b786\",\"urls\":[\"bzz-raw://f07a2c393caa85f62f0aaa461e3edd50aa59371d4209778ba0558d7f8b4b856c\",\"dweb:/ipfs/QmeN3ZiYGSjCnQFeYaJNgoXjF9eDue1g3e9pqManRkeBtV\"]}},\"version\":1}",
+  "bytecode": "0x60806040819052600080546001600160a01b03191633178082556001600160a01b0316917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908290a3610279806100576000396000f3fe608060405234801561001057600080fd5b50600436106100575760003560e01c8063715018a61461005c5780638da5cb5b146100665780638f32d59b1461008a578063d544bce4146100a6578063f2fde38b146100eb575b600080fd5b610064610111565b005b61006e61016c565b604080516001600160a01b039092168252519081900360200190f35b61009261017b565b604080519115158252519081900360200190f35b6100c3600480360360208110156100bc57600080fd5b503561018c565b6040805193151584526001600160a01b03909216602084015282820152519081900360600190f35b6100646004803603602081101561010157600080fd5b50356001600160a01b03166101b9565b61011961017b565b61012257600080fd5b600080546040516001600160a01b03909116907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a3600080546001600160a01b0319169055565b6000546001600160a01b031690565b6000546001600160a01b0316331490565b6001602081905260009182526040909120805491015460ff82169161010090046001600160a01b03169083565b6101c161017b565b6101ca57600080fd5b6101d3816101d6565b50565b6001600160a01b0381166101e957600080fd5b600080546040516001600160a01b03808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a3600080546001600160a01b0319166001600160a01b039290921691909117905556fea265627a7a723158202a8a85f22f3dfea62f2ccf702f4671f2106837105f6318aee3bca2309e063ce164736f6c634300050c0032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100575760003560e01c8063715018a61461005c5780638da5cb5b146100665780638f32d59b1461008a578063d544bce4146100a6578063f2fde38b146100eb575b600080fd5b610064610111565b005b61006e61016c565b604080516001600160a01b039092168252519081900360200190f35b61009261017b565b604080519115158252519081900360200190f35b6100c3600480360360208110156100bc57600080fd5b503561018c565b6040805193151584526001600160a01b03909216602084015282820152519081900360600190f35b6100646004803603602081101561010157600080fd5b50356001600160a01b03166101b9565b61011961017b565b61012257600080fd5b600080546040516001600160a01b03909116907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a3600080546001600160a01b0319169055565b6000546001600160a01b031690565b6000546001600160a01b0316331490565b6001602081905260009182526040909120805491015460ff82169161010090046001600160a01b03169083565b6101c161017b565b6101ca57600080fd5b6101d3816101d6565b50565b6001600160a01b0381166101e957600080fd5b600080546040516001600160a01b03808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a3600080546001600160a01b0319166001600160a01b039290921691909117905556fea265627a7a723158202a8a85f22f3dfea62f2ccf702f4671f2106837105f6318aee3bca2309e063ce164736f6c634300050c0032",
+  "sourceMap": "161:219:8:-;;;;;515:6:12;:19;;-1:-1:-1;;;;;;515:19:12;524:10;515:19;;;;-1:-1:-1;;;;;582:6:12;;549:40;;515:6;;549:40;161:219:8;;;;;;",
+  "deployedSourceMap": "161:219:8:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;161:219:8;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1347:137:12;;;:::i;:::-;;659:77;;;:::i;:::-;;;;-1:-1:-1;;;;;659:77:12;;;;;;;;;;;;;;979:90;;;:::i;:::-;;;;;;;;;;;;;;;;;;266:63:8;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;266:63:8;;:::i;:::-;;;;;;;;;-1:-1:-1;;;;;266:63:8;;;;;;;;;;;;;;;;;;;;1655:107:12;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;1655:107:12;-1:-1:-1;;;;;1655:107:12;;:::i;1347:137::-;863:9;:7;:9::i;:::-;855:18;;;;;;1445:1;1429:6;;1408:40;;-1:-1:-1;;;;;1429:6:12;;;;1408:40;;1445:1;;1408:40;1475:1;1458:19;;-1:-1:-1;;;;;;1458:19:12;;;1347:137::o;659:77::-;697:7;723:6;-1:-1:-1;;;;;723:6:12;659:77;:::o;979:90::-;1019:4;1056:6;-1:-1:-1;;;;;1056:6:12;1042:10;:20;;979:90::o;266:63:8:-;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;266:63:8;;;:::o;1655:107:12:-;863:9;:7;:9::i;:::-;855:18;;;;;;1727:28;1746:8;1727:18;:28::i;:::-;1655:107;:::o;1906:183::-;-1:-1:-1;;;;;1979:22:12;;1971:31;;;;;;2038:6;;;2017:38;;-1:-1:-1;;;;;2017:38:12;;;;2038:6;;;2017:38;;;2065:6;:17;;-1:-1:-1;;;;;;2065:17:12;-1:-1:-1;;;;;2065:17:12;;;;;;;;;;1906:183::o",
+  "source": "pragma solidity ^0.5.0;\n\nimport \"openzeppelin-solidity/contracts/ownership/Ownable.sol\";\n\nimport \"./WtObjects.sol\";\nimport \"./WtEvents.sol\";\n\n\n// shared storage\ncontract WtStorage is WtObjects, WtEvents, Ownable {\n\n    // Mapping of tokenId to PurchasableTicket\n    mapping(uint256 => PurchasableTicket) public purchasableTickets;\n\n    mapping (uint => ExampleObject) examples;\n\n}\n\n",
   "sourcePath": "/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtStorage.sol",
   "ast": {
     "absolutePath": "/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtStorage.sol",
     "exportedSymbols": {
       "WtStorage": [
-        143
+        377
       ]
     },
-    "id": 144,
+    "id": 378,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 129,
+        "id": 359,
         "literals": [
           "solidity",
           "^",
@@ -126,38 +182,38 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:6"
+        "src": "0:23:8"
       },
       {
         "absolutePath": "openzeppelin-solidity/contracts/ownership/Ownable.sol",
         "file": "openzeppelin-solidity/contracts/ownership/Ownable.sol",
-        "id": 130,
+        "id": 360,
         "nodeType": "ImportDirective",
-        "scope": 144,
-        "sourceUnit": 253,
-        "src": "25:63:6",
+        "scope": 378,
+        "sourceUnit": 676,
+        "src": "25:63:8",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
         "absolutePath": "/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtObjects.sol",
         "file": "./WtObjects.sol",
-        "id": 131,
+        "id": 361,
         "nodeType": "ImportDirective",
-        "scope": 144,
-        "sourceUnit": 128,
-        "src": "90:25:6",
+        "scope": 378,
+        "sourceUnit": 358,
+        "src": "90:25:8",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
         "absolutePath": "/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtEvents.sol",
         "file": "./WtEvents.sol",
-        "id": 132,
+        "id": 362,
         "nodeType": "ImportDirective",
-        "scope": 144,
-        "sourceUnit": 118,
-        "src": "116:24:6",
+        "scope": 378,
+        "sourceUnit": 341,
+        "src": "116:24:8",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -167,115 +223,162 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 133,
+              "id": 363,
               "name": "WtObjects",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 127,
-              "src": "183:9:6",
+              "referencedDeclaration": 357,
+              "src": "183:9:8",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_WtObjects_$127",
+                "typeIdentifier": "t_contract$_WtObjects_$357",
                 "typeString": "contract WtObjects"
               }
             },
-            "id": 134,
+            "id": 364,
             "nodeType": "InheritanceSpecifier",
-            "src": "183:9:6"
+            "src": "183:9:8"
           },
           {
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 135,
+              "id": 365,
               "name": "WtEvents",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 117,
-              "src": "194:8:6",
+              "referencedDeclaration": 340,
+              "src": "194:8:8",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_WtEvents_$117",
+                "typeIdentifier": "t_contract$_WtEvents_$340",
                 "typeString": "contract WtEvents"
               }
             },
-            "id": 136,
+            "id": 366,
             "nodeType": "InheritanceSpecifier",
-            "src": "194:8:6"
+            "src": "194:8:8"
           },
           {
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 137,
+              "id": 367,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 252,
-              "src": "204:7:6",
+              "referencedDeclaration": 675,
+              "src": "204:7:8",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$252",
+                "typeIdentifier": "t_contract$_Ownable_$675",
                 "typeString": "contract Ownable"
               }
             },
-            "id": 138,
+            "id": 368,
             "nodeType": "InheritanceSpecifier",
-            "src": "204:7:6"
+            "src": "204:7:8"
           }
         ],
         "contractDependencies": [
-          117,
-          127,
-          252
+          340,
+          357,
+          675
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 143,
+        "id": 377,
         "linearizedBaseContracts": [
-          143,
-          252,
-          117,
-          127
+          377,
+          675,
+          340,
+          357
         ],
         "name": "WtStorage",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 142,
-            "name": "examples",
+            "id": 372,
+            "name": "purchasableTickets",
             "nodeType": "VariableDeclaration",
-            "scope": 143,
-            "src": "311:40:6",
+            "scope": 377,
+            "src": "266:63:8",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_ExampleObject_$126_storage_$",
-              "typeString": "mapping(uint256 => struct WtObjects.ExampleObject)"
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_PurchasableTicket_$349_storage_$",
+              "typeString": "mapping(uint256 => struct WtObjects.PurchasableTicket)"
             },
             "typeName": {
-              "id": 141,
+              "id": 371,
               "keyType": {
-                "id": 139,
-                "name": "uint",
+                "id": 369,
+                "name": "uint256",
                 "nodeType": "ElementaryTypeName",
-                "src": "320:4:6",
+                "src": "274:7:8",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
                 }
               },
               "nodeType": "Mapping",
-              "src": "311:31:6",
+              "src": "266:37:8",
               "typeDescriptions": {
-                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_ExampleObject_$126_storage_$",
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_PurchasableTicket_$349_storage_$",
+                "typeString": "mapping(uint256 => struct WtObjects.PurchasableTicket)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 370,
+                "name": "PurchasableTicket",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 349,
+                "src": "285:17:8",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_PurchasableTicket_$349_storage_ptr",
+                  "typeString": "struct WtObjects.PurchasableTicket"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 376,
+            "name": "examples",
+            "nodeType": "VariableDeclaration",
+            "scope": 377,
+            "src": "336:40:8",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_ExampleObject_$356_storage_$",
+              "typeString": "mapping(uint256 => struct WtObjects.ExampleObject)"
+            },
+            "typeName": {
+              "id": 375,
+              "keyType": {
+                "id": 373,
+                "name": "uint",
+                "nodeType": "ElementaryTypeName",
+                "src": "345:4:8",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "336:31:8",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_ExampleObject_$356_storage_$",
                 "typeString": "mapping(uint256 => struct WtObjects.ExampleObject)"
               },
               "valueType": {
                 "contractScope": null,
-                "id": 140,
+                "id": 374,
                 "name": "ExampleObject",
                 "nodeType": "UserDefinedTypeName",
-                "referencedDeclaration": 126,
-                "src": "328:13:6",
+                "referencedDeclaration": 356,
+                "src": "353:13:8",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_ExampleObject_$126_storage_ptr",
+                  "typeIdentifier": "t_struct$_ExampleObject_$356_storage_ptr",
                   "typeString": "struct WtObjects.ExampleObject"
                 }
               }
@@ -284,24 +387,24 @@
             "visibility": "internal"
           }
         ],
-        "scope": 144,
-        "src": "161:194:6"
+        "scope": 378,
+        "src": "161:219:8"
       }
     ],
-    "src": "0:357:6"
+    "src": "0:382:8"
   },
   "legacyAST": {
     "absolutePath": "/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtStorage.sol",
     "exportedSymbols": {
       "WtStorage": [
-        143
+        377
       ]
     },
-    "id": 144,
+    "id": 378,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 129,
+        "id": 359,
         "literals": [
           "solidity",
           "^",
@@ -309,38 +412,38 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:6"
+        "src": "0:23:8"
       },
       {
         "absolutePath": "openzeppelin-solidity/contracts/ownership/Ownable.sol",
         "file": "openzeppelin-solidity/contracts/ownership/Ownable.sol",
-        "id": 130,
+        "id": 360,
         "nodeType": "ImportDirective",
-        "scope": 144,
-        "sourceUnit": 253,
-        "src": "25:63:6",
+        "scope": 378,
+        "sourceUnit": 676,
+        "src": "25:63:8",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
         "absolutePath": "/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtObjects.sol",
         "file": "./WtObjects.sol",
-        "id": 131,
+        "id": 361,
         "nodeType": "ImportDirective",
-        "scope": 144,
-        "sourceUnit": 128,
-        "src": "90:25:6",
+        "scope": 378,
+        "sourceUnit": 358,
+        "src": "90:25:8",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
         "absolutePath": "/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtEvents.sol",
         "file": "./WtEvents.sol",
-        "id": 132,
+        "id": 362,
         "nodeType": "ImportDirective",
-        "scope": 144,
-        "sourceUnit": 118,
-        "src": "116:24:6",
+        "scope": 378,
+        "sourceUnit": 341,
+        "src": "116:24:8",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -350,115 +453,162 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 133,
+              "id": 363,
               "name": "WtObjects",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 127,
-              "src": "183:9:6",
+              "referencedDeclaration": 357,
+              "src": "183:9:8",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_WtObjects_$127",
+                "typeIdentifier": "t_contract$_WtObjects_$357",
                 "typeString": "contract WtObjects"
               }
             },
-            "id": 134,
+            "id": 364,
             "nodeType": "InheritanceSpecifier",
-            "src": "183:9:6"
+            "src": "183:9:8"
           },
           {
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 135,
+              "id": 365,
               "name": "WtEvents",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 117,
-              "src": "194:8:6",
+              "referencedDeclaration": 340,
+              "src": "194:8:8",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_WtEvents_$117",
+                "typeIdentifier": "t_contract$_WtEvents_$340",
                 "typeString": "contract WtEvents"
               }
             },
-            "id": 136,
+            "id": 366,
             "nodeType": "InheritanceSpecifier",
-            "src": "194:8:6"
+            "src": "194:8:8"
           },
           {
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 137,
+              "id": 367,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 252,
-              "src": "204:7:6",
+              "referencedDeclaration": 675,
+              "src": "204:7:8",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$252",
+                "typeIdentifier": "t_contract$_Ownable_$675",
                 "typeString": "contract Ownable"
               }
             },
-            "id": 138,
+            "id": 368,
             "nodeType": "InheritanceSpecifier",
-            "src": "204:7:6"
+            "src": "204:7:8"
           }
         ],
         "contractDependencies": [
-          117,
-          127,
-          252
+          340,
+          357,
+          675
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 143,
+        "id": 377,
         "linearizedBaseContracts": [
-          143,
-          252,
-          117,
-          127
+          377,
+          675,
+          340,
+          357
         ],
         "name": "WtStorage",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 142,
-            "name": "examples",
+            "id": 372,
+            "name": "purchasableTickets",
             "nodeType": "VariableDeclaration",
-            "scope": 143,
-            "src": "311:40:6",
+            "scope": 377,
+            "src": "266:63:8",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_ExampleObject_$126_storage_$",
-              "typeString": "mapping(uint256 => struct WtObjects.ExampleObject)"
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_PurchasableTicket_$349_storage_$",
+              "typeString": "mapping(uint256 => struct WtObjects.PurchasableTicket)"
             },
             "typeName": {
-              "id": 141,
+              "id": 371,
               "keyType": {
-                "id": 139,
-                "name": "uint",
+                "id": 369,
+                "name": "uint256",
                 "nodeType": "ElementaryTypeName",
-                "src": "320:4:6",
+                "src": "274:7:8",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
                 }
               },
               "nodeType": "Mapping",
-              "src": "311:31:6",
+              "src": "266:37:8",
               "typeDescriptions": {
-                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_ExampleObject_$126_storage_$",
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_PurchasableTicket_$349_storage_$",
+                "typeString": "mapping(uint256 => struct WtObjects.PurchasableTicket)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 370,
+                "name": "PurchasableTicket",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 349,
+                "src": "285:17:8",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_PurchasableTicket_$349_storage_ptr",
+                  "typeString": "struct WtObjects.PurchasableTicket"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 376,
+            "name": "examples",
+            "nodeType": "VariableDeclaration",
+            "scope": 377,
+            "src": "336:40:8",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_ExampleObject_$356_storage_$",
+              "typeString": "mapping(uint256 => struct WtObjects.ExampleObject)"
+            },
+            "typeName": {
+              "id": 375,
+              "keyType": {
+                "id": 373,
+                "name": "uint",
+                "nodeType": "ElementaryTypeName",
+                "src": "345:4:8",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "336:31:8",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_ExampleObject_$356_storage_$",
                 "typeString": "mapping(uint256 => struct WtObjects.ExampleObject)"
               },
               "valueType": {
                 "contractScope": null,
-                "id": 140,
+                "id": 374,
                 "name": "ExampleObject",
                 "nodeType": "UserDefinedTypeName",
-                "referencedDeclaration": 126,
-                "src": "328:13:6",
+                "referencedDeclaration": 356,
+                "src": "353:13:8",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_ExampleObject_$126_storage_ptr",
+                  "typeIdentifier": "t_struct$_ExampleObject_$356_storage_ptr",
                   "typeString": "struct WtObjects.ExampleObject"
                 }
               }
@@ -467,11 +617,11 @@
             "visibility": "internal"
           }
         ],
-        "scope": 144,
-        "src": "161:194:6"
+        "scope": 378,
+        "src": "161:219:8"
       }
     ],
-    "src": "0:357:6"
+    "src": "0:382:8"
   },
   "compiler": {
     "name": "solc",
@@ -479,7 +629,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.19",
-  "updatedAt": "2019-12-03T14:56:23.353Z",
+  "updatedAt": "2019-12-09T08:41:12.068Z",
   "devdoc": {
     "methods": {
       "isOwner()": {

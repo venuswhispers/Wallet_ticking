@@ -25,27 +25,52 @@
       ],
       "name": "ExampleEvent",
       "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_ticketId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_price",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_token",
+          "type": "address"
+        }
+      ],
+      "name": "LogPublishForSale",
+      "type": "event"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"exampleId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"exampleName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"exampleAddr\",\"type\":\"address\"}],\"name\":\"ExampleEvent\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtEvents.sol\":\"WtEvents\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtEvents.sol\":{\"keccak256\":\"0x93755fb40d1a74f7de26a3bd52e9d2249730a5532f35c40ca23a633044265e98\",\"urls\":[\"bzz-raw://e860e80f28ef6b75523ac28abe78cbedcab4254d13137770fbdfbb1840d2992f\",\"dweb:/ipfs/QmeoRdUxnFp6Xqj74jFFPDeSZKZtpdx2KnobZuCNwmt1em\"]}},\"version\":1}",
-  "bytecode": "0x6080604052348015600f57600080fd5b50603e80601d6000396000f3fe6080604052600080fdfea265627a7a72315820c88d58626e2100902ba8a8334cfbaa86cc3262c5e07ef5103db834bf53b6978364736f6c634300050c0032",
-  "deployedBytecode": "0x6080604052600080fdfea265627a7a72315820c88d58626e2100902ba8a8334cfbaa86cc3262c5e07ef5103db834bf53b6978364736f6c634300050c0032",
-  "sourceMap": "26:135:4:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;26:135:4;;;;;;;",
-  "deployedSourceMap": "26:135:4:-;;;;;",
-  "source": "pragma solidity ^0.5.0;\n\n\ncontract WtEvents {\n\n    event ExampleEvent (\n        uint exampleId,\n        string exampleName,\n        address exampleAddr\n    );\n\n}\n",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"exampleId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"exampleName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"exampleAddr\",\"type\":\"address\"}],\"name\":\"ExampleEvent\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"_ticketId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_token\",\"type\":\"address\"}],\"name\":\"LogPublishForSale\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtEvents.sol\":\"WtEvents\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtEvents.sol\":{\"keccak256\":\"0x6d0370cb0dc2ff15903f8a3551df8fde78a783d623a6ddd33ea1fa5fdfd95549\",\"urls\":[\"bzz-raw://c132f0b5818949abc8ebc2d543f908f4fd0deee1ec329e9bb9a566f53eb772e6\",\"dweb:/ipfs/QmaYFJb4gm2oXGzXjKcZKZ793rxkdAuEfkR19MVzYLRmtW\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603e80601d6000396000f3fe6080604052600080fdfea265627a7a723158209745d6cc489d0b388965e2068d94455bf5ed1d6d94a3732e9d3c4d0a6564714964736f6c634300050c0032",
+  "deployedBytecode": "0x6080604052600080fdfea265627a7a723158209745d6cc489d0b388965e2068d94455bf5ed1d6d94a3732e9d3c4d0a6564714964736f6c634300050c0032",
+  "sourceMap": "26:218:6:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;26:218:6;;;;;;;",
+  "deployedSourceMap": "26:218:6:-;;;;;",
+  "source": "pragma solidity ^0.5.0;\n\n\ncontract WtEvents {\n\n    event LogPublishForSale(uint indexed _ticketId, uint _price, address _token);\n\n    event ExampleEvent (\n        uint exampleId,\n        string exampleName,\n        address exampleAddr\n    );\n\n}\n",
   "sourcePath": "/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtEvents.sol",
   "ast": {
     "absolutePath": "/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtEvents.sol",
     "exportedSymbols": {
       "WtEvents": [
-        117
+        340
       ]
     },
-    "id": 118,
+    "id": 341,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 108,
+        "id": 323,
         "literals": [
           "solidity",
           "^",
@@ -53,7 +78,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:4"
+        "src": "0:23:6"
       },
       {
         "baseContracts": [],
@@ -61,9 +86,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 117,
+        "id": 340,
         "linearizedBaseContracts": [
-          117
+          340
         ],
         "name": "WtEvents",
         "nodeType": "ContractDefinition",
@@ -71,21 +96,21 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 116,
-            "name": "ExampleEvent",
+            "id": 331,
+            "name": "LogPublishForSale",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 115,
+              "id": 330,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 110,
-                  "indexed": false,
-                  "name": "exampleId",
+                  "id": 325,
+                  "indexed": true,
+                  "name": "_ticketId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 116,
-                  "src": "80:14:4",
+                  "scope": 331,
+                  "src": "75:22:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -93,10 +118,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 109,
+                    "id": 324,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "80:4:4",
+                    "src": "75:4:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -107,26 +132,26 @@
                 },
                 {
                   "constant": false,
-                  "id": 112,
+                  "id": 327,
                   "indexed": false,
-                  "name": "exampleName",
+                  "name": "_price",
                   "nodeType": "VariableDeclaration",
-                  "scope": 116,
-                  "src": "104:18:4",
+                  "scope": 331,
+                  "src": "99:11:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_string_memory_ptr",
-                    "typeString": "string"
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 111,
-                    "name": "string",
+                    "id": 326,
+                    "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "104:6:4",
+                    "src": "99:4:6",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage_ptr",
-                      "typeString": "string"
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
                     }
                   },
                   "value": null,
@@ -134,12 +159,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 114,
+                  "id": 329,
                   "indexed": false,
-                  "name": "exampleAddr",
+                  "name": "_token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 116,
-                  "src": "132:19:4",
+                  "scope": 331,
+                  "src": "112:14:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -147,10 +172,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 113,
+                    "id": 328,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "132:7:4",
+                    "src": "112:7:6",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -161,29 +186,126 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "70:87:4"
+              "src": "74:53:6"
             },
-            "src": "51:107:4"
+            "src": "51:77:6"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 339,
+            "name": "ExampleEvent",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 338,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 333,
+                  "indexed": false,
+                  "name": "exampleId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 339,
+                  "src": "163:14:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 332,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "163:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 335,
+                  "indexed": false,
+                  "name": "exampleName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 339,
+                  "src": "187:18:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 334,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "187:6:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 337,
+                  "indexed": false,
+                  "name": "exampleAddr",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 339,
+                  "src": "215:19:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 336,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "215:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "153:87:6"
+            },
+            "src": "134:107:6"
           }
         ],
-        "scope": 118,
-        "src": "26:135:4"
+        "scope": 341,
+        "src": "26:218:6"
       }
     ],
-    "src": "0:162:4"
+    "src": "0:245:6"
   },
   "legacyAST": {
     "absolutePath": "/Users/unomasanori/projects/DEMO_MVP/Gitcoin-Global-Communities-Hackcathon/walletConnect-ticketing-dapp/contracts/storage/WtEvents.sol",
     "exportedSymbols": {
       "WtEvents": [
-        117
+        340
       ]
     },
-    "id": 118,
+    "id": 341,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 108,
+        "id": 323,
         "literals": [
           "solidity",
           "^",
@@ -191,7 +313,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:4"
+        "src": "0:23:6"
       },
       {
         "baseContracts": [],
@@ -199,9 +321,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 117,
+        "id": 340,
         "linearizedBaseContracts": [
-          117
+          340
         ],
         "name": "WtEvents",
         "nodeType": "ContractDefinition",
@@ -209,21 +331,21 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 116,
-            "name": "ExampleEvent",
+            "id": 331,
+            "name": "LogPublishForSale",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 115,
+              "id": 330,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 110,
-                  "indexed": false,
-                  "name": "exampleId",
+                  "id": 325,
+                  "indexed": true,
+                  "name": "_ticketId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 116,
-                  "src": "80:14:4",
+                  "scope": 331,
+                  "src": "75:22:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -231,10 +353,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 109,
+                    "id": 324,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "80:4:4",
+                    "src": "75:4:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -245,26 +367,26 @@
                 },
                 {
                   "constant": false,
-                  "id": 112,
+                  "id": 327,
                   "indexed": false,
-                  "name": "exampleName",
+                  "name": "_price",
                   "nodeType": "VariableDeclaration",
-                  "scope": 116,
-                  "src": "104:18:4",
+                  "scope": 331,
+                  "src": "99:11:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_string_memory_ptr",
-                    "typeString": "string"
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 111,
-                    "name": "string",
+                    "id": 326,
+                    "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "104:6:4",
+                    "src": "99:4:6",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage_ptr",
-                      "typeString": "string"
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
                     }
                   },
                   "value": null,
@@ -272,12 +394,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 114,
+                  "id": 329,
                   "indexed": false,
-                  "name": "exampleAddr",
+                  "name": "_token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 116,
-                  "src": "132:19:4",
+                  "scope": 331,
+                  "src": "112:14:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -285,10 +407,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 113,
+                    "id": 328,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "132:7:4",
+                    "src": "112:7:6",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -299,16 +421,113 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "70:87:4"
+              "src": "74:53:6"
             },
-            "src": "51:107:4"
+            "src": "51:77:6"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 339,
+            "name": "ExampleEvent",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 338,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 333,
+                  "indexed": false,
+                  "name": "exampleId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 339,
+                  "src": "163:14:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 332,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "163:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 335,
+                  "indexed": false,
+                  "name": "exampleName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 339,
+                  "src": "187:18:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 334,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "187:6:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 337,
+                  "indexed": false,
+                  "name": "exampleAddr",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 339,
+                  "src": "215:19:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 336,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "215:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "153:87:6"
+            },
+            "src": "134:107:6"
           }
         ],
-        "scope": 118,
-        "src": "26:135:4"
+        "scope": 341,
+        "src": "26:218:6"
       }
     ],
-    "src": "0:162:4"
+    "src": "0:245:6"
   },
   "compiler": {
     "name": "solc",
@@ -316,7 +535,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.19",
-  "updatedAt": "2019-12-03T14:56:23.351Z",
+  "updatedAt": "2019-12-09T08:41:12.064Z",
   "devdoc": {
     "methods": {}
   },

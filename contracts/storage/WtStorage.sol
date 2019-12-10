@@ -9,7 +9,8 @@ import "./WtEvents.sol";
 // shared storage
 contract WtStorage is WtObjects, WtEvents, Ownable {
 
-    //mapping(uint256 => CreateLoan) public loans;  // Notice: This is from CreateLoan.sol
+    // Mapping of tokenId to PurchasableTicket
+    mapping(uint256 => PurchasableTicket) public purchasableTickets;
 
     mapping (uint => ExampleObject) examples;
 
