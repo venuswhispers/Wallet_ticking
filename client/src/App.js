@@ -5,6 +5,8 @@ import { ThemeProvider } from '@material-ui/styles';
 // Import json file for artifact
 import TicketFactory from "./contracts/TicketFactory.json";
 import TicketMarket from "./contracts/TicketMarket.json";
+import OceanToken from "./contracts/OceanToken.json";
+
 
 import getWeb3 from "./utils/getWeb3";
 
@@ -55,6 +57,9 @@ class App extends Component {
 
             const deployedNetworkTicketMarket = TicketMarket.networks[networkId];
 
+            const deployedNetworkOceanToken = OceanToken.networks[networkId];
+
+
             const ticket_factory = new web3.eth.Contract(
                 TicketFactory.abi,
                 deployedNetworkTicketFactory && deployedNetworkTicketFactory.address,
@@ -65,11 +70,17 @@ class App extends Component {
                 deployedNetworkTicketMarket && deployedNetworkTicketMarket.address,
             );
 
+            const ocean_token = new web3.eth.Contract(
+                OceanToken.abi,
+                deployedNetworkOceanToken && deployedNetworkOceanToken.address,
+            );
+
             this.setState({ 
               web3,
               accounts,
               ticket_factory: ticket_factory,
-              ticket_market: ticket_market
+              ticket_market: ticket_market,
+              ocean_token: ocean_token
             });
 
             window.ethereum.on('accountsChanged', async (accounts) => {
@@ -144,7 +155,7 @@ class App extends Component {
 
     _ownerOfTicket = async () => {
         const { accounts, ticket_market } = this.state;
-        let _ticketId = 2
+        let _ticketId = 1
 
         const response = await ticket_market.methods.ownerOfTicket(_ticketId).call();
         console.log("=== ownerOfTicket() ===", response)
@@ -154,7 +165,7 @@ class App extends Component {
         const { accounts, ticket_factory } = this.state;
         let _from = accounts[0]
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
-        let _ticketId = 2
+        let _ticketId = 1
 
         const response = await ticket_factory.methods._transferTicketFrom(_from, _to, _ticketId).send({ from: accounts[0] });
         console.log("=== _transferTicketFrom() ===", response)
@@ -173,7 +184,7 @@ class App extends Component {
         const { accounts, ticket_market } = this.state;
         let _from = accounts[0]
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
-        let _value = 0
+        let _value = 1e8
 
         const response = await ticket_market.methods.testTransferFrom(_from, _to, _value).send({ from: accounts[0] });
         console.log("=== testTransferFrom() ===", response)
@@ -182,11 +193,22 @@ class App extends Component {
     _testTransfer = async () => {
         const { accounts, ticket_market } = this.state;
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
-        let _value = 0
+        let _value = 1e8
 
         const response = await ticket_market.methods.testTransfer(_to, _value).send({ from: accounts[0] });
         console.log("=== testTransfer() ===", response)
     }
+
+
+    _transferOceanToken = async () => {
+        const { accounts, ocean_token } = this.state;
+        let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
+        let _value = 1e5
+
+        const response = await ocean_token.methods._transfer(_to, _value).send({ from: accounts[0] });
+        console.log("=== _transfer() ===", response)
+    }
+
 
     _buyTicket = async () => {
         const { accounts, ticket_market } = this.state;
@@ -376,6 +398,19 @@ class App extends Component {
                         <Grid item xs={3}>
                           <Button variant="contained" color="primary" onClick={() => this._testTransfer()}>
                                 Test Transfer（ERC20）
+                          </Button>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                            test
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={3}>
+                          <Button variant="contained" color="primary" onClick={() => this._transferOceanToken()}>
+                               Transfer OceanToken（ERC20）
                           </Button>
                         </Grid>
                     </Grid>

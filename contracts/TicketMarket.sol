@@ -76,7 +76,7 @@ contract TicketMarket is WtStorage, WtConstants {
      * internal functions
     ***********************/
 
-    function _buyTicket(uint _ticketId, address buyer) internal {
+    function _buyTicket(uint _ticketId, address buyer) public {
         //PurchasableTicket memory pTicket = getPurchasableTicket(_ticketId);
         uint purchasePrice = 10;
 
