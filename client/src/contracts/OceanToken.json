@@ -3984,12 +3984,12 @@
         }
       },
       "links": {},
-      "address": "0x686034E1b4B615252932E3ffc88E3221504F0649",
-      "transactionHash": "0x9e75299c9df14bab8c7f0d2cebe4ff9598e3a0acb25999494d45ca80867f6736"
+      "address": "0xE1D864178a80C575b71d9Df521f7eD085a2aaA14",
+      "transactionHash": "0xc1965be0f34d9cd74c59dceaaa3978732622eac6062090cfd653b8ab26de095b"
     }
   },
   "schemaVersion": "3.0.19",
-  "updatedAt": "2019-12-10T10:02:16.450Z",
+  "updatedAt": "2019-12-10T11:03:31.927Z",
   "networkType": "ethereum",
   "devdoc": {
     "details": "Example of the ERC20 Token.",
