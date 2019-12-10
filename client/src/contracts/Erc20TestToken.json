@@ -3491,12 +3491,12 @@
         }
       },
       "links": {},
-      "address": "0x17Ee77E5D7F51D207573fA073FDC2B55E0c8183a",
-      "transactionHash": "0xc8ce301e3a4a15d6ec81b4d76d3b801280370bc4ada17e23741ae36aaa0bb428"
+      "address": "0xb1D59906C876b34fbfD584cDe2BD8Ae1C708Af47",
+      "transactionHash": "0xbc839c8483fce0a9b0bda9b54ad18f1dfa3375b133021da251fbdd5503f7951a"
     }
   },
   "schemaVersion": "3.0.19",
-  "updatedAt": "2019-12-10T11:03:31.919Z",
+  "updatedAt": "2019-12-10T18:35:01.188Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {
