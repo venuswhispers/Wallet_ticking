@@ -3305,12 +3305,13 @@
         }
       },
       "links": {},
-      "address": "0x3bfeeb485c9100712Af40600A78e206e791b60A6",
-      "transactionHash": "0xed6895a6e23c1b539c40a95a212a542c368a307e358130be2cf45552dcb7b9f6"
+      "address": "0xfC9F97E9ecC4DB08f585522C799bE6F9457AD2CA",
+      "transactionHash": "0xdc59f457d530844dadfdd57775b04bab5d2e5ba9ec2960fe972157c4f580e733"
     }
   },
   "schemaVersion": "3.0.19",
-  "updatedAt": "2019-12-09T10:57:31.162Z",
+  "updatedAt": "2019-12-10T09:23:31.493Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {
       "allowance(address,address)": {

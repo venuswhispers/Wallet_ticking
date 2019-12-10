@@ -8,16 +8,20 @@ import "./storage/WtConstants.sol";
 import "./storage/WtStorage.sol";
 
 import "./Erc20TestToken.sol";
+import "./OceanToken.sol";
+
 
 
 contract TicketMarket is WtStorage, WtConstants {
 
     TicketFactory public factory;
     Erc20TestToken public erc20Token;
+    OceanToken public oceanToken;
 
-    constructor(address _ticketFactoryContract, address _erc20TestTokenContract) public {
+    constructor(address _ticketFactoryContract, address _erc20TestTokenContract, address _oceanTokenContract) public {
         factory = TicketFactory(_ticketFactoryContract);
         erc20Token = Erc20TestToken(_erc20TestTokenContract);
+        oceanToken = OceanToken(_oceanTokenContract);
     }
 
 
@@ -40,11 +44,18 @@ contract TicketMarket is WtStorage, WtConstants {
     }
 
 
-    function testTransferFrom(address from, address to, uint256 value) public returns(bool) {
+    function testTransferFrom(address from, address to, uint256 value) public payable returns(bool) {
         uint purchasePrice = 10;
-        erc20Token._transferFrom(from, to, value);
+
+        //erc20Token._transferFrom(from, to, value);
+        oceanToken._transferFrom(from, to, value);
     }
     
+
+    function testTransfer(address to, uint256 value) public payable returns(bool) {
+        //erc20Token._transferFrom(from, to, value);
+        oceanToken._transfer(to, value);
+    }
 
 
     function getPurchasableTicket(uint ticketId)

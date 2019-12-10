@@ -163,11 +163,20 @@ class App extends Component {
     _testTransferFrom = async () => {
         const { accounts, ticket_market } = this.state;
         let _from = accounts[0]
-        let _to = ''
-        let _value = 3e17
+        let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
+        let _value = 1
 
         const response = await ticket_market.methods.testTransferFrom(_from, _to, _value).send({ from: accounts[0] });
         console.log("=== testTransferFrom() ===", response)
+    }
+
+    _testTransfer = async () => {
+        const { accounts, ticket_market } = this.state;
+        let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
+        let _value = 1
+
+        const response = await ticket_market.methods.testTransfer(_to, _value).send({ from: accounts[0] });
+        console.log("=== testTransfer() ===", response)
     }
 
     _buyTicket = async () => {
@@ -331,6 +340,19 @@ class App extends Component {
                         </Grid>
                         <Grid item xs={3}>
                           <Button variant="contained" color="primary" onClick={() => this._testTransferFrom()}>
+                                Test TransferFrom
+                          </Button>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                            test
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={3}>
+                          <Button variant="contained" color="primary" onClick={() => this._testTransfer()}>
                                 Test TransferFrom
                           </Button>
                         </Grid>
