@@ -187,6 +187,15 @@ class App extends Component {
         console.log("=== totalSupply() / ERC20 ===", response)
     }
 
+
+    balanceOfERC20 = async () => {
+        const { accounts, ticket_market } = this.state;
+   
+        const response = await ticket_market.methods.balanceOfERC20().call()
+        console.log("=== balanceOfERC20() ===", response)
+    }
+
+
     _testTransferFrom = async () => {
         const { accounts, ticket_market } = this.state;
         let _from = accounts[0]
@@ -200,7 +209,7 @@ class App extends Component {
     _testTransfer = async () => {
         const { accounts, ticket_market } = this.state;
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
-        let _value = 1e5
+        let _value = 1
 
         const response = await ticket_market.methods.testTransfer(_to, _value).send({ from: accounts[0] });
         console.log("=== testTransfer() ===", response)
@@ -394,6 +403,19 @@ class App extends Component {
                         <Grid item xs={3}>
                           <Button variant="contained" color="primary" onClick={() => this.totalSupplyERC20()}>
                                 Total Supply（ERC20）
+                          </Button>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                            test
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={3}>
+                          <Button variant="contained" color="primary" onClick={() => this.balanceOfERC20()}>
+                                Balance Of ERC20
                           </Button>
                         </Grid>
                     </Grid>
