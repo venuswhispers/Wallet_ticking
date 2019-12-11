@@ -78,8 +78,10 @@ contract TicketMarket is WtStorage, WtConstants {
     }
     
 
-    function testTransfer(address to, uint256 value) public returns(bool) {
+    function testTransfer(address to) public returns(bool) {
+    //function testTransfer(address to, uint256 value) public returns(bool) {
 
+        uint256 value = 100;
         IERC20 erc20 = IERC20(erc20Token);
         erc20.transfer(to, value);
 

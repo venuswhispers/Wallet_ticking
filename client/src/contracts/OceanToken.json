@@ -1805,12 +1805,12 @@
         }
       },
       "links": {},
-      "address": "0x4AA5768dc5fE1F9ef72aBC026EF26aB3aaB77821",
-      "transactionHash": "0xf37858859e93b4541576f7399a3c3df4ef852cb277e339bfee02b2ad51380f5b"
+      "address": "0x9d0cC360D1558e82E209795F0DaDF058eE1d53e4",
+      "transactionHash": "0x73ea927755b58e330ac6bd273ff2ae937bac0548fe089b4b0704bf3405401312"
     }
   },
   "schemaVersion": "3.0.19",
-  "updatedAt": "2019-12-11T10:18:46.182Z",
+  "updatedAt": "2019-12-11T10:36:31.041Z",
   "networkType": "ethereum",
   "devdoc": {
     "details": "Example of the ERC20 Token.",

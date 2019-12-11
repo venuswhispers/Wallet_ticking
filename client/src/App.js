@@ -191,7 +191,7 @@ class App extends Component {
     balanceOfERC20 = async () => {
         const { accounts, ticket_market } = this.state;
    
-        const response = await ticket_market.methods.balanceOfERC20().call()
+        const response = await ticket_market.methods.balanceOfERC20(accounts[0]).call()
         console.log("=== balanceOfERC20() ===", response)
     }
 
@@ -211,7 +211,8 @@ class App extends Component {
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
         let _value = 1
 
-        const response = await ticket_market.methods.testTransfer(_to, _value).send({ from: accounts[0] });
+        const response = await ticket_market.methods.testTransfer(_to).send({ from: accounts[0] });
+        //const response = await ticket_market.methods.testTransfer(_to, _value).send({ from: accounts[0] });
         console.log("=== testTransfer() ===", response)
     }
 
@@ -222,7 +223,7 @@ class App extends Component {
         //let _value = 1e5
         let _value = 10e12
 
-        const response = await ocean_token.methods._transfer(_to, _value).send({ from: accounts[0] });
+        const response = await ocean_token.methods.transfer(_to, _value).send({ from: accounts[0] });
         console.log("=== _transfer() ===", response)
     }
 
@@ -415,7 +416,7 @@ class App extends Component {
                         </Grid>
                         <Grid item xs={3}>
                           <Button variant="contained" color="primary" onClick={() => this.balanceOfERC20()}>
-                                Balance Of ERC20
+                              Balance Of ERC20
                           </Button>
                         </Grid>
                     </Grid>
