@@ -3703,12 +3703,12 @@
         }
       },
       "links": {},
-      "address": "0xc64F0120fDc3dAd97dD05C24396D9C6DB0e6E7b0",
-      "transactionHash": "0x9d746f1a91150dfe3485ded4c78ea400ebe157ef14163eca1771007a2071ee0a"
+      "address": "0x99f1af156424B3E898e60341A3981c6E7BaeeE2E",
+      "transactionHash": "0xd9ffda58f9741d3df509a1f90700cbf71fe753bfa445233072cdffa0b753e9fc"
     }
   },
   "schemaVersion": "3.0.19",
-  "updatedAt": "2019-12-11T19:47:01.688Z",
+  "updatedAt": "2019-12-11T20:33:31.628Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {

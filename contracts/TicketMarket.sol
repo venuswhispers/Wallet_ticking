@@ -102,8 +102,9 @@ contract TicketMarket is WtStorage, WtConstants {
     function testTransferFrom(address from, address to, uint256 value) public returns(bool) {
         uint purchasePrice = 10;
 
-        IERC20 erc20 = IERC20(oceanToken);
-        erc20.transferFrom(from, to, value);
+        //IERC20 erc20 = IERC20(oceanToken);
+        //erc20.transferFrom(from, to, value);
+        ierc20.transferFrom(from, to, value);
 
         //return erc20Token._transferFrom(from, to, value);
         //oceanToken.transferFrom(from, to, value);
@@ -133,15 +134,6 @@ contract TicketMarket is WtStorage, WtConstants {
 
 
 
-    function buyDai(address to, uint amount) public payable returns (bool) {
-
-        ERC20 daiToken = ERC20(oceanTokenContract);
-        //ERC20 daiToken = ERC20(0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359);
-        daiToken.transferFrom(msg.sender, to, amount);
-        return true;
-    }
-
-    
 
 
     /**********************

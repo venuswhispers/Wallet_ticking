@@ -208,7 +208,7 @@ class App extends Component {
         const { accounts, ticket_market } = this.state;
         let _from = accounts[0]
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
-        let _value = 1000
+        let _value = 10e12
 
         const response = await ticket_market.methods.testTransferFrom(_from, _to, _value).send({ from: accounts[0] });
         console.log("=== testTransferFrom() ===", response)
@@ -233,6 +233,18 @@ class App extends Component {
         const response = await ocean_token.methods.transfer(_to, _value).send({ from: accounts[0] });
         console.log("=== transfer() ===", response)
     }
+
+
+    _transferFromOceanToken = async () => {
+        const { accounts, ocean_token } = this.state;
+        let _from = accounts[0]
+        let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
+        let _value = 10e12
+
+        const response = await ocean_token.methods.transferFrom(_from, _to, _value).send({ from: accounts[0] });
+        console.log("=== transferFrom() ===", response)
+    }
+
 
 
     _buyTicket = async () => {
@@ -476,6 +488,19 @@ class App extends Component {
                         <Grid item xs={3}>
                           <Button variant="contained" color="primary" onClick={() => this._transferOceanToken()}>
                                Transfer OceanToken（ERC20）
+                          </Button>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                            test
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={3}>
+                          <Button variant="contained" color="primary" onClick={() => this._transferOceanToken()}>
+                               TransferFrom OceanToken（ERC20）
                           </Button>
                         </Grid>
                     </Grid>
