@@ -10,7 +10,31 @@ import "./storage/WtStorage.sol";
 import "./Erc20TestToken.sol";
 import "./OceanToken.sol";
 
-import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
+//import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
+
+
+/**
+ * @title ERC20 interface
+ * @dev see https://github.com/ethereum/EIPs/issues/20
+ */
+interface IERC20interface {
+    function transfer(address to, uint256 value) external returns (bool);
+
+    function approve(address spender, uint256 value) external returns (bool);
+
+    function transferFrom(address from, address to, uint256 value) external returns (bool);
+
+    function totalSupply() external view returns (uint256);
+
+    function balanceOf(address who) external view returns (uint256);
+
+    function allowance(address owner, address spender) external view returns (uint256);
+
+    event Transfer(address indexed from, address indexed to, uint256 value);
+
+    event Approval(address indexed owner, address indexed spender, uint256 value);
+}
+
 
 
 
@@ -20,14 +44,18 @@ contract TicketMarket is WtStorage, WtConstants {
     Erc20TestToken public erc20Token;
     OceanToken public oceanToken;
 
-    ERC20 erc20;
+    IERC20interface public ierc20;
+
+    address oceanTokenContract;
 
     constructor(address _ticketFactoryContract, address _erc20TestTokenContract, address _oceanTokenContract) public {
         factory = TicketFactory(_ticketFactoryContract);
         erc20Token = Erc20TestToken(_erc20TestTokenContract);
         oceanToken = OceanToken(_oceanTokenContract);
 
-        erc20 = ERC20(_erc20TestTokenContract);
+        oceanTokenContract = _oceanTokenContract;
+
+        ierc20 = IERC20interface(_oceanTokenContract);
     }
 
 
@@ -43,8 +71,9 @@ contract TicketMarket is WtStorage, WtConstants {
     
 
     // @notice test of inherited mint() from TicketFactory.sol
-    function factoryMint() public {
+    function factoryMint() public returns (bool) {
         factory.mint();
+        return true;
     }
     
 
@@ -54,8 +83,7 @@ contract TicketMarket is WtStorage, WtConstants {
     function buyTicket(uint _ticketId) public {
         _buyTicket(_ticketId, msg.sender);
     }
-
-
+    
 
     function totalSupplyERC20() public view returns (uint256) {
         IERC20 erc20 = IERC20(oceanToken);
@@ -84,8 +112,11 @@ contract TicketMarket is WtStorage, WtConstants {
     
 
     function testTransfer(address to, uint256 value) public returns(bool) {
-        //IERC20 erc20 = IERC20(erc20Token);
-        erc20.transfer(to, value);
+        //IERC20 erc20 = IERC20(oceanToken);
+        //ERC20 erc20 = ERC20(erc20Token);
+        //erc20.transfer(to, value);
+
+        ierc20.transfer(to, value);
 
         //erc20Token.transfer(to, value);
         //oceanToken.transfer(to, value);
@@ -102,14 +133,11 @@ contract TicketMarket is WtStorage, WtConstants {
 
 
 
-    function buyDai(uint amount) public payable returns(bool){
+    function buyDai(address to, uint amount) public payable returns (bool) {
 
-        //token we are buying contract address... this this case DAI
-        address daiAddress = 0x8779C708e2C3b1067de9Cd63698E4334866c691C;    // uDAI（UniSwap DAI）address in Kovan
-
-        ERC20 daiToken = ERC20(0x4C38cDC08f1260F5c4b21685654393BB1e66a858);
+        ERC20 daiToken = ERC20(oceanTokenContract);
         //ERC20 daiToken = ERC20(0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359);
-        daiToken.transfer(msg.sender, amount);
+        daiToken.transferFrom(msg.sender, to, amount);
         return true;
     }
 
