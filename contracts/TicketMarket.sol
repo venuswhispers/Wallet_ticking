@@ -53,22 +53,31 @@ contract TicketMarket is WtStorage, WtConstants {
 
 
     function totalSupplyERC20() public view returns (uint256) {
-        return oceanToken._totalSupply();
+        IERC20 erc20 = IERC20(oceanToken);
+        return erc20.totalSupply();
+        //return oceanToken._totalSupply();
     }
     
 
     function testTransferFrom(address from, address to, uint256 value) public returns(bool) {
         uint purchasePrice = 10;
 
+        IERC20 erc20 = IERC20(oceanToken);
+        erc20.transferFrom(from, to, value);
+
         //return erc20Token._transferFrom(from, to, value);
-        oceanToken.transferFrom(from, to, value);
+        //oceanToken.transferFrom(from, to, value);
         return true;
     }
     
 
     function testTransfer(address to, uint256 value) public returns(bool) {
+
+        IERC20 erc20 = IERC20(erc20Token);
+        erc20.transfer(to, value);
+
         //return erc20Token._transferFrom(from, to, value);
-        oceanToken.transfer(to, value);
+        //oceanToken.transfer(to, value);
         return true;
     }
 
