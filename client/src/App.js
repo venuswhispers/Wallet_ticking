@@ -211,8 +211,8 @@ class App extends Component {
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
         let _value = 1
 
-        const response = await ticket_market.methods.testTransfer(_to).send({ from: accounts[0] });
-        //const response = await ticket_market.methods.testTransfer(_to, _value).send({ from: accounts[0] });
+        //const response = await ticket_market.methods.testTransfer(_to).send({ from: accounts[0] });
+        const response = await ticket_market.methods.testTransfer(_to, _value).send({ from: accounts[0] });
         console.log("=== testTransfer() ===", response)
     }
 
@@ -224,7 +224,7 @@ class App extends Component {
         let _value = 10e12
 
         const response = await ocean_token.methods.transfer(_to, _value).send({ from: accounts[0] });
-        console.log("=== _transfer() ===", response)
+        console.log("=== transfer() ===", response)
     }
 
 

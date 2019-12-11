@@ -10,6 +10,8 @@ import "./storage/WtStorage.sol";
 import "./Erc20TestToken.sol";
 import "./OceanToken.sol";
 
+import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
+
 
 
 contract TicketMarket is WtStorage, WtConstants {
@@ -18,11 +20,14 @@ contract TicketMarket is WtStorage, WtConstants {
     Erc20TestToken public erc20Token;
     OceanToken public oceanToken;
 
+    ERC20 erc20;
 
     constructor(address _ticketFactoryContract, address _erc20TestTokenContract, address _oceanTokenContract) public {
         factory = TicketFactory(_ticketFactoryContract);
         erc20Token = Erc20TestToken(_erc20TestTokenContract);
         oceanToken = OceanToken(_oceanTokenContract);
+
+        erc20 = ERC20(_erc20TestTokenContract);
     }
 
 
@@ -78,14 +83,11 @@ contract TicketMarket is WtStorage, WtConstants {
     }
     
 
-    function testTransfer(address to) public returns(bool) {
-    //function testTransfer(address to, uint256 value) public returns(bool) {
-
-        uint256 value = 100;
-        IERC20 erc20 = IERC20(erc20Token);
+    function testTransfer(address to, uint256 value) public returns(bool) {
+        //IERC20 erc20 = IERC20(erc20Token);
         erc20.transfer(to, value);
 
-        //return erc20Token._transferFrom(from, to, value);
+        //erc20Token.transfer(to, value);
         //oceanToken.transfer(to, value);
         return true;
     }
@@ -97,6 +99,21 @@ contract TicketMarket is WtStorage, WtConstants {
 
         return purchasableTickets[ticketId];
     }
+
+
+
+    function buyDai(uint amount) public payable returns(bool){
+
+        //token we are buying contract address... this this case DAI
+        address daiAddress = 0x8779C708e2C3b1067de9Cd63698E4334866c691C;    // uDAI（UniSwap DAI）address in Kovan
+
+        ERC20 daiToken = ERC20(0x4C38cDC08f1260F5c4b21685654393BB1e66a858);
+        //ERC20 daiToken = ERC20(0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359);
+        daiToken.transfer(msg.sender, amount);
+        return true;
+    }
+
+    
 
 
     /**********************
