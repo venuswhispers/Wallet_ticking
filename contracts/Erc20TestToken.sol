@@ -12,28 +12,28 @@ contract Erc20TestToken is ERC20, ERC20Detailed {
     }
 
 
-    function _transferFrom(address from, address to, uint256 value) public returns(bool) {
-        return transferFrom(from, to, value);
-    }
+    // function _transferFrom(address from, address to, uint256 value) public returns(bool) {
+    //     return transferFrom(from, to, value);
+    // }
 
-    function _transfer(address to, uint256 value) public returns(bool) {
-        return transfer(to, value);
-    }
+    // function _transfer(address to, uint256 value) public returns(bool) {
+    //     return transfer(to, value);
+    // }
 
-    function _approve(address spender, uint256 value) public returns(bool) {
-        return approve(spender, value);
-    }
+    // function _approve(address spender, uint256 value) public returns(bool) {
+    //     return approve(spender, value);
+    // }
 
-    function _totalSupply() public view returns (uint256) {
-        return totalSupply();
-    }
+    // function _totalSupply() public view returns (uint256) {
+    //     return totalSupply();
+    // }
 
-    function _balanceOf(address who) public view returns (uint256) {
-        return balanceOf(who);
-    }
+    // function _balanceOf(address who) public view returns (uint256) {
+    //     return balanceOf(who);
+    // }
 
-    function _allowance(address owner, address spender) public view returns (uint256) {
-        return allowance(owner, spender);
-    }
+    // function _allowance(address owner, address spender) public view returns (uint256) {
+    //     return allowance(owner, spender);
+    // }
 
 }

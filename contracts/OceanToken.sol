@@ -1,7 +1,10 @@
 pragma solidity ^0.5.2;
 
 
-import 'openzeppelin-solidity/contracts/token/ERC20/ERC20.sol';
+//import "openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
+import "openzeppelin-solidity/contracts/math/SafeMath.sol";
+
+//import 'openzeppelin-solidity/contracts/token/ERC20/ERC20.sol';
 import 'openzeppelin-solidity/contracts/token/ERC20/ERC20Capped.sol';
 import 'openzeppelin-solidity/contracts/token/ERC20/ERC20Detailed.sol';
 import 'openzeppelin-solidity/contracts/ownership/Ownable.sol';
@@ -9,7 +12,7 @@ import 'openzeppelin-solidity/contracts/ownership/Ownable.sol';
 /**
  * @dev Example of the ERC20 Token.
  */
-contract OceanToken is Ownable, ERC20, ERC20Detailed, ERC20Capped {
+contract OceanToken is Ownable, ERC20Detailed, ERC20Capped {
 
     using SafeMath for uint256;
 
@@ -27,27 +30,4 @@ contract OceanToken is Ownable, ERC20, ERC20Detailed, ERC20Capped {
     }
 
 
-    function _transferFrom(address from, address to, uint256 value) public returns(bool) {
-        return transferFrom(from, to, value);
-    }
-
-    function _transfer(address to, uint256 value) public returns(bool) {
-        return transfer(to, value);
-    }
-
-    function _approve(address spender, uint256 value) public returns(bool) {
-        return approve(spender, value);
-    }
-
-    function _totalSupply() public view returns (uint256) {
-        return totalSupply();
-    }
-
-    function _balanceOf(address who) public view returns (uint256) {
-        return balanceOf(who);
-    }
-
-    function _allowance(address owner, address spender) public view returns (uint256) {
-        return allowance(owner, spender);
-    }
 }

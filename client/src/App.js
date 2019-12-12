@@ -155,7 +155,7 @@ class App extends Component {
 
     _ownerOfTicket = async () => {
         const { accounts, ticket_market } = this.state;
-        let _ticketId = 1
+        let _ticketId = 5
 
         const response = await ticket_market.methods.ownerOfTicket(_ticketId).call();
         console.log("=== ownerOfTicket() ===", response)
@@ -163,16 +163,33 @@ class App extends Component {
 
     _factoryMint = async () => {
         const { accounts, ticket_market } = this.state;
+        let _callAddress = accounts[0]
 
-        const response = await ticket_market.methods.factoryMint().send({ from: accounts[0] });
+        const response = await ticket_market.methods.factoryMint(_callAddress).send({ from: accounts[0] });
         console.log("=== factoryMint() ===", response)
+    }
+
+    _factoryTransferFrom = async () => {
+        const { accounts, ticket_market, ticket_factory } = this.state;
+        let _from = accounts[0]                                               // From Address
+        let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
+        let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
+        let _ticketId = 6
+
+        // 2Step-Execution
+        const response_1 = await ticket_factory.methods._transferTicketFrom(_from, _externalContract, _ticketId).send({ from: accounts[0] });
+        const response_2 = await ticket_market.methods.factoryTransferFrom(_externalContract, _to, _ticketId).send({ from: accounts[0] });
+
+        // Log
+        console.log("=== _transferTicketFrom() ===", response_1)      
+        console.log("=== factoryTransferFrom() ===", response_2)      
     }
 
     transferTicketFrom = async () => {
         const { accounts, ticket_factory } = this.state;
         let _from = accounts[0]
-        let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
-        let _ticketId = 1
+        let _to = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'
+        let _ticketId = 4
 
         const response = await ticket_factory.methods._transferTicketFrom(_from, _to, _ticketId).send({ from: accounts[0] });
         console.log("=== _transferTicketFrom() ===", response)
@@ -187,23 +204,45 @@ class App extends Component {
         console.log("=== totalSupply() / ERC20 ===", response)
     }
 
-    _testTransferFrom = async () => {
-        const { accounts, ticket_market } = this.state;
-        let _from = accounts[0]
-        let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
-        let _value = 0
 
-        const response = await ticket_market.methods.testTransferFrom(_from, _to, _value).send({ from: accounts[0] });
-        console.log("=== testTransferFrom() ===", response)
+    balanceOfERC20 = async () => {
+        const { accounts, ticket_market } = this.state;
+   
+        const response = await ticket_market.methods.balanceOfERC20(accounts[0]).call()
+        console.log("=== balanceOfERC20() ===", response)
+    }
+
+
+    _testTransferFrom = async () => {
+        const { accounts, ticket_market, ocean_token } = this.state;
+        let _from = accounts[0]                                               // From Address
+        let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
+        let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
+        let _value = 10e12
+
+        // 2Step-Execution
+        const response_1 = await ocean_token.methods.transferFrom(_from, _externalContract, _value).send({ from: accounts[0] });
+        const response_2 = await ticket_market.methods.testTransferFrom(_externalContract, _to, _value).send({ from: accounts[0] });
+
+        // Log
+        console.log("=== transferFrom() ===", response_1)
+        console.log("=== testTransferFrom() ===", response_2)
     }
 
     _testTransfer = async () => {
-        const { accounts, ticket_market } = this.state;
-        let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
-        let _value = 1e5
+        const { accounts, ticket_market, ocean_token } = this.state;  
+        let _from = accounts[0]                                               // From Address
+        let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
+        let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
+        let _value = 10e12
 
-        const response = await ticket_market.methods.testTransfer(_to, _value).send({ from: accounts[0] });
-        console.log("=== testTransfer() ===", response)
+        // 2Step-Execution
+        const response_1 = await ocean_token.methods.transfer(_externalContract, _value).send({ from: accounts[0] });
+        const response_2 = await ticket_market.methods.testTransfer(_to, _value).send({ from: accounts[0] });
+
+        // Log
+        console.log("=== transfer() ===", response_1)
+        console.log("=== testTransfer() ===", response_2)
     }
 
 
@@ -213,18 +252,49 @@ class App extends Component {
         //let _value = 1e5
         let _value = 10e12
 
-        const response = await ocean_token.methods._transfer(_to, _value).send({ from: accounts[0] });
-        console.log("=== _transfer() ===", response)
+        const response = await ocean_token.methods.transfer(_to, _value).send({ from: accounts[0] });
+        console.log("=== transfer() ===", response)
     }
 
 
-    _buyTicket = async () => {
-        const { accounts, ticket_market } = this.state;
-        //let _buyer = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
-        let _ticketId = 1
+    _transferFromOceanToken = async () => {
+        const { accounts, ocean_token } = this.state;
+        let _from = accounts[0]
+        let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
+        let _value = 10e12
 
-        const response = await ticket_market.methods.buyTicket(_ticketId).send({ from: accounts[0] });
-        console.log("=== buyTicket() ===", response)
+        const response = await ocean_token.methods.transferFrom(_from, _to, _value).send({ from: accounts[0] });
+        console.log("=== transferFrom() ===", response)
+    }
+
+
+
+    _buyTicket = async () => {
+        const { accounts, ticket_market, ticket_factory, ocean_token } = this.state;  
+        let _from = accounts[0]                                               // From Address
+        let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
+        let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
+        let _value = 10e12
+        let _ticketId = 7
+
+        // 2Step-Execution
+        const response_1 = await ocean_token.methods.transfer(_externalContract, _value).send({ from: accounts[0] });
+        const response_2 = await ticket_market.methods.testTransfer(_to, _value).send({ from: accounts[0] });
+
+        // Log
+        console.log("=== transfer() ===", response_1)
+        console.log("=== testTransfer() ===", response_2)
+
+        // 2Step-Execution
+        const response_3 = await ticket_factory.methods._transferTicketFrom(_from, _externalContract, _ticketId).send({ from: accounts[0] });
+        const response_4 = await ticket_market.methods.factoryTransferFrom(_externalContract, _to, _ticketId).send({ from: accounts[0] });
+
+        // Log
+        console.log("=== _transferTicketFrom() ===", response_3)      
+        console.log("=== factoryTransferFrom() ===", response_4)  
+
+        //const response = await ticket_market.methods.buyTicket(_ticketId).send({ from: accounts[0] });
+        //console.log("=== buyTicket() ===", response)
     }
 
     render() {
@@ -367,7 +437,20 @@ class App extends Component {
                         </Grid>
                         <Grid item xs={3}>
                           <Button variant="contained" color="primary" onClick={() => this._factoryMint()}>
-                                Factory Mint
+                              Factory Mint (ERC721)
+                          </Button>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                            test
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={3}>
+                          <Button variant="contained" color="primary" onClick={() => this._factoryTransferFrom()}>
+                              Factory TransferFrom (ERC721)
                           </Button>
                         </Grid>
                     </Grid>
@@ -394,6 +477,19 @@ class App extends Component {
                         <Grid item xs={3}>
                           <Button variant="contained" color="primary" onClick={() => this.totalSupplyERC20()}>
                                 Total Supply（ERC20）
+                          </Button>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                            test
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={3}>
+                          <Button variant="contained" color="primary" onClick={() => this.balanceOfERC20()}>
+                              Balance Of ERC20
                           </Button>
                         </Grid>
                     </Grid>
@@ -433,6 +529,19 @@ class App extends Component {
                         <Grid item xs={3}>
                           <Button variant="contained" color="primary" onClick={() => this._transferOceanToken()}>
                                Transfer OceanToken（ERC20）
+                          </Button>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                            test
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={3}>
+                          <Button variant="contained" color="primary" onClick={() => this._transferOceanToken()}>
+                               TransferFrom OceanToken（ERC20）
                           </Button>
                         </Grid>
                     </Grid>
