@@ -80,7 +80,8 @@ class App extends Component {
               accounts,
               ticket_factory: ticket_factory,
               ticket_market: ticket_market,
-              ocean_token: ocean_token
+              ocean_token: ocean_token,
+              ticket_market_contractAddr: deployedNetworkTicketMarket.address
             });
 
             window.ethereum.on('accountsChanged', async (accounts) => {
@@ -170,9 +171,10 @@ class App extends Component {
     }
 
     _factoryTransferFrom = async () => {
-        const { accounts, ticket_market, ticket_factory } = this.state;
+        const { accounts, ticket_market, ticket_factory, ticket_market_contractAddr } = this.state;
         let _from = accounts[0]                                               // From Address
-        let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
+        let _externalContract = ticket_market_contractAddr                    // External ContractAddress
+        //let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
         let _ticketId = 6
 
@@ -186,9 +188,10 @@ class App extends Component {
     }
 
     transferTicketFrom = async () => {
-        const { accounts, ticket_factory } = this.state;
+        const { accounts, ticket_factory, ticket_market_contractAddr } = this.state;
         let _from = accounts[0]
-        let _to = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'
+        let _to = ticket_market_contractAddr
+        //let _to = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'
         let _ticketId = 4
 
         const response = await ticket_factory.methods._transferTicketFrom(_from, _to, _ticketId).send({ from: accounts[0] });
@@ -214,9 +217,10 @@ class App extends Component {
 
 
     _testTransferFrom = async () => {
-        const { accounts, ticket_market, ocean_token } = this.state;
+        const { accounts, ticket_market, ocean_token, ticket_market_contractAddr } = this.state;
         let _from = accounts[0]                                               // From Address
-        let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
+        let _externalContract = ticket_market_contractAddr                    // External ContractAddress
+        //let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
         let _value = 10e12
 
@@ -230,9 +234,10 @@ class App extends Component {
     }
 
     _testTransfer = async () => {
-        const { accounts, ticket_market, ocean_token } = this.state;  
+        const { accounts, ticket_market, ocean_token, ticket_market_contractAddr } = this.state;  
         let _from = accounts[0]                                               // From Address
-        let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
+        let _externalContract = ticket_market_contractAddr                    // External ContractAddress
+        //let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
         let _value = 10e12
 
@@ -270,9 +275,10 @@ class App extends Component {
 
 
     _buyTicket = async () => {
-        const { accounts, ticket_market, ticket_factory, ocean_token } = this.state;  
+        const { accounts, ticket_market, ticket_factory, ocean_token, ticket_market_contractAddr } = this.state;  
         let _from = accounts[0]                                               // From Address
-        let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
+        let _externalContract = ticket_market_contractAddr                    // External ContractAddress
+        //let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
         let _value = 10e12
         let _ticketId = 7
