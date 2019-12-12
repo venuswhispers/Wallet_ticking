@@ -174,7 +174,7 @@ class App extends Component {
         let _from = accounts[0]                                               // From Address
         let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
-        let _ticketId = 5
+        let _ticketId = 6
 
         // 2Step-Execution
         const response_1 = await ticket_factory.methods._transferTicketFrom(_from, _externalContract, _ticketId).send({ from: accounts[0] });
@@ -225,7 +225,7 @@ class App extends Component {
         const response_2 = await ticket_market.methods.testTransferFrom(_externalContract, _to, _value).send({ from: accounts[0] });
 
         // Log
-        console.log("=== transfer() ===", response_1)
+        console.log("=== transferFrom() ===", response_1)
         console.log("=== testTransferFrom() ===", response_2)
     }
 
@@ -270,12 +270,31 @@ class App extends Component {
 
 
     _buyTicket = async () => {
-        const { accounts, ticket_market } = this.state;
-        let _buyer = accounts[0]
-        let _ticketId = 3
+        const { accounts, ticket_market, ticket_factory, ocean_token } = this.state;  
+        let _from = accounts[0]                                               // From Address
+        let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
+        let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
+        let _value = 10e12
+        let _ticketId = 7
 
-        const response = await ticket_market.methods.buyTicket(_ticketId).send({ from: accounts[0] });
-        console.log("=== buyTicket() ===", response)
+        // 2Step-Execution
+        const response_1 = await ocean_token.methods.transfer(_externalContract, _value).send({ from: accounts[0] });
+        const response_2 = await ticket_market.methods.testTransfer(_to, _value).send({ from: accounts[0] });
+
+        // Log
+        console.log("=== transfer() ===", response_1)
+        console.log("=== testTransfer() ===", response_2)
+
+        // 2Step-Execution
+        const response_3 = await ticket_factory.methods._transferTicketFrom(_from, _externalContract, _ticketId).send({ from: accounts[0] });
+        const response_4 = await ticket_market.methods.factoryTransferFrom(_externalContract, _to, _ticketId).send({ from: accounts[0] });
+
+        // Log
+        console.log("=== _transferTicketFrom() ===", response_3)      
+        console.log("=== factoryTransferFrom() ===", response_4)  
+
+        //const response = await ticket_market.methods.buyTicket(_ticketId).send({ from: accounts[0] });
+        //console.log("=== buyTicket() ===", response)
     }
 
     render() {
