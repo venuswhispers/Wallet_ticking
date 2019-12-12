@@ -155,7 +155,7 @@ class App extends Component {
 
     _ownerOfTicket = async () => {
         const { accounts, ticket_market } = this.state;
-        let _ticketId = 3
+        let _ticketId = 5
 
         const response = await ticket_market.methods.ownerOfTicket(_ticketId).call();
         console.log("=== ownerOfTicket() ===", response)
@@ -170,20 +170,25 @@ class App extends Component {
     }
 
     _factoryTransferFrom = async () => {
-        const { accounts, ticket_market } = this.state;
+        const { accounts, ticket_market, ticket_factory } = this.state;
         let _from = accounts[0]
+        let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
-        let _ticketId = 2
+        let _ticketId = 5
 
-        const response = await ticket_market.methods.factoryTransferFrom(_from, _to, _ticketId).send({ from: accounts[0] });
-        console.log("=== factoryMint() ===", response)      
+        const response_1 = await ticket_factory.methods._transferTicketFrom(_from, _externalContract, _ticketId).send({ from: accounts[0] });
+        const response_2 = await ticket_market.methods.factoryTransferFrom(_externalContract, _to, _ticketId).send({ from: accounts[0] });
+
+        // Log
+        console.log("=== _transferTicketFrom() ===", response_1)      
+        console.log("=== factoryTransferFrom() ===", response_2)      
     }
 
     transferTicketFrom = async () => {
         const { accounts, ticket_factory } = this.state;
         let _from = accounts[0]
-        let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
-        let _ticketId = 3
+        let _to = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'
+        let _ticketId = 4
 
         const response = await ticket_factory.methods._transferTicketFrom(_from, _to, _ticketId).send({ from: accounts[0] });
         console.log("=== _transferTicketFrom() ===", response)
