@@ -155,7 +155,7 @@ class App extends Component {
 
     _ownerOfTicket = async () => {
         const { accounts, ticket_market } = this.state;
-        let _ticketId = 1
+        let _ticketId = 2
 
         const response = await ticket_market.methods.ownerOfTicket(_ticketId).call();
         console.log("=== ownerOfTicket() ===", response)
@@ -163,8 +163,9 @@ class App extends Component {
 
     _factoryMint = async () => {
         const { accounts, ticket_market } = this.state;
+        let _callAddress = accounts[0]
 
-        const response = await ticket_market.methods.factoryMint().send({ from: accounts[0] });
+        const response = await ticket_market.methods.factoryMint(_callAddress).send({ from: accounts[0] });
         console.log("=== factoryMint() ===", response)
     }
 
@@ -172,7 +173,7 @@ class App extends Component {
         const { accounts, ticket_factory } = this.state;
         let _from = accounts[0]
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
-        let _ticketId = 2
+        let _ticketId = 3
 
         const response = await ticket_factory.methods._transferTicketFrom(_from, _to, _ticketId).send({ from: accounts[0] });
         console.log("=== _transferTicketFrom() ===", response)
@@ -195,14 +196,6 @@ class App extends Component {
         console.log("=== balanceOfERC20() ===", response)
     }
 
-    _buyDAI = async () => {
-        const { accounts, ticket_market } = this.state;
-        let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
-        let _value = 10e12
-
-        const response = await ticket_market.methods.buyDai(_to, _value).send({ from: accounts[0] });
-        console.log("=== mintERC20() ===", response)
-    }
 
     _testTransferFrom = async () => {
         const { accounts, ticket_market } = this.state;
@@ -436,19 +429,6 @@ class App extends Component {
                         <Grid item xs={3}>
                           <Button variant="contained" color="primary" onClick={() => this.balanceOfERC20()}>
                               Balance Of ERC20
-                          </Button>
-                        </Grid>
-                    </Grid>
-
-                    <Grid container style={{ marginTop: 32 }}>
-                        <Grid item xs={6}>
-                            test
-                        </Grid>
-                        <Grid item xs={1}>
-                        </Grid>
-                        <Grid item xs={3}>
-                          <Button variant="contained" color="primary" onClick={() => this._buyDAI()}>
-                                Buy DAI
                           </Button>
                         </Grid>
                     </Grid>

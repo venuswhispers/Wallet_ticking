@@ -71,8 +71,9 @@ contract TicketMarket is WtStorage, WtConstants {
     
 
     // @notice test of inherited mint() from TicketFactory.sol
-    function factoryMint() public returns (bool) {
-        factory.mint();
+    function factoryMint(address _callAddress) public returns (bool) {
+        //factory.mint();
+        factory.mintOnExternalContract(_callAddress);
         return true;
     }
     
@@ -81,7 +82,8 @@ contract TicketMarket is WtStorage, WtConstants {
     /// @notice buys a certificate
     /// @param _ticketId the id of the ticket 
     function buyTicket(uint _ticketId) public {
-        _buyTicket(_ticketId, msg.sender);
+        uint256 _purchasePrice = 1e7;
+        _buyTicket(_ticketId, msg.sender, _purchasePrice);
     }
     
 
@@ -140,16 +142,17 @@ contract TicketMarket is WtStorage, WtConstants {
      * internal functions
     ***********************/
 
-    function _buyTicket(uint _ticketId, address buyer) public {
+    function _buyTicket(uint _ticketId, address buyer, uint256 purchasePrice) public {
         //PurchasableTicket memory pTicket = getPurchasableTicket(_ticketId);
-        uint purchasePrice = 10;
+        //uint purchasePrice = 10;
 
+        ierc20.transfer(ownerOfTicket(_ticketId), purchasePrice);
         //IERC20 erc20 = IERC20(erc20Token);
         //erc20Token._transferFrom(buyer, ownerOfTicket(_ticketId), purchasePrice);
         //erc20Token.transferFrom(buyer, factory._ownerOf(_ticketId), purchasePrice);
         //erc20.transferFrom(buyer, factory.ownerOf(_ticketId), pTicket.PurchasePrice);
    
-        factory._transferTicketFrom(ownerOfTicket(_ticketId), buyer, _ticketId);
+        //factory._transferTicketFrom(ownerOfTicket(_ticketId), buyer, _ticketId);
         //factory.transferFrom(factory.ownerOf(_ticketId), buyer, _ticketId);
         
         //_removeTokenAndPrice(_ticketId);

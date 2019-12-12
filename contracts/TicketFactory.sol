@@ -43,12 +43,20 @@ contract TicketFactory is ERC721Full, WtConstants, Ownable {
 
 
     function mint() public returns (bool)  {
-
         require (ticketCap <= 100, "Ticket is sold out!");
         
         uint256 _tokenId = _totalSupply() + 1;
         _mint(msg.sender, _tokenId);
     }
+
+    // @dev This function is used in case of calling mint() function on external contract.
+    function mintOnExternalContract(address _callAddress) public returns (bool)  {
+        require (ticketCap <= 100, "Ticket is sold out!");
+        
+        uint256 _tokenId = _totalSupply() + 1;
+        _mint(_callAddress, _tokenId);
+    }
+
 
     function _transferTicketFrom(address _from, address _to, uint256 _ticketId) public returns (bool) {
         transferFrom(_from , _to, _ticketId);
