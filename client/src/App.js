@@ -127,8 +127,6 @@ class App extends Component {
     handleTestFunc = async () => {
         const { accounts, ticket_factory } = this.state;
         try {
-            //let walletAddr = accounts[0];
-            //let ipAddress = "185.199.104.14";
             const response = await ticket_factory.methods.testFunc().send({ from: accounts[0] });
             console.log("=== testFunc() ===", response)
 
@@ -156,7 +154,7 @@ class App extends Component {
 
     _ownerOfTicket = async () => {
         const { accounts, ticket_market } = this.state;
-        let _ticketId = 5
+        let _ticketId = 8
 
         const response = await ticket_market.methods.ownerOfTicket(_ticketId).call();
         console.log("=== ownerOfTicket() ===", response)
@@ -174,7 +172,6 @@ class App extends Component {
         const { accounts, ticket_market, ticket_factory, ticket_market_contractAddr } = this.state;
         let _from = accounts[0]                                               // From Address
         let _externalContract = ticket_market_contractAddr                    // External ContractAddress
-        //let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
         let _ticketId = 6
 
@@ -191,7 +188,6 @@ class App extends Component {
         const { accounts, ticket_factory, ticket_market_contractAddr } = this.state;
         let _from = accounts[0]
         let _to = ticket_market_contractAddr
-        //let _to = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'
         let _ticketId = 4
 
         const response = await ticket_factory.methods._transferTicketFrom(_from, _to, _ticketId).send({ from: accounts[0] });
@@ -220,7 +216,6 @@ class App extends Component {
         const { accounts, ticket_market, ocean_token, ticket_market_contractAddr } = this.state;
         let _from = accounts[0]                                               // From Address
         let _externalContract = ticket_market_contractAddr                    // External ContractAddress
-        //let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
         let _value = 10e12
 
@@ -237,7 +232,6 @@ class App extends Component {
         const { accounts, ticket_market, ocean_token, ticket_market_contractAddr } = this.state;  
         let _from = accounts[0]                                               // From Address
         let _externalContract = ticket_market_contractAddr                    // External ContractAddress
-        //let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
         let _value = 10e12
 
@@ -254,7 +248,6 @@ class App extends Component {
     _transferOceanToken = async () => {
         const { accounts, ocean_token } = this.state;
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
-        //let _value = 1e5
         let _value = 10e12
 
         const response = await ocean_token.methods.transfer(_to, _value).send({ from: accounts[0] });
@@ -278,14 +271,13 @@ class App extends Component {
         const { accounts, ticket_market, ticket_factory, ocean_token, ticket_market_contractAddr } = this.state;  
         let _from = accounts[0]                                               // From Address
         let _externalContract = ticket_market_contractAddr                    // External ContractAddress
-        //let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
-        let _value = 10e12
-        let _ticketId = 7
+        let _purchasePrice = 10e12
+        let _ticketId = 8
 
         // 2Step-Execution
-        const response_1 = await ocean_token.methods.transfer(_externalContract, _value).send({ from: accounts[0] });
-        const response_2 = await ticket_market.methods.testTransfer(_to, _value).send({ from: accounts[0] });
+        const response_1 = await ocean_token.methods.transfer(_externalContract, _purchasePrice).send({ from: accounts[0] });
+        const response_2 = await ticket_market.methods.testTransfer(_to, _purchasePrice).send({ from: accounts[0] });
 
         // Log
         console.log("=== transfer() ===", response_1)
