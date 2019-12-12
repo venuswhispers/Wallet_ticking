@@ -155,7 +155,7 @@ class App extends Component {
 
     _ownerOfTicket = async () => {
         const { accounts, ticket_market } = this.state;
-        let _ticketId = 2
+        let _ticketId = 3
 
         const response = await ticket_market.methods.ownerOfTicket(_ticketId).call();
         console.log("=== ownerOfTicket() ===", response)
@@ -167,6 +167,16 @@ class App extends Component {
 
         const response = await ticket_market.methods.factoryMint(_callAddress).send({ from: accounts[0] });
         console.log("=== factoryMint() ===", response)
+    }
+
+    _factoryTransferFrom = async () => {
+        const { accounts, ticket_market } = this.state;
+        let _from = accounts[0]
+        let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
+        let _ticketId = 2
+
+        const response = await ticket_market.methods.factoryTransferFrom(_from, _to, _ticketId).send({ from: accounts[0] });
+        console.log("=== factoryMint() ===", response)      
     }
 
     transferTicketFrom = async () => {
@@ -243,7 +253,7 @@ class App extends Component {
     _buyTicket = async () => {
         const { accounts, ticket_market } = this.state;
         let _buyer = accounts[0]
-        let _ticketId = 2
+        let _ticketId = 3
 
         const response = await ticket_market.methods.buyTicket(_ticketId).send({ from: accounts[0] });
         console.log("=== buyTicket() ===", response)
@@ -389,7 +399,20 @@ class App extends Component {
                         </Grid>
                         <Grid item xs={3}>
                           <Button variant="contained" color="primary" onClick={() => this._factoryMint()}>
-                                Factory Mint
+                              Factory Mint (ERC721)
+                          </Button>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                            test
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={3}>
+                          <Button variant="contained" color="primary" onClick={() => this._factoryTransferFrom()}>
+                              Factory TransferFrom (ERC721)
                           </Button>
                         </Grid>
                     </Grid>

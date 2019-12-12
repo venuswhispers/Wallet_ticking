@@ -29,4 +29,5 @@ contract OceanToken is Ownable, ERC20Detailed, ERC20Capped {
         //_mint(msg.sender, TOTALSUPPLY);
     }
 
+
 }
