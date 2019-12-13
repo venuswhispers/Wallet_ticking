@@ -3,10 +3,10 @@ pragma solidity ^0.5.0;
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
-contract WtOwnable is Ownable {
+contract WtModifier is Ownable {
 
-    // example
-    modifier onlyStakingPerson(uint _time) { 
+    modifier isIssuedTicket(uint256 _ticketId) {
+        
         require (now >= _time);
         _;
     }
