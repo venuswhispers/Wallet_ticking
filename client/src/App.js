@@ -386,7 +386,7 @@ class App extends Component {
         let _externalContract = ticket_market_contractAddr                    // External ContractAddress
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
         //let _purchasePrice = 10e12
-        let _ticketId = 8
+        let _ticketId = 3
         let _adminAddr = accounts[0]
         let _buyer = accounts[0]
 
@@ -430,6 +430,7 @@ class App extends Component {
             this.walletConnect_getSignature();
             let _walletConnectSignature = this.state.signature_of_walletConnect;
             const response_6 = await ticket_factory.methods.issueOnTicket(_ticketId, _walletConnectSignature).send({ from: accounts[0] });
+            console.log("=== issueOnTicket() ===", response_6)  
         }
     }
 

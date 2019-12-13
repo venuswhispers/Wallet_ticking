@@ -13,7 +13,8 @@ contract WtEvents {
 
 
     event IssueOnTicket(
-        uint256 indexed ticketId, 
+        uint256 indexed ticketId,
+        bool isIssued,
         string walletConnectSignature
     );
     

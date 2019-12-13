@@ -122,7 +122,9 @@ contract TicketFactory is ERC721Full, WtStorage, WtConstants {
         ticket.isIssued = true;
         ticket.issuedSignature = _walletConnectSignature;
 
-        emit IssueOnTicket(_ticketId, ticket.issuedSignature);
+        emit IssueOnTicket(_ticketId, 
+                           ticket.isIssued, 
+                           ticket.issuedSignature);
 
         return WtConstants.CONFIRMED;
     }
