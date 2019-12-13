@@ -4,9 +4,11 @@ pragma solidity ^0.5.0;
 contract WtObjects {
 
     struct PurchasableTicket {
+        uint256 ticketId;
         bool forSale;
-        address acceptedToken;
-        uint PurchasePrice;
+        uint256 sellingPrice;
+        bool isIssued;
+        string issuedSignature;
     }
 
 

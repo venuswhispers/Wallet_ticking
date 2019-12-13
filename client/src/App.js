@@ -14,6 +14,8 @@ import { theme } from './utils/theme';
 import Header from './components/Header';
 
 // WalletConnect
+import WalletConnect from "@walletconnect/browser";
+import WalletConnectQRCodeModal from "@walletconnect/qrcode-modal";
 //import WalletConnectInitialize from './components/walletConnect/WalletConnectInitialize.js';
 
 import "./App.css";
@@ -30,7 +32,7 @@ class App extends Component {
         this.state = { 
             web3: null, 
             accounts: null,
-            ticket_factory: null        
+            ticket_factory: null   
         };
     }
 
@@ -76,11 +78,12 @@ class App extends Component {
             );
 
             this.setState({ 
-              web3,
-              accounts,
+              web3: web3,
+              accounts: accounts,
               ticket_factory: ticket_factory,
               ticket_market: ticket_market,
-              ocean_token: ocean_token
+              ocean_token: ocean_token,
+              ticket_market_contractAddr: deployedNetworkTicketMarket.address
             });
 
             window.ethereum.on('accountsChanged', async (accounts) => {
@@ -103,7 +106,58 @@ class App extends Component {
             );
             console.error(error);
         }
+
+
+        /***********************************************************************
+         * WalletConnect / componentDidMount
+         ***********************************************************************/
+        // Create a walletConnector
+        const walletConnector = new WalletConnect({
+            bridge: "https://bridge.walletconnect.org" // Required
+        });
+
+        // Check if connection is already established
+        if (!walletConnector.connected) {
+            // create new session
+            walletConnector.createSession().then(() => {
+                // get uri for QR Code modal
+                const uri = walletConnector.uri;
+                // display QR Code modal
+                WalletConnectQRCodeModal.open(uri, () => {
+                    console.log("QR Code Modal closed");
+                });
+            });
+        }
+
+        this.setState({ 
+            walletConnector: walletConnector,
+        });
     };
+
+
+
+    /***********************************************************************
+     * WalletConnect / function for call
+     ***********************************************************************/
+    callWalletConnect = async() => {
+        const { accounts, walletConnector } = this.state;
+        
+        // Subscribe to connection events
+        walletConnector.on("connect", (error, payload) => {
+            if (error) {
+                throw error;
+            }
+
+            // Close QR Code Modal
+            WalletConnectQRCodeModal.close();
+
+            // Get provided accounts and chainId
+            const { accounts, chainId } = payload.params[0];
+        });
+    }
+
+
+
 
 
     /***********************************************************************
@@ -126,8 +180,6 @@ class App extends Component {
     handleTestFunc = async () => {
         const { accounts, ticket_factory } = this.state;
         try {
-            //let walletAddr = accounts[0];
-            //let ipAddress = "185.199.104.14";
             const response = await ticket_factory.methods.testFunc().send({ from: accounts[0] });
             console.log("=== testFunc() ===", response)
 
@@ -138,6 +190,25 @@ class App extends Component {
             this.setState({ message: "Failed withdrawing" });
         }
     }
+
+
+    _registerTicketPrice = async() => {
+        const { accounts, ticket_factory } = this.state;
+        let _adminAddr = accounts[0];
+        let _sellingPriceOfTicket = 10000000000000
+
+        const response = await ticket_factory.methods.registerTicketPrice(_adminAddr, _sellingPriceOfTicket).send({ from: accounts[0] });
+        console.log("=== registerTicketPrice() ===", response)
+    }
+
+    _getTicketPrice = async() => {
+        const { accounts, ticket_factory } = this.state;
+        let _adminAddr = accounts[0];
+
+        const response = await ticket_factory.methods.getTicketPrice(_adminAddr).call();
+        console.log("=== getTicketPrice() ===", response)
+    }
+
 
     totalSupply = async() => {
         const { accounts, ticket_factory } = this.state;
@@ -155,7 +226,7 @@ class App extends Component {
 
     _ownerOfTicket = async () => {
         const { accounts, ticket_market } = this.state;
-        let _ticketId = 5
+        let _ticketId = 8
 
         const response = await ticket_market.methods.ownerOfTicket(_ticketId).call();
         console.log("=== ownerOfTicket() ===", response)
@@ -169,10 +240,10 @@ class App extends Component {
         console.log("=== factoryMint() ===", response)
     }
 
-    _factoryTransferFrom = async () => {
-        const { accounts, ticket_market, ticket_factory } = this.state;
+    _factoryTicketTransferFrom = async () => {
+        const { accounts, ticket_market, ticket_factory, ticket_market_contractAddr } = this.state;
         let _from = accounts[0]                                               // From Address
-        let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
+        let _externalContract = ticket_market_contractAddr                    // External ContractAddress
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
         let _ticketId = 6
 
@@ -185,10 +256,10 @@ class App extends Component {
         console.log("=== factoryTransferFrom() ===", response_2)      
     }
 
-    transferTicketFrom = async () => {
-        const { accounts, ticket_factory } = this.state;
+    ticketTransferFrom = async () => {
+        const { accounts, ticket_factory, ticket_market_contractAddr } = this.state;
         let _from = accounts[0]
-        let _to = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'
+        let _to = ticket_market_contractAddr
         let _ticketId = 4
 
         const response = await ticket_factory.methods._transferTicketFrom(_from, _to, _ticketId).send({ from: accounts[0] });
@@ -214,9 +285,9 @@ class App extends Component {
 
 
     _testTransferFrom = async () => {
-        const { accounts, ticket_market, ocean_token } = this.state;
+        const { accounts, ticket_market, ocean_token, ticket_market_contractAddr } = this.state;
         let _from = accounts[0]                                               // From Address
-        let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
+        let _externalContract = ticket_market_contractAddr                    // External ContractAddress
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
         let _value = 10e12
 
@@ -230,9 +301,9 @@ class App extends Component {
     }
 
     _testTransfer = async () => {
-        const { accounts, ticket_market, ocean_token } = this.state;  
+        const { accounts, ticket_market, ocean_token, ticket_market_contractAddr } = this.state;  
         let _from = accounts[0]                                               // From Address
-        let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
+        let _externalContract = ticket_market_contractAddr                    // External ContractAddress
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
         let _value = 10e12
 
@@ -249,7 +320,6 @@ class App extends Component {
     _transferOceanToken = async () => {
         const { accounts, ocean_token } = this.state;
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'
-        //let _value = 1e5
         let _value = 10e12
 
         const response = await ocean_token.methods.transfer(_to, _value).send({ from: accounts[0] });
@@ -270,31 +340,51 @@ class App extends Component {
 
 
     _buyTicket = async () => {
-        const { accounts, ticket_market, ticket_factory, ocean_token } = this.state;  
+        const { accounts, ticket_market, ticket_factory, ocean_token, ticket_market_contractAddr, web3 } = this.state;  
         let _from = accounts[0]                                               // From Address
-        let _externalContract = '0xF96feC32D187bC90bF3B80fCDEF0a25faeeb6feb'  // External ContractAddress
+        let _externalContract = ticket_market_contractAddr                    // External ContractAddress
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
-        let _value = 10e12
-        let _ticketId = 7
+        //let _purchasePrice = 10e12
+        let _ticketId = 8
+        let _adminAddr = accounts[0]
+        let _buyer = accounts[0]
 
-        // 2Step-Execution
-        const response_1 = await ocean_token.methods.transfer(_externalContract, _value).send({ from: accounts[0] });
-        const response_2 = await ticket_market.methods.testTransfer(_to, _value).send({ from: accounts[0] });
+        // Get price of selling ticket（ERC20）
+        const ticketPrice = await ticket_factory.methods.getTicketPrice(_adminAddr).call();
+        console.log("=== ticketPrice（buy with ERC20） ===", ticketPrice)      
 
-        // Log
-        console.log("=== transfer() ===", response_1)
-        console.log("=== testTransfer() ===", response_2)
+        // Check balace of buyer（ETH）
+        const _balanceOfBuyerOfETH = await web3.eth.getBalance(_buyer);
+        let balanceOfBuyerOfETH = await web3.utils.fromWei(_balanceOfBuyerOfETH, 'ether');
+        console.log("=== balanceOfBuyerOfETH ===", balanceOfBuyerOfETH)
 
-        // 2Step-Execution
-        const response_3 = await ticket_factory.methods._transferTicketFrom(_from, _externalContract, _ticketId).send({ from: accounts[0] });
-        const response_4 = await ticket_market.methods.factoryTransferFrom(_externalContract, _to, _ticketId).send({ from: accounts[0] });
+        // Check balace of buyer（ERC20）
+        const balanceOfBuyerOfERC20 = await ticket_market.methods.balanceOfERC20(_buyer).call();
+        console.log("=== balanceOfBuyerOfERC20 ===", balanceOfBuyerOfERC20)
 
-        // Log
-        console.log("=== _transferTicketFrom() ===", response_3)      
-        console.log("=== factoryTransferFrom() ===", response_4)  
+        // @notice - If balanceOfBuyerOfERC20 is greater than ticketPrice, it continue processing below
+        if (balanceOfBuyerOfERC20 >= ticketPrice) {
+            // 2Step-Execution
+            const response_1 = await ocean_token.methods.transfer(_externalContract, ticketPrice).send({ from: accounts[0] });
+            const response_2 = await ticket_market.methods.testTransfer(_to, ticketPrice).send({ from: accounts[0] });
+            //const response_1 = await ocean_token.methods.transfer(_externalContract, _purchasePrice).send({ from: accounts[0] });
+            //const response_2 = await ticket_market.methods.testTransfer(_to, _purchasePrice).send({ from: accounts[0] });
 
-        //const response = await ticket_market.methods.buyTicket(_ticketId).send({ from: accounts[0] });
-        //console.log("=== buyTicket() ===", response)
+            // Log
+            console.log("=== transfer() ===", response_1)
+            console.log("=== testTransfer() ===", response_2)
+
+            // 2Step-Execution
+            const response_3 = await ticket_factory.methods._transferTicketFrom(_from, _externalContract, _ticketId).send({ from: accounts[0] });
+            const response_4 = await ticket_market.methods.factoryTransferFrom(_externalContract, _to, _ticketId).send({ from: accounts[0] });
+
+            // Log
+            console.log("=== _transferTicketFrom() ===", response_3)      
+            console.log("=== factoryTransferFrom() ===", response_4)  
+
+            //const response = await ticket_market.methods.buyTicket(_ticketId).send({ from: accounts[0] });
+            //console.log("=== buyTicket() ===", response)
+        }
     }
 
     render() {
@@ -303,6 +393,7 @@ class App extends Component {
                 <ThemeProvider theme={theme}>
                     <div className="App">
                         <Header />
+
                         <Typography>
                             Loading Web3, accounts, and contract...
                         </Typography>
@@ -377,6 +468,49 @@ class App extends Component {
                         </Grid>
                     </Grid>
 
+                    <hr />
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                           test
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Button variant="contained" color="primary" onClick={() => this.callWalletConnect()}>
+                               Call WalletConnect
+                            </Button>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                           test
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Button variant="contained" color="primary" onClick={() => this._registerTicketPrice()}>
+                               Register Ticket Price
+                            </Button>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                           test
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Button variant="contained" color="primary" onClick={() => this._getTicketPrice()}>
+                                Get Ticket Price
+                            </Button>
+                        </Grid>
+                    </Grid>
+
+                    <hr />
+
                     <Grid container style={{ marginTop: 32 }}>
                         <Grid item xs={6}>
                            test
@@ -449,7 +583,7 @@ class App extends Component {
                         <Grid item xs={1}>
                         </Grid>
                         <Grid item xs={3}>
-                          <Button variant="contained" color="primary" onClick={() => this._factoryTransferFrom()}>
+                          <Button variant="contained" color="primary" onClick={() => this._factoryTicketTransferFrom()}>
                               Factory TransferFrom (ERC721)
                           </Button>
                         </Grid>
@@ -462,7 +596,7 @@ class App extends Component {
                         <Grid item xs={1}>
                         </Grid>
                         <Grid item xs={3}>
-                          <Button variant="contained" color="primary" onClick={() => this.transferTicketFrom()}>
+                          <Button variant="contained" color="primary" onClick={() => this.ticketTransferFrom()}>
                                 Transfer TicketFrom（ERC721）
                           </Button>
                         </Grid>

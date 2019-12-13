@@ -25,7 +25,7 @@ export default function Header() {
           </Grid>
           <Grid item xs>
             <Typography variant="h6" color="inherit">
-              by using 3Box
+              by using 3Box Storage
             </Typography>
           </Grid>
         </Toolbar>

@@ -46,23 +46,28 @@ contract TicketMarket is WtStorage, WtConstants {
 
     IERC20interface public ierc20;
 
-    address oceanTokenContract;
-
     constructor(address _ticketFactoryContract, address _erc20TestTokenContract, address _oceanTokenContract) public {
         factory = TicketFactory(_ticketFactoryContract);
         erc20Token = Erc20TestToken(_erc20TestTokenContract);
         oceanToken = OceanToken(_oceanTokenContract);
 
-        oceanTokenContract = _oceanTokenContract;
-
         ierc20 = IERC20interface(_oceanTokenContract);
     }
 
 
+    /***
+     * @notice - Test function
+     ***/
     function testFunc() public returns (bool) {
         return WtConstants.CONFIRMED;
     }
 
+
+
+
+    /***
+     * @notice - Called function
+     ***/
     // @notice owner address of ERC721 token which is specified
     // @param _ticketId is tokenId
     function ownerOfTicket(uint _ticketId) public returns (address) {
@@ -100,7 +105,7 @@ contract TicketMarket is WtStorage, WtConstants {
     
 
     function balanceOfERC20(address who) public view returns (uint256) {
-        IERC20 erc20 = IERC20(erc20Token);
+        IERC20 erc20 = IERC20(oceanToken);
         return erc20.balanceOf(who);
     }
     
@@ -130,14 +135,6 @@ contract TicketMarket is WtStorage, WtConstants {
         //erc20Token.transfer(to, value);
         //oceanToken.transfer(to, value);
         return true;
-    }
-
-
-    function getPurchasableTicket(uint ticketId)
-        public view returns (PurchasableTicket memory)
-    {
-
-        return purchasableTickets[ticketId];
     }
 
 
