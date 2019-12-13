@@ -425,6 +425,11 @@ class App extends Component {
 
             //const response = await ticket_market.methods.buyTicket(_ticketId).send({ from: accounts[0] });
             //console.log("=== buyTicket() ===", response)
+
+            // @dev - issued signature to be bought ticket
+            this.walletConnect_getSignature();
+            let _walletConnectSignature = this.state.signature_of_walletConnect;
+            const response_6 = await ticket_factory.methods.issueOnTicket(_ticketId, _walletConnectSignature).send({ from: accounts[0] });
         }
     }
 

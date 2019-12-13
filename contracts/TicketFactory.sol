@@ -111,8 +111,13 @@ contract TicketFactory is ERC721Full, WtStorage, WtConstants {
     /***
      * @notice - Issue on ticket after it buy ticket by someone
      ***/    
-    function issueOnTicket(address adminAddr, uint256 sellingPriceOfTicket) public returns (bool) {
-        
+    function issueOnTicket(uint256 _ticketId, string memory _walletConnectSignature) public returns (bool) {
+        PurchasableTicket storage ticket = purchasableTickets[_ticketId];
+        ticket.issuedSignature = _walletConnectSignature;
+
+        emit IssueOnTicket(_ticketId, ticket.issuedSignature);
+
+        return WtConstants.CONFIRMED;
     }
     
 
