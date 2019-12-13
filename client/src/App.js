@@ -14,6 +14,8 @@ import { theme } from './utils/theme';
 import Header from './components/Header';
 
 // WalletConnect
+import WalletConnect from "@walletconnect/browser";
+import WalletConnectQRCodeModal from "@walletconnect/qrcode-modal";
 //import WalletConnectInitialize from './components/walletConnect/WalletConnectInitialize.js';
 
 import "./App.css";
@@ -30,7 +32,7 @@ class App extends Component {
         this.state = { 
             web3: null, 
             accounts: null,
-            ticket_factory: null        
+            ticket_factory: null   
         };
     }
 
@@ -104,7 +106,58 @@ class App extends Component {
             );
             console.error(error);
         }
+
+
+        /***********************************************************************
+         * WalletConnect / componentDidMount
+         ***********************************************************************/
+        // Create a walletConnector
+        const walletConnector = new WalletConnect({
+            bridge: "https://bridge.walletconnect.org" // Required
+        });
+
+        // Check if connection is already established
+        if (!walletConnector.connected) {
+            // create new session
+            walletConnector.createSession().then(() => {
+                // get uri for QR Code modal
+                const uri = walletConnector.uri;
+                // display QR Code modal
+                WalletConnectQRCodeModal.open(uri, () => {
+                    console.log("QR Code Modal closed");
+                });
+            });
+        }
+
+        this.setState({ 
+            walletConnector: walletConnector,
+        });
     };
+
+
+
+    /***********************************************************************
+     * WalletConnect / function for call
+     ***********************************************************************/
+    callWalletConnect = async() => {
+        const { accounts, walletConnector } = this.state;
+        
+        // Subscribe to connection events
+        walletConnector.on("connect", (error, payload) => {
+            if (error) {
+                throw error;
+            }
+
+            // Close QR Code Modal
+            WalletConnectQRCodeModal.close();
+
+            // Get provided accounts and chainId
+            const { accounts, chainId } = payload.params[0];
+        });
+    }
+
+
+
 
 
     /***********************************************************************
@@ -340,6 +393,7 @@ class App extends Component {
                 <ThemeProvider theme={theme}>
                     <div className="App">
                         <Header />
+
                         <Typography>
                             Loading Web3, accounts, and contract...
                         </Typography>
@@ -415,6 +469,19 @@ class App extends Component {
                     </Grid>
 
                     <hr />
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                           test
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Button variant="contained" color="primary" onClick={() => this.callWalletConnect()}>
+                               Call WalletConnect
+                            </Button>
+                        </Grid>
+                    </Grid>
 
                     <Grid container style={{ marginTop: 32 }}>
                         <Grid item xs={6}>
