@@ -32,7 +32,7 @@ class App extends Component {
         this.state = { 
             web3: null, 
             accounts: null,
-            ticket_factory: null   
+            ticket_factory: null
         };
     }
 
@@ -106,32 +106,6 @@ class App extends Component {
             );
             console.error(error);
         }
-
-
-        /***********************************************************************
-         * WalletConnect / componentDidMount
-         ***********************************************************************/
-        // Create a walletConnector
-        const walletConnector = new WalletConnect({
-            bridge: "https://bridge.walletconnect.org" // Required
-        });
-
-        // Check if connection is already established
-        if (!walletConnector.connected) {
-            // create new session
-            walletConnector.createSession().then(() => {
-                // get uri for QR Code modal
-                const uri = walletConnector.uri;
-                // display QR Code modal
-                WalletConnectQRCodeModal.open(uri, () => {
-                    console.log("QR Code Modal closed");
-                });
-            });
-        }
-
-        this.setState({ 
-            walletConnector: walletConnector,
-        });
     };
 
 
@@ -139,9 +113,23 @@ class App extends Component {
     /***********************************************************************
      * WalletConnect / function for call
      ***********************************************************************/
-    callWalletConnect = async() => {
-        const { accounts, walletConnector } = this.state;
-        
+    callWalletConnect = async () => {
+        const { accounts } = this.state;
+
+        // Create a walletConnector
+        const walletConnector = new WalletConnect({
+            bridge: "https://bridge.walletconnect.org" // Required
+        });
+
+        window.walletConnector = walletConnector;
+
+        this.setState({ 
+            walletConnector: walletConnector
+        });
+ 
+        // Log
+        console.log('=== walletConnector ===', this.state.walletConnector);
+
         // Subscribe to connection events
         walletConnector.on("connect", (error, payload) => {
             if (error) {
@@ -154,8 +142,51 @@ class App extends Component {
             // Get provided accounts and chainId
             const { accounts, chainId } = payload.params[0];
         });
+
+        walletConnector.on("session_update", (error, payload) => {
+          if (error) {
+            throw error;
+          }
+
+          // Get updated accounts and chainId
+          const { accounts, chainId } = payload.params[0];
+        });
+
+        walletConnector.on("disconnect", (error, payload) => {
+          if (error) {
+            throw error;
+          }
+
+          // Delete walletConnector
+        });
     }
 
+    walletConnect_sendTransaction = async () => {
+        const { accounts, walletConnector } = this.state;
+            // Draft transaction
+        const tx = {
+          from: accounts[0], // Required
+          //from: "0xbc28Ea04101F03aA7a94C1379bc3AB32E65e62d3", // Required
+          to: "0x89D24A7b4cCB1b6fAA2625Fe562bDd9A23260359", // Required (for non contract deployments)
+          data: "0x", // Required
+          gasPrice: "0x02540be400", // Optional
+          gasLimit: "0x9c40", // Optional
+          value: "0x00", // Optional
+          nonce: "0x0114" // Optional
+        };
+
+        // Send transaction
+        walletConnector
+          .sendTransaction(tx)
+          .then(result => {
+            // Returns transaction id (hash)
+            console.log(result);
+          })
+          .catch(error => {
+            // Error returned when rejected
+            console.error(error);
+          });
+      }
 
 
 
@@ -482,6 +513,21 @@ class App extends Component {
                             </Button>
                         </Grid>
                     </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                           test
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Button variant="contained" color="primary" onClick={() => this.walletConnect_sendTransaction()}>
+                               WalletConnect SendTransaction
+                            </Button>
+                        </Grid>
+                    </Grid>
+
+                    <hr />
 
                     <Grid container style={{ marginTop: 32 }}>
                         <Grid item xs={6}>
