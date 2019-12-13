@@ -76,8 +76,8 @@ class App extends Component {
             );
 
             this.setState({ 
-              web3,
-              accounts,
+              web3: web3,
+              accounts: accounts,
               ticket_factory: ticket_factory,
               ticket_market: ticket_market,
               ocean_token: ocean_token,

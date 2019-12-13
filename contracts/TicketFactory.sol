@@ -12,6 +12,7 @@ import "openzeppelin-solidity/contracts/token/ERC721/ERC721Full.sol";
 contract TicketFactory is ERC721Full, WtStorage, WtConstants {
 
     uint256 ticketCap = 100;
+    string _tokenURI;
 
     constructor(
         string memory name, 
@@ -24,6 +25,7 @@ contract TicketFactory is ERC721Full, WtStorage, WtConstants {
     {
         _mint(msg.sender, tokenId);
         _setTokenURI(tokenId, tokenURI);
+        _tokenURI = tokenURI;
     }
 
 
@@ -48,7 +50,11 @@ contract TicketFactory is ERC721Full, WtStorage, WtConstants {
         
         uint256 _tokenId = _totalSupply() + 1;
         _mint(msg.sender, _tokenId);
-        _setTokenURI(_tokenId, tokenURI);
+        _setTokenURI(_tokenId, _tokenURI);
+
+        // Save Ticket data
+        uint256 _sellingPrice = 100000;
+        registerTicketPrice(_tokenId, _sellingPrice);
     }
 
     // @dev This function is used in case of calling mint() function on external contract.
@@ -67,23 +73,42 @@ contract TicketFactory is ERC721Full, WtStorage, WtConstants {
 
     /***
      * @notice - This function is for registering price of ticket
-     ***/    
-    function registerTicketPrice(address adminAddr, uint256 sellingPriceOfTicket) public returns (bool) {
-        PurchasableTicket storage ticket = purchasableTickets[adminAddr];
+     ***/
+    function registerTicketPrice(uint256 _ticketId, uint256 _sellingPrice) public returns (bool) {
+    //function registerTicketPrice(address adminAddr, uint256 sellingPriceOfTicket) public returns (bool) {
+        PurchasableTicket storage ticket = purchasableTickets[_ticketId];
+        //PurchasableTicket storage ticket = purchasableTickets[adminAddr];
+        ticket.ticketId = _ticketId;
         ticket.forSale = true;
-        ticket.sellingPrice = sellingPriceOfTicket;
+        ticket.sellingPrice = _sellingPrice;
+        ticket.isIssued = false;
+        ticket.issuedSignature = '';
         // PurchasableTicket memory ticket = PurchasableTicket({ 
         //                                        forSale: true , 
         //                                        sellingPrice: sellingPriceOfTicket 
         //                                   });
 
-        emit RegisterTicketPrice(ticket.forSale, ticket.sellingPrice);
+        emit RegisterTicketPrice(ticket.ticketId,
+                                 ticket.forSale, 
+                                 ticket.sellingPrice, 
+                                 ticket.isIssued,
+                                 ticket.issuedSignature);
 
         return WtConstants.CONFIRMED;
     }
     
-    function getTicketPrice(address adminAddr) public view returns (uint256) {
-        PurchasableTicket memory ticket = purchasableTickets[adminAddr];
+    function getTicketPrice(uint256 _ticketId) public view returns (uint256) {
+        PurchasableTicket memory ticket = purchasableTickets[_ticketId];
         return ticket.sellingPrice;
     }
+
+
+    /***
+     * @notice - Issue on ticket after it buy ticket by someone
+     ***/    
+    function issueOnTicket(address adminAddr, uint256 sellingPriceOfTicket) public returns (bool) {
+        
+    }
+    
+
 }
