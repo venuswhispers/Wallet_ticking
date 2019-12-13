@@ -4,7 +4,7 @@ pragma experimental ABIEncoderV2;
 // Storage
 import "./storage/WtStorage.sol";
 import "./storage/WtConstants.sol";
-import "./storage/WtModifier.sol";
+import "./modifiers/WtModifier.sol";
 
 
 // NFT（ERC721）
