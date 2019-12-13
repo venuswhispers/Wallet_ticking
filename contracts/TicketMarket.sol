@@ -55,10 +55,40 @@ contract TicketMarket is WtStorage, WtConstants {
     }
 
 
+    /***
+     * @notice - Test function
+     ***/
     function testFunc() public returns (bool) {
         return WtConstants.CONFIRMED;
     }
 
+
+
+    /***
+     * @notice - This function is for registering price of ticket
+     ***/    
+    function registerTicketPrice(uint256 sellingPriceOfTicket) public returns (bool) {
+        PurchasableTicket memory ticket = PurchasableTicket({ 
+                                               forSale: true , 
+                                               sellingPrice: sellingPriceOfTicket 
+                                          });
+        emit RegisterTicketPrice(ticket.sellingPrice);
+
+        return WtConstants.CONFIRMED;
+    }
+    
+    function getTicketPrice(address adminAddr) public view returns (uint256) {
+        PurchasableTicket memory ticket = purchasableTickets[adminAddr];
+        return ticket.sellingPrice;
+    }
+
+
+
+
+
+    /***
+     * @notice - Called function
+     ***/
     // @notice owner address of ERC721 token which is specified
     // @param _ticketId is tokenId
     function ownerOfTicket(uint _ticketId) public returns (address) {
@@ -126,14 +156,6 @@ contract TicketMarket is WtStorage, WtConstants {
         //erc20Token.transfer(to, value);
         //oceanToken.transfer(to, value);
         return true;
-    }
-
-
-    function getPurchasableTicket(uint ticketId)
-        public view returns (PurchasableTicket memory)
-    {
-
-        return purchasableTickets[ticketId];
     }
 
 

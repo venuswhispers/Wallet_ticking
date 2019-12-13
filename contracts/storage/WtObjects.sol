@@ -5,8 +5,7 @@ contract WtObjects {
 
     struct PurchasableTicket {
         bool forSale;
-        address acceptedToken;
-        uint PurchasePrice;
+        uint256 sellingPrice;
     }
 
 

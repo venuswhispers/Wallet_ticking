@@ -138,6 +138,24 @@ class App extends Component {
         }
     }
 
+
+    _registerTicketPrice = async() => {
+        const { accounts, ticket_market } = this.state;
+        let _sellingPriceOfTicket = 100
+
+        const response = await ticket_market.methods.registerTicketPrice(_sellingPriceOfTicket).send({ from: accounts[0] });
+        console.log("=== registerTicketPrice() ===", response)
+    }
+
+    _getTicketPrice = async() => {
+        const { accounts, ticket_market } = this.state;
+        let _adminAddr = accounts[0];
+
+        const response = await ticket_market.methods.getTicketPrice(_adminAddr).call();
+        console.log("=== getTicketPrice() ===", response)
+    }
+
+
     totalSupply = async() => {
         const { accounts, ticket_factory } = this.state;
 
@@ -374,6 +392,36 @@ class App extends Component {
                             />
                         </Grid>
                     </Grid>
+
+                    <hr />
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                           test
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Button variant="contained" color="primary" onClick={() => this._registerTicketPrice()}>
+                               Register Ticket Price
+                            </Button>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                           test
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Button variant="contained" color="primary" onClick={() => this._getTicketPrice()}>
+                                Get Ticket Price
+                            </Button>
+                        </Grid>
+                    </Grid>
+
+                    <hr />
 
                     <Grid container style={{ marginTop: 32 }}>
                         <Grid item xs={6}>
