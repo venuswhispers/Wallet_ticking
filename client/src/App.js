@@ -160,6 +160,17 @@ class App extends Component {
     /***********************************************************************
      * WalletConnect / function for call
      ***********************************************************************/
+    walletConnect_getSignature = async () => {
+        const { accounts, walletConnector } = this.state;
+
+        // @dev - Assign value of constant temporarily
+        const signatureOfwalletConnect = "c97ed927-7a0b-4ce1-8132-64a353bf9edc"
+
+        this.setState({ 
+            signature_of_walletConnect: signatureOfwalletConnect
+        });
+    }     
+
     walletConnect_sendTransaction = async () => {
         const { accounts, walletConnector } = this.state;
             // Draft transaction
@@ -185,7 +196,7 @@ class App extends Component {
             // Error returned when rejected
             console.error(error);
           });
-      }
+    }
 
 
 
