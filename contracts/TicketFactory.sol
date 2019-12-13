@@ -63,6 +63,11 @@ contract TicketFactory is ERC721Full, WtStorage, WtConstants {
         
         uint256 _tokenId = _totalSupply() + 1;
         _mint(_callAddress, _tokenId);
+        _setTokenURI(_tokenId, _tokenURI);
+
+        // Save Ticket data
+        uint256 _sellingPrice = 100000;
+        registerTicketPrice(_tokenId, _sellingPrice);
     }
 
 
