@@ -140,18 +140,18 @@ class App extends Component {
 
 
     _registerTicketPrice = async() => {
-        const { accounts, ticket_market } = this.state;
+        const { accounts, ticket_factory } = this.state;
         let _sellingPriceOfTicket = 100
 
-        const response = await ticket_market.methods.registerTicketPrice(_sellingPriceOfTicket).send({ from: accounts[0] });
+        const response = await ticket_factory.methods.registerTicketPrice(_sellingPriceOfTicket).send({ from: accounts[0] });
         console.log("=== registerTicketPrice() ===", response)
     }
 
     _getTicketPrice = async() => {
-        const { accounts, ticket_market } = this.state;
+        const { accounts, ticket_factory } = this.state;
         let _adminAddr = accounts[0];
 
-        const response = await ticket_market.methods.getTicketPrice(_adminAddr).call();
+        const response = await ticket_factory.methods.getTicketPrice(_adminAddr).call();
         console.log("=== getTicketPrice() ===", response)
     }
 

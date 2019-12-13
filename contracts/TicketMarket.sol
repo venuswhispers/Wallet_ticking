@@ -65,28 +65,6 @@ contract TicketMarket is WtStorage, WtConstants {
 
 
     /***
-     * @notice - This function is for registering price of ticket
-     ***/    
-    function registerTicketPrice(uint256 sellingPriceOfTicket) public returns (bool) {
-        PurchasableTicket memory ticket = PurchasableTicket({ 
-                                               forSale: true , 
-                                               sellingPrice: sellingPriceOfTicket 
-                                          });
-        emit RegisterTicketPrice(ticket.sellingPrice);
-
-        return WtConstants.CONFIRMED;
-    }
-    
-    function getTicketPrice(address adminAddr) public view returns (uint256) {
-        PurchasableTicket memory ticket = purchasableTickets[adminAddr];
-        return ticket.sellingPrice;
-    }
-
-
-
-
-
-    /***
      * @notice - Called function
      ***/
     // @notice owner address of ERC721 token which is specified
