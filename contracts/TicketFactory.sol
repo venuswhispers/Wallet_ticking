@@ -119,6 +119,7 @@ contract TicketFactory is ERC721Full, WtStorage, WtConstants {
         // Check whether this ticket is signatured or not
         require (ticket.isIssued == false, "This ticket is already bought and signatured");
         
+        ticket.isIssued = true;
         ticket.issuedSignature = _walletConnectSignature;
 
         emit IssueOnTicket(_ticketId, ticket.issuedSignature);
