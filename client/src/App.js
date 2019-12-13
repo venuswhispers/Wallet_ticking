@@ -168,7 +168,7 @@ class App extends Component {
         console.log("=== factoryMint() ===", response)
     }
 
-    _factoryTransferFrom = async () => {
+    _factoryTicketTransferFrom = async () => {
         const { accounts, ticket_market, ticket_factory, ticket_market_contractAddr } = this.state;
         let _from = accounts[0]                                               // From Address
         let _externalContract = ticket_market_contractAddr                    // External ContractAddress
@@ -184,7 +184,7 @@ class App extends Component {
         console.log("=== factoryTransferFrom() ===", response_2)      
     }
 
-    transferTicketFrom = async () => {
+    ticketTransferFrom = async () => {
         const { accounts, ticket_factory, ticket_market_contractAddr } = this.state;
         let _from = accounts[0]
         let _to = ticket_market_contractAddr
@@ -447,7 +447,7 @@ class App extends Component {
                         <Grid item xs={1}>
                         </Grid>
                         <Grid item xs={3}>
-                          <Button variant="contained" color="primary" onClick={() => this._factoryTransferFrom()}>
+                          <Button variant="contained" color="primary" onClick={() => this._factoryTicketTransferFrom()}>
                               Factory TransferFrom (ERC721)
                           </Button>
                         </Grid>
@@ -460,7 +460,7 @@ class App extends Component {
                         <Grid item xs={1}>
                         </Grid>
                         <Grid item xs={3}>
-                          <Button variant="contained" color="primary" onClick={() => this.transferTicketFrom()}>
+                          <Button variant="contained" color="primary" onClick={() => this.ticketTransferFrom()}>
                                 Transfer TicketFrom（ERC721）
                           </Button>
                         </Grid>

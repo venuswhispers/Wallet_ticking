@@ -46,14 +46,10 @@ contract TicketMarket is WtStorage, WtConstants {
 
     IERC20interface public ierc20;
 
-    address oceanTokenContract;
-
     constructor(address _ticketFactoryContract, address _erc20TestTokenContract, address _oceanTokenContract) public {
         factory = TicketFactory(_ticketFactoryContract);
         erc20Token = Erc20TestToken(_erc20TestTokenContract);
         oceanToken = OceanToken(_oceanTokenContract);
-
-        oceanTokenContract = _oceanTokenContract;
 
         ierc20 = IERC20interface(_oceanTokenContract);
     }
