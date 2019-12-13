@@ -141,9 +141,10 @@ class App extends Component {
 
     _registerTicketPrice = async() => {
         const { accounts, ticket_factory } = this.state;
-        let _sellingPriceOfTicket = 100
+        let _adminAddr = accounts[0];
+        let _sellingPriceOfTicket = 10000000000000
 
-        const response = await ticket_factory.methods.registerTicketPrice(_sellingPriceOfTicket).send({ from: accounts[0] });
+        const response = await ticket_factory.methods.registerTicketPrice(_adminAddr, _sellingPriceOfTicket).send({ from: accounts[0] });
         console.log("=== registerTicketPrice() ===", response)
     }
 
@@ -286,16 +287,28 @@ class App extends Component {
 
 
     _buyTicket = async () => {
-        const { accounts, ticket_market, ticket_factory, ocean_token, ticket_market_contractAddr } = this.state;  
+        const { accounts, ticket_market, ticket_factory, ocean_token, ticket_market_contractAddr, web3 } = this.state;  
         let _from = accounts[0]                                               // From Address
         let _externalContract = ticket_market_contractAddr                    // External ContractAddress
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
-        let _purchasePrice = 10e12
+        //let _purchasePrice = 10e12
         let _ticketId = 8
+        let _adminAddr = accounts[0]
+
+        // Get price of selling ticket
+        const ticketPrice = await ticket_factory.methods.getTicketPrice(_adminAddr).call();
+        console.log("=== ticketPrice ===", ticketPrice)      
+
+        // Check balace of buyer
+        const balanceOfBuyer = await web3.eth.getBalance(accounts[0]);
+        balanceOfBuyer = await web3.utils.fromWei(balanceOfBuyer, 'ether');
+        console.log("=== balanceOfBuyer ===", balanceOfBuyer)
 
         // 2Step-Execution
-        const response_1 = await ocean_token.methods.transfer(_externalContract, _purchasePrice).send({ from: accounts[0] });
-        const response_2 = await ticket_market.methods.testTransfer(_to, _purchasePrice).send({ from: accounts[0] });
+        const response_1 = await ocean_token.methods.transfer(_externalContract, ticketPrice).send({ from: accounts[0] });
+        const response_2 = await ticket_market.methods.testTransfer(_to, ticketPrice).send({ from: accounts[0] });
+        //const response_1 = await ocean_token.methods.transfer(_externalContract, _purchasePrice).send({ from: accounts[0] });
+        //const response_2 = await ticket_market.methods.testTransfer(_to, _purchasePrice).send({ from: accounts[0] });
 
         // Log
         console.log("=== transfer() ===", response_1)

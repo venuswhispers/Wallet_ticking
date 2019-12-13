@@ -67,12 +67,16 @@ contract TicketFactory is ERC721Full, WtStorage, WtConstants {
     /***
      * @notice - This function is for registering price of ticket
      ***/    
-    function registerTicketPrice(uint256 sellingPriceOfTicket) public returns (bool) {
-        PurchasableTicket memory ticket = PurchasableTicket({ 
-                                               forSale: true , 
-                                               sellingPrice: sellingPriceOfTicket 
-                                          });
-        emit RegisterTicketPrice(ticket.sellingPrice);
+    function registerTicketPrice(address adminAddr, uint256 sellingPriceOfTicket) public returns (bool) {
+        PurchasableTicket storage ticket = purchasableTickets[adminAddr];
+        ticket.forSale = true;
+        ticket.sellingPrice = sellingPriceOfTicket;
+        // PurchasableTicket memory ticket = PurchasableTicket({ 
+        //                                        forSale: true , 
+        //                                        sellingPrice: sellingPriceOfTicket 
+        //                                   });
+
+        emit RegisterTicketPrice(ticket.forSale, ticket.sellingPrice);
 
         return WtConstants.CONFIRMED;
     }
