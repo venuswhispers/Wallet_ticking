@@ -48,6 +48,7 @@ contract TicketFactory is ERC721Full, WtStorage, WtConstants {
         
         uint256 _tokenId = _totalSupply() + 1;
         _mint(msg.sender, _tokenId);
+        _setTokenURI(_tokenId, tokenURI);
     }
 
     // @dev This function is used in case of calling mint() function on external contract.
