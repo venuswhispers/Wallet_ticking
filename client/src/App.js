@@ -106,16 +106,10 @@ class App extends Component {
             );
             console.error(error);
         }
-    };
 
-
-
-    /***********************************************************************
-     * WalletConnect / function for call
-     ***********************************************************************/
-    callWalletConnect = async () => {
-        const { accounts } = this.state;
-
+        /***********************************************************************
+         * WalletConnect / componentDidMount
+         ***********************************************************************/
         // Create a walletConnector
         const walletConnector = new WalletConnect({
             bridge: "https://bridge.walletconnect.org" // Required
@@ -159,8 +153,13 @@ class App extends Component {
 
           // Delete walletConnector
         });
-    }
+    };
 
+
+
+    /***********************************************************************
+     * WalletConnect / function for call
+     ***********************************************************************/
     walletConnect_sendTransaction = async () => {
         const { accounts, walletConnector } = this.state;
             // Draft transaction
