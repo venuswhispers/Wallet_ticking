@@ -296,9 +296,9 @@ class App extends Component {
         let _adminAddr = accounts[0]
         let _buyer = accounts[0]
 
-        // Get price of selling ticket
+        // Get price of selling ticket（ERC20）
         const ticketPrice = await ticket_factory.methods.getTicketPrice(_adminAddr).call();
-        console.log("=== ticketPrice ===", ticketPrice)      
+        console.log("=== ticketPrice（buy with ERC20） ===", ticketPrice)      
 
         // Check balace of buyer（ETH）
         const _balanceOfBuyerOfETH = await web3.eth.getBalance(_buyer);
@@ -309,27 +309,29 @@ class App extends Component {
         const balanceOfBuyerOfERC20 = await ticket_market.methods.balanceOfERC20(_buyer).call();
         console.log("=== balanceOfBuyerOfERC20 ===", balanceOfBuyerOfERC20)
 
+        // @notice - If balanceOfBuyerOfERC20 is greater than ticketPrice, it continue processing below
+        if (balanceOfBuyerOfERC20 >= ticketPrice) {
+            // 2Step-Execution
+            const response_1 = await ocean_token.methods.transfer(_externalContract, ticketPrice).send({ from: accounts[0] });
+            const response_2 = await ticket_market.methods.testTransfer(_to, ticketPrice).send({ from: accounts[0] });
+            //const response_1 = await ocean_token.methods.transfer(_externalContract, _purchasePrice).send({ from: accounts[0] });
+            //const response_2 = await ticket_market.methods.testTransfer(_to, _purchasePrice).send({ from: accounts[0] });
 
-        // 2Step-Execution
-        const response_1 = await ocean_token.methods.transfer(_externalContract, ticketPrice).send({ from: accounts[0] });
-        const response_2 = await ticket_market.methods.testTransfer(_to, ticketPrice).send({ from: accounts[0] });
-        //const response_1 = await ocean_token.methods.transfer(_externalContract, _purchasePrice).send({ from: accounts[0] });
-        //const response_2 = await ticket_market.methods.testTransfer(_to, _purchasePrice).send({ from: accounts[0] });
+            // Log
+            console.log("=== transfer() ===", response_1)
+            console.log("=== testTransfer() ===", response_2)
 
-        // Log
-        console.log("=== transfer() ===", response_1)
-        console.log("=== testTransfer() ===", response_2)
+            // 2Step-Execution
+            const response_3 = await ticket_factory.methods._transferTicketFrom(_from, _externalContract, _ticketId).send({ from: accounts[0] });
+            const response_4 = await ticket_market.methods.factoryTransferFrom(_externalContract, _to, _ticketId).send({ from: accounts[0] });
 
-        // 2Step-Execution
-        const response_3 = await ticket_factory.methods._transferTicketFrom(_from, _externalContract, _ticketId).send({ from: accounts[0] });
-        const response_4 = await ticket_market.methods.factoryTransferFrom(_externalContract, _to, _ticketId).send({ from: accounts[0] });
+            // Log
+            console.log("=== _transferTicketFrom() ===", response_3)      
+            console.log("=== factoryTransferFrom() ===", response_4)  
 
-        // Log
-        console.log("=== _transferTicketFrom() ===", response_3)      
-        console.log("=== factoryTransferFrom() ===", response_4)  
-
-        //const response = await ticket_market.methods.buyTicket(_ticketId).send({ from: accounts[0] });
-        //console.log("=== buyTicket() ===", response)
+            //const response = await ticket_market.methods.buyTicket(_ticketId).send({ from: accounts[0] });
+            //console.log("=== buyTicket() ===", response)
+        }
     }
 
     render() {
