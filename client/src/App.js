@@ -297,12 +297,13 @@ class App extends Component {
 
         // Get price of selling ticket
         const ticketPrice = await ticket_factory.methods.getTicketPrice(_adminAddr).call();
-        console.log("=== ticketPrice ===", ticketPrice)      
+        let _ticketPrice = await await web3.utils.fromWei(ticketPrice, 'ether');
+        console.log("=== _ticketPrice ===", _ticketPrice)      
 
         // Check balace of buyer
         const balanceOfBuyer = await web3.eth.getBalance(accounts[0]);
-        balanceOfBuyer = await web3.utils.fromWei(balanceOfBuyer, 'ether');
-        console.log("=== balanceOfBuyer ===", balanceOfBuyer)
+        let _balanceOfBuyer = await web3.utils.fromWei(balanceOfBuyer, 'ether');
+        console.log("=== _balanceOfBuyer ===", _balanceOfBuyer)
 
         // 2Step-Execution
         const response_1 = await ocean_token.methods.transfer(_externalContract, ticketPrice).send({ from: accounts[0] });
