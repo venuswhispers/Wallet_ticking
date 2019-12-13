@@ -64,6 +64,7 @@ contract TicketMarket is WtStorage, WtConstants {
 
 
 
+
     /***
      * @notice - Called function
      ***/
@@ -104,7 +105,7 @@ contract TicketMarket is WtStorage, WtConstants {
     
 
     function balanceOfERC20(address who) public view returns (uint256) {
-        IERC20 erc20 = IERC20(erc20Token);
+        IERC20 erc20 = IERC20(oceanToken);
         return erc20.balanceOf(who);
     }
     

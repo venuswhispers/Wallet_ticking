@@ -294,16 +294,21 @@ class App extends Component {
         //let _purchasePrice = 10e12
         let _ticketId = 8
         let _adminAddr = accounts[0]
+        let _buyer = accounts[0]
 
         // Get price of selling ticket
         const ticketPrice = await ticket_factory.methods.getTicketPrice(_adminAddr).call();
-        let _ticketPrice = await await web3.utils.fromWei(ticketPrice, 'ether');
-        console.log("=== _ticketPrice ===", _ticketPrice)      
+        console.log("=== ticketPrice ===", ticketPrice)      
 
-        // Check balace of buyer
-        const balanceOfBuyer = await web3.eth.getBalance(accounts[0]);
-        let _balanceOfBuyer = await web3.utils.fromWei(balanceOfBuyer, 'ether');
-        console.log("=== _balanceOfBuyer ===", _balanceOfBuyer)
+        // Check balace of buyer（ETH）
+        const _balanceOfBuyerOfETH = await web3.eth.getBalance(_buyer);
+        let balanceOfBuyerOfETH = await web3.utils.fromWei(_balanceOfBuyerOfETH, 'ether');
+        console.log("=== balanceOfBuyerOfETH ===", balanceOfBuyerOfETH)
+
+        // Check balace of buyer（ERC20）
+        const balanceOfBuyerOfERC20 = await ticket_market.methods.balanceOfERC20(_buyer).call();
+        console.log("=== balanceOfBuyerOfERC20 ===", balanceOfBuyerOfERC20)
+
 
         // 2Step-Execution
         const response_1 = await ocean_token.methods.transfer(_externalContract, ticketPrice).send({ from: accounts[0] });
