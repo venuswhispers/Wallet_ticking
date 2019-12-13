@@ -2,13 +2,14 @@ pragma solidity ^0.5.2;
 pragma experimental ABIEncoderV2;
 
 // Storage
+import "./storage/WtStorage.sol";
 import "./storage/WtConstants.sol";
 
+// NFT（ERC721）
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Full.sol";
-import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
-contract TicketFactory is ERC721Full, WtConstants, Ownable {
+contract TicketFactory is ERC721Full, WtStorage, WtConstants {
 
     uint256 ticketCap = 100;
 
