@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Typography, Grid, TextField } from '@material-ui/core';
+import { Button, Typography, Grid, TextField, Box, Card } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 
 // Import json file for artifact
@@ -516,6 +516,40 @@ class App extends Component {
                         </Grid>
                     </Grid>
 
+                    <hr />
+
+                    <Typography variant="h5" style={{ marginTop: 32 }}>
+                        {"Index of Purchaseable Ticket"}
+                    </Typography>
+
+                    <Card>
+                        <Grid container style={{ marginTop: 32 }}>
+                            <Grid item xs={6}>
+                                <Typography variant="h5">
+                                    {"Ticket ID"}
+                                </Typography>
+                            </Grid>
+
+                            <Grid item xs={6}>
+                                <Typography variant="h5">
+                                    {"Owner Address"}
+                                </Typography>
+                            </Grid>
+                        </Grid>
+                        <Grid container style={{ marginTop: 32 }}>
+                            <Grid item xs={6}>
+                                <Typography variant="h5">
+                                    {"1"}
+                                </Typography>
+                            </Grid>
+
+                            <Grid item xs={6}>
+                                <Typography variant="h5">
+                                    {"0xd91df4880c64343e10F75d8E5f281BcBa4318e4b"}
+                                </Typography>
+                            </Grid>
+                        </Grid>
+                    </Card>
 
                     <hr />
 
