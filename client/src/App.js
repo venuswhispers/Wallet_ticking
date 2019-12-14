@@ -477,7 +477,7 @@ class App extends Component {
                     <Grid container style={{ marginTop: 32 }}>
                         <Grid item xs={6}>
                             <Typography variant="h5">
-                                {"Fund Amount"}
+                                {"Specify Ticket ID for buying"}
                             </Typography>
                         </Grid>
                         <Grid item xs={6}>
@@ -489,6 +489,33 @@ class App extends Component {
                             />
                         </Grid>
                     </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                            <Typography variant="h5">
+                                {"Buy Event Ticket"}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={6}>
+                          <Button variant="contained" color="danger" onClick={() => this._buyTicket()}>
+                                Buy Ticket
+                          </Button>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                            <Typography variant="h5">
+                                {"Show Event Ticket"}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={6}>
+                          <Button variant="contained" color="danger" onClick={() => this._buyTicket()}>
+                                Show Ticket
+                          </Button>
+                        </Grid>
+                    </Grid>
+
 
                     <hr />
 
