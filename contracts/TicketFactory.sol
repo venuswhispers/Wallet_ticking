@@ -130,6 +130,27 @@ contract TicketFactory is ERC721Full, WtStorage, WtConstants {
     }
 
 
+    function saveAddtionalIssuedInfo(
+        uint256 _ticketId, 
+        address _ticketOwner, 
+        uint256 _issuedTimestamp, 
+        string memory issuedTxHash
+    ) public returns (bool) {
+        PurchasableTicket storage ticket = purchasableTickets[_ticketId];
+        ticket.ticketOwner = _ticketOwner;
+        ticket.issuedTimestamp = _issuedTimestamp;
+        ticket.issuedTxHash = _issuedTxHash;
+
+        emit SaveAddtionalIssuedInfo(_ticketId, 
+                           ticket.ticketOwner, 
+                           ticket.issuedTimestamp
+                           ticket.issuedTxHash);
+
+        return WtConstants.CONFIRMED;
+    }
+    
+
+
     /***
      * @notice - Get ticket status from struct of PurchasableTicket
      ***/  

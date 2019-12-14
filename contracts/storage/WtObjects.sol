@@ -12,7 +12,7 @@ contract WtObjects {
 
         address ticketOwner;
         uint256 issuedTimestamp;
-        uint256 issuedTxHash;
+        string issuedTxHash;
     }
 
 

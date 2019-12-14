@@ -430,7 +430,12 @@ class App extends Component {
             this.walletConnect_getSignature();
             let _walletConnectSignature = this.state.signature_of_walletConnect;
             const response_6 = await ticket_factory.methods.issueOnTicket(_ticketId, _walletConnectSignature).send({ from: accounts[0] });
-            console.log("=== issueOnTicket() ===", response_6)  
+            console.log("=== issueOnTicket() ===", response_6);
+
+            let _issuedTimestamp = 0
+            let _issuedTxHash = ''
+            const response_7 = await ticket_factory.methods.saveAddtionalIssuedInfo(_ticketId, _buyer, _issuedTimestamp, _issuedTxHash).send({ from: accounts[0] });
+            console.log("=== saveAddtionalIssuedInfo() ===", response_6);
         }
     }
 
