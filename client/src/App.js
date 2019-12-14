@@ -435,6 +435,8 @@ class App extends Component {
     }
 
     render() {
+        const { accounts } = this.state;
+
         if (!this.state.web3) {
             return (
                 <ThemeProvider theme={theme}>
@@ -453,22 +455,21 @@ class App extends Component {
                 <div className="App">
                     <Header />
                     <Typography variant="h5" style={{ marginTop: 32 }}>
-                        Ticket Registry
+                        Ticket for attendence
                     </Typography>
                     <Typography variant="h5" style={{ marginTop: 32 }}>
                         {this.state.resultMessage}
                     </Typography>
 
-
                     <Grid container style={{ marginTop: 32 }}>
                         <Grid item xs={6}>
                             <Typography variant="h5">
-                                Test
+                                {"Wallet address of attendence"}
                             </Typography>
                         </Grid>
                         <Grid item xs={6}>
                             <Typography variant="h5">
-                                Text
+                                {`${accounts[0]}`}
                             </Typography>
                         </Grid>
                     </Grid>
@@ -476,33 +477,7 @@ class App extends Component {
                     <Grid container style={{ marginTop: 32 }}>
                         <Grid item xs={6}>
                             <Typography variant="h5">
-                                {"Text"}
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <Typography variant="h5">
-                                {"test"}
-                            </Typography>
-                        </Grid>
-                    </Grid>
-
-                    <Grid container>
-                        <Grid item xs={6}>
-                            <Typography variant="h5">
-                                {"Text"}
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <Typography variant="h5">
-                                {"test"}
-                            </Typography>
-                        </Grid>
-                    </Grid>
-
-                    <Grid container style={{ marginTop: 32 }}>
-                        <Grid item xs={6}>
-                            <Typography variant="h5">
-                                {"Text"}
+                                {"Fund Amount"}
                             </Typography>
                         </Grid>
                         <Grid item xs={6}>
@@ -517,18 +492,9 @@ class App extends Component {
 
                     <hr />
 
-                    <Grid container style={{ marginTop: 32 }}>
-                        <Grid item xs={6}>
-                           test
-                        </Grid>
-                        <Grid item xs={1}>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <Button variant="contained" color="primary" onClick={() => this.callWalletConnect()}>
-                               Call WalletConnect
-                            </Button>
-                        </Grid>
-                    </Grid>
+                    <Typography variant="h5" style={{ marginTop: 32 }}>
+                        {"Test of WalletConnect below"}
+                    </Typography>
 
                     <Grid container style={{ marginTop: 32 }}>
                         <Grid item xs={6}>
@@ -544,6 +510,10 @@ class App extends Component {
                     </Grid>
 
                     <hr />
+
+                    <Typography variant="h5" style={{ marginTop: 32 }}>
+                        {"Test of functions related to price below"}
+                    </Typography>
 
                     <Grid container style={{ marginTop: 32 }}>
                         <Grid item xs={6}>
@@ -572,6 +542,10 @@ class App extends Component {
                     </Grid>
 
                     <hr />
+
+                    <Typography variant="h5" style={{ marginTop: 32 }}>
+                        {"Test of functions below"}
+                    </Typography>
 
                     <Grid container style={{ marginTop: 32 }}>
                         <Grid item xs={6}>
