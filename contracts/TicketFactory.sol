@@ -134,12 +134,13 @@ contract TicketFactory is ERC721Full, WtStorage, WtConstants {
      * @notice - Get ticket status from struct of PurchasableTicket
      ***/  
     function ticketStatus(uint256 _ticketId) 
+    public
     view 
-    returns (uint256 _ticketId,
-             bool _forSale, 
-             uint256 _sellingPrice,
-             bool _isIssued,
-             string _issuedSignature) 
+    returns (uint256 ticketId,
+             bool forSale, 
+             uint256 sellingPrice,
+             bool isIssued,
+             string memory issuedSignature) 
     {
         PurchasableTicket storage ticket = purchasableTickets[_ticketId];
 
@@ -147,7 +148,7 @@ contract TicketFactory is ERC721Full, WtStorage, WtConstants {
                 ticket.forSale,
                 ticket.sellingPrice,
                 ticket.isIssued,
-                ticket.issuedSignature)
+                ticket.issuedSignature);
     }
     
 
