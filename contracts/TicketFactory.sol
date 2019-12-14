@@ -128,6 +128,27 @@ contract TicketFactory is ERC721Full, WtStorage, WtConstants {
 
         return WtConstants.CONFIRMED;
     }
+
+
+    /***
+     * @notice - Get ticket status from struct of PurchasableTicket
+     ***/  
+    function ticketStatus(uint256 _ticketId) 
+    view 
+    returns (uint256 _ticketId,
+             bool _forSale, 
+             uint256 _sellingPrice,
+             bool _isIssued,
+             string _issuedSignature) 
+    {
+        PurchasableTicket storage ticket = purchasableTickets[_ticketId];
+
+        return (ticket.ticketId,
+                ticket.forSale,
+                ticket.sellingPrice,
+                ticket.isIssued,
+                ticket.issuedSignature)
+    }
     
 
 }

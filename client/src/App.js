@@ -434,6 +434,18 @@ class App extends Component {
         }
     }
 
+
+    _ticketStatus = async () => {
+        const { accounts, ticket_factory } = this.state;
+        const _totalSupply = await ticket_factory.methods.totalSupply().call();
+
+        let t;
+        for (t=0; t < _totalSupply; t++) {
+            const response = await ticket_factory.methods.ticketStatus(t).call();
+            console.log("=== ticketStatus() ===", response)
+        }
+    }
+
     render() {
         const { accounts } = this.state;
 
@@ -584,6 +596,12 @@ class App extends Component {
                                     {"0xd91df4880c64343e10F75d8E5f281BcBa4318e4b"}
                                 </Typography>
                             </Grid>
+                        </Grid>
+
+                        <Grid item xs={3}>
+                            <Button variant="contained" color="primary" onClick={() => this._ticketStatus()}>
+                                Get Ticket Status
+                            </Button>
                         </Grid>
                     </Card>
 

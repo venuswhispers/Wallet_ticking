@@ -17,7 +17,6 @@ contract WtEvents {
         bool isIssued,
         string walletConnectSignature
     );
-    
 
 
     event ExampleEvent (
