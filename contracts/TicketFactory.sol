@@ -121,10 +121,12 @@ contract TicketFactory is ERC721Full, WtStorage, WtConstants {
         
         ticket.isIssued = true;
         ticket.issuedSignature = _walletConnectSignature;
+        ticket.issuedTimestamp = block.timestamp;
 
         emit IssueOnTicket(_ticketId, 
                            ticket.isIssued, 
-                           ticket.issuedSignature);
+                           ticket.issuedSignature,
+                           ticket.issuedTimestamp);
 
         return WtConstants.CONFIRMED;
     }
@@ -133,17 +135,14 @@ contract TicketFactory is ERC721Full, WtStorage, WtConstants {
     function saveAddtionalIssuedInfo(
         uint256 _ticketId, 
         address _ticketOwner, 
-        uint256 _issuedTimestamp, 
         string memory _issuedTxHash
     ) public returns (bool) {
         PurchasableTicket storage ticket = purchasableTickets[_ticketId];
         ticket.ticketOwner = _ticketOwner;
-        ticket.issuedTimestamp = _issuedTimestamp;
         ticket.issuedTxHash = _issuedTxHash;
 
         emit SaveAddtionalIssuedInfo(_ticketId, 
                            ticket.ticketOwner, 
-                           ticket.issuedTimestamp,
                            ticket.issuedTxHash);
 
         return WtConstants.CONFIRMED;

@@ -14,13 +14,13 @@ contract WtEvents {
     event IssueOnTicket(
         uint256 indexed ticketId,
         bool isIssued,
-        string walletConnectSignature
+        string walletConnectSignature,
+        uint256 issuedTimestamp
     );
 
     event SaveAddtionalIssuedInfo(
         uint256 indexed ticketId,
         address ticketOwner,
-        uint256 issuedTimestamp,
         string issuedTxHash
     );
 
