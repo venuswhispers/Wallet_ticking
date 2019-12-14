@@ -9,6 +9,10 @@ contract WtObjects {
         uint256 sellingPrice;
         bool isIssued;
         string issuedSignature;
+
+        address ticketOwner;
+        uint256 issuedTimestamp;
+        uint256 issuedTxHash;
     }
 
 
