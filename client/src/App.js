@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Typography, Grid, TextField } from '@material-ui/core';
+import { Button, Typography, Grid, TextField, Box, Card } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 
 // Import json file for artifact
@@ -32,7 +32,7 @@ class App extends Component {
         this.state = { 
             web3: null, 
             accounts: null,
-            ticket_factory: null   
+            ticket_factory: null
         };
     }
 
@@ -107,7 +107,6 @@ class App extends Component {
             console.error(error);
         }
 
-
         /***********************************************************************
          * WalletConnect / componentDidMount
          ***********************************************************************/
@@ -116,32 +115,15 @@ class App extends Component {
             bridge: "https://bridge.walletconnect.org" // Required
         });
 
-        // Check if connection is already established
-        if (!walletConnector.connected) {
-            // create new session
-            walletConnector.createSession().then(() => {
-                // get uri for QR Code modal
-                const uri = walletConnector.uri;
-                // display QR Code modal
-                WalletConnectQRCodeModal.open(uri, () => {
-                    console.log("QR Code Modal closed");
-                });
-            });
-        }
+        window.walletConnector = walletConnector;
 
         this.setState({ 
-            walletConnector: walletConnector,
+            walletConnector: walletConnector
         });
-    };
+ 
+        // Log
+        console.log('=== walletConnector ===', this.state.walletConnector);
 
-
-
-    /***********************************************************************
-     * WalletConnect / function for call
-     ***********************************************************************/
-    callWalletConnect = async() => {
-        const { accounts, walletConnector } = this.state;
-        
         // Subscribe to connection events
         walletConnector.on("connect", (error, payload) => {
             if (error) {
@@ -154,8 +136,67 @@ class App extends Component {
             // Get provided accounts and chainId
             const { accounts, chainId } = payload.params[0];
         });
-    }
 
+        walletConnector.on("session_update", (error, payload) => {
+          if (error) {
+            throw error;
+          }
+
+          // Get updated accounts and chainId
+          const { accounts, chainId } = payload.params[0];
+        });
+
+        walletConnector.on("disconnect", (error, payload) => {
+          if (error) {
+            throw error;
+          }
+
+          // Delete walletConnector
+        });
+    };
+
+
+
+    /***********************************************************************
+     * WalletConnect / function for call
+     ***********************************************************************/
+    walletConnect_getSignature = async () => {
+        const { accounts, walletConnector } = this.state;
+
+        // @dev - Assign value of constant temporarily
+        const signatureOfwalletConnect = "c97ed927-7a0b-4ce1-8132-64a353bf9edc"
+
+        this.setState({ 
+            signature_of_walletConnect: signatureOfwalletConnect
+        });
+    }     
+
+    walletConnect_sendTransaction = async () => {
+        const { accounts, walletConnector } = this.state;
+            // Draft transaction
+        const tx = {
+          from: accounts[0], // Required
+          //from: "0xbc28Ea04101F03aA7a94C1379bc3AB32E65e62d3", // Required
+          to: "0x89D24A7b4cCB1b6fAA2625Fe562bDd9A23260359", // Required (for non contract deployments)
+          data: "0x", // Required
+          gasPrice: "0x02540be400", // Optional
+          gasLimit: "0x9c40", // Optional
+          value: "0x00", // Optional
+          nonce: "0x0114" // Optional
+        };
+
+        // Send transaction
+        walletConnector
+          .sendTransaction(tx)
+          .then(result => {
+            // Returns transaction id (hash)
+            console.log(result);
+          })
+          .catch(error => {
+            // Error returned when rejected
+            console.error(error);
+          });
+    }
 
 
 
@@ -345,7 +386,7 @@ class App extends Component {
         let _externalContract = ticket_market_contractAddr                    // External ContractAddress
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
         //let _purchasePrice = 10e12
-        let _ticketId = 8
+        let _ticketId = 3
         let _adminAddr = accounts[0]
         let _buyer = accounts[0]
 
@@ -384,10 +425,30 @@ class App extends Component {
 
             //const response = await ticket_market.methods.buyTicket(_ticketId).send({ from: accounts[0] });
             //console.log("=== buyTicket() ===", response)
+
+            // @dev - issued signature to be bought ticket
+            this.walletConnect_getSignature();
+            let _walletConnectSignature = this.state.signature_of_walletConnect;
+            const response_6 = await ticket_factory.methods.issueOnTicket(_ticketId, _walletConnectSignature).send({ from: accounts[0] });
+            console.log("=== issueOnTicket() ===", response_6)  
+        }
+    }
+
+
+    _ticketStatus = async () => {
+        const { accounts, ticket_factory } = this.state;
+        const _totalSupply = await ticket_factory.methods.totalSupply().call();
+
+        let t;
+        for (t=0; t < _totalSupply; t++) {
+            const response = await ticket_factory.methods.ticketStatus(t).call();
+            console.log("=== ticketStatus() ===", response)
         }
     }
 
     render() {
+        const { accounts } = this.state;
+
         if (!this.state.web3) {
             return (
                 <ThemeProvider theme={theme}>
@@ -406,22 +467,21 @@ class App extends Component {
                 <div className="App">
                     <Header />
                     <Typography variant="h5" style={{ marginTop: 32 }}>
-                        Ticket Registry
+                        Ticket for attendence
                     </Typography>
                     <Typography variant="h5" style={{ marginTop: 32 }}>
                         {this.state.resultMessage}
                     </Typography>
 
-
                     <Grid container style={{ marginTop: 32 }}>
                         <Grid item xs={6}>
                             <Typography variant="h5">
-                                Test
+                                {"Wallet address of attendence"}
                             </Typography>
                         </Grid>
                         <Grid item xs={6}>
                             <Typography variant="h5">
-                                Text
+                                {`${accounts[0]}`}
                             </Typography>
                         </Grid>
                     </Grid>
@@ -429,25 +489,39 @@ class App extends Component {
                     <Grid container style={{ marginTop: 32 }}>
                         <Grid item xs={6}>
                             <Typography variant="h5">
-                                {"Text"}
+                                {"Buy Event Ticket"} <br />
+                                {"（The ticket price is 0.0001 OCEAN）"}
                             </Typography>
                         </Grid>
-                        <Grid item xs={3}>
-                            <Typography variant="h5">
-                                {"test"}
-                            </Typography>
+                        <Grid item xs={6}>
+                          <Button variant="contained" color="secondary" onClick={() => this._buyTicket()}>
+                                Buy Ticket
+                          </Button>
                         </Grid>
                     </Grid>
 
-                    <Grid container>
+                    <Grid container style={{ marginTop: 32 }}>
                         <Grid item xs={6}>
                             <Typography variant="h5">
-                                {"Text"}
+                                {"Show Event Ticket"}
                             </Typography>
                         </Grid>
-                        <Grid item xs={3}>
+                        <Grid item xs={6}>
+                          <Button variant="contained" color="secondary" onClick={() => this._buyTicket()}>
+                                Show Ticket
+                          </Button>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
                             <Typography variant="h5">
-                                {"test"}
+                                {"Ticket ID which bought"}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Typography variant="h5">
+                                {"1"}
                             </Typography>
                         </Grid>
                     </Grid>
@@ -455,20 +529,87 @@ class App extends Component {
                     <Grid container style={{ marginTop: 32 }}>
                         <Grid item xs={6}>
                             <Typography variant="h5">
-                                {"Text"}
+                                {"Issued timestamp of ticket"}
                             </Typography>
                         </Grid>
                         <Grid item xs={6}>
-                            <TextField
-                                id="bet-amount"
-                                className="input"
-                                value={this.state.fundAmount}
-                                onChange={e => this.handleUpdateFundForm('fundAmount', e.target.value)}
-                            />
+                            <Typography variant="h5">
+                                {"15123445452"}
+                            </Typography>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                            <Typography variant="h5">
+                                {"Ticket ID of transaction hash which bought"}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Typography variant="h5">
+                                {"0x........................"}
+                            </Typography>
                         </Grid>
                     </Grid>
 
                     <hr />
+
+                    <Typography variant="h5" style={{ marginTop: 32 }}>
+                        {"All of tickets status for admin"}
+                    </Typography>
+
+                    <Card>
+                        <Grid container style={{ marginTop: 32 }}>
+                            <Grid item xs={4}>
+                                <Typography variant="h5">
+                                    {"Ticket ID"}
+                                </Typography>
+                            </Grid>
+
+                            <Grid item xs={4}>
+                                <Typography variant="h5">
+                                    {"Issued"}
+                                </Typography>
+                            </Grid>
+
+                            <Grid item xs={4}>
+                                <Typography variant="h5">
+                                    {"Owner Address"}
+                                </Typography>
+                            </Grid>
+                        </Grid>
+                        <Grid container style={{ marginTop: 32 }}>
+                            <Grid item xs={4}>
+                                <Typography variant="h5">
+                                    {"1"}
+                                </Typography>
+                            </Grid>
+
+                            <Grid item xs={4}>
+                                <Typography variant="h5">
+                                    {"False"}
+                                </Typography>
+                            </Grid>
+
+                            <Grid item xs={4}>
+                                <Typography variant="h5">
+                                    {"0xd91df4880c64343e10F75d8E5f281BcBa4318e4b"}
+                                </Typography>
+                            </Grid>
+                        </Grid>
+
+                        <Grid item xs={3}>
+                            <Button variant="contained" color="primary" onClick={() => this._ticketStatus()}>
+                                Get Ticket Status
+                            </Button>
+                        </Grid>
+                    </Card>
+
+                    <hr />
+
+                    <Typography variant="h5" style={{ marginTop: 32 }}>
+                        {"Test of WalletConnect below"}
+                    </Typography>
 
                     <Grid container style={{ marginTop: 32 }}>
                         <Grid item xs={6}>
@@ -477,11 +618,17 @@ class App extends Component {
                         <Grid item xs={1}>
                         </Grid>
                         <Grid item xs={3}>
-                            <Button variant="contained" color="primary" onClick={() => this.callWalletConnect()}>
-                               Call WalletConnect
+                            <Button variant="contained" color="primary" onClick={() => this.walletConnect_sendTransaction()}>
+                               WalletConnect SendTransaction
                             </Button>
                         </Grid>
                     </Grid>
+
+                    <hr />
+
+                    <Typography variant="h5" style={{ marginTop: 32 }}>
+                        {"Test of functions related to price below"}
+                    </Typography>
 
                     <Grid container style={{ marginTop: 32 }}>
                         <Grid item xs={6}>
@@ -510,6 +657,10 @@ class App extends Component {
                     </Grid>
 
                     <hr />
+
+                    <Typography variant="h5" style={{ marginTop: 32 }}>
+                        {"Test of functions below"}
+                    </Typography>
 
                     <Grid container style={{ marginTop: 32 }}>
                         <Grid item xs={6}>
@@ -552,7 +703,12 @@ class App extends Component {
 
                     <Grid container style={{ marginTop: 32 }}>
                         <Grid item xs={6}>
-                            test
+                            <TextField
+                                id="bet-amount"
+                                className="input"
+                                value={this.state.fundAmount}
+                                onChange={e => this.handleUpdateFundForm('fundAmount', e.target.value)}
+                            />
                         </Grid>
                         <Grid item xs={1}>
                         </Grid>

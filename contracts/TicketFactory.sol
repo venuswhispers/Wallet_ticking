@@ -4,6 +4,8 @@ pragma experimental ABIEncoderV2;
 // Storage
 import "./storage/WtStorage.sol";
 import "./storage/WtConstants.sol";
+import "./modifiers/WtModifier.sol";
+
 
 // NFT（ERC721）
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Full.sol";
@@ -111,8 +113,42 @@ contract TicketFactory is ERC721Full, WtStorage, WtConstants {
     /***
      * @notice - Issue on ticket after it buy ticket by someone
      ***/    
-    function issueOnTicket(address adminAddr, uint256 sellingPriceOfTicket) public returns (bool) {
+    function issueOnTicket(uint256 _ticketId, string memory _walletConnectSignature) public returns (bool) {
+        PurchasableTicket storage ticket = purchasableTickets[_ticketId];
+
+        // Check whether this ticket is signatured or not
+        require (ticket.isIssued == false, "This ticket is already bought and signatured");
         
+        ticket.isIssued = true;
+        ticket.issuedSignature = _walletConnectSignature;
+
+        emit IssueOnTicket(_ticketId, 
+                           ticket.isIssued, 
+                           ticket.issuedSignature);
+
+        return WtConstants.CONFIRMED;
+    }
+
+
+    /***
+     * @notice - Get ticket status from struct of PurchasableTicket
+     ***/  
+    function ticketStatus(uint256 _ticketId) 
+    public
+    view 
+    returns (uint256 ticketId,
+             bool forSale, 
+             uint256 sellingPrice,
+             bool isIssued,
+             string memory issuedSignature) 
+    {
+        PurchasableTicket storage ticket = purchasableTickets[_ticketId];
+
+        return (ticket.ticketId,
+                ticket.forSale,
+                ticket.sellingPrice,
+                ticket.isIssued,
+                ticket.issuedSignature);
     }
     
 

@@ -3,7 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { Grid } from '@material-ui/core';
+import { Grid, Button, TextField, Box, Card } from '@material-ui/core';
+
 
 const useStyles = makeStyles({
   root: {
@@ -25,7 +26,9 @@ export default function Header() {
           </Grid>
           <Grid item xs>
             <Typography variant="h6" color="inherit">
-              by using 3Box Storage
+              <Button variant="contained" color="secondary">
+                {"WalletConnect"}
+              </Button>
             </Typography>
           </Grid>
         </Toolbar>
