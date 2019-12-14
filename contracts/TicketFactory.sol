@@ -134,7 +134,7 @@ contract TicketFactory is ERC721Full, WtStorage, WtConstants {
         uint256 _ticketId, 
         address _ticketOwner, 
         uint256 _issuedTimestamp, 
-        string memory issuedTxHash
+        string memory _issuedTxHash
     ) public returns (bool) {
         PurchasableTicket storage ticket = purchasableTickets[_ticketId];
         ticket.ticketOwner = _ticketOwner;
@@ -143,7 +143,7 @@ contract TicketFactory is ERC721Full, WtStorage, WtConstants {
 
         emit SaveAddtionalIssuedInfo(_ticketId, 
                            ticket.ticketOwner, 
-                           ticket.issuedTimestamp
+                           ticket.issuedTimestamp,
                            ticket.issuedTxHash);
 
         return WtConstants.CONFIRMED;

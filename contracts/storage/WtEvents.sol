@@ -21,7 +21,7 @@ contract WtEvents {
         uint256 indexed ticketId,
         address ticketOwner,
         uint256 issuedTimestamp,
-        string issuedTxHash,
+        string issuedTxHash
     );
 
 
