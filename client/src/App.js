@@ -497,7 +497,7 @@ class App extends Component {
                             </Typography>
                         </Grid>
                         <Grid item xs={6}>
-                          <Button variant="contained" color="danger" onClick={() => this._buyTicket()}>
+                          <Button variant="contained" color="secondary" onClick={() => this._buyTicket()}>
                                 Buy Ticket
                           </Button>
                         </Grid>
@@ -510,7 +510,7 @@ class App extends Component {
                             </Typography>
                         </Grid>
                         <Grid item xs={6}>
-                          <Button variant="contained" color="danger" onClick={() => this._buyTicket()}>
+                          <Button variant="contained" color="secondary" onClick={() => this._buyTicket()}>
                                 Show Ticket
                           </Button>
                         </Grid>
