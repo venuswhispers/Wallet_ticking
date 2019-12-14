@@ -477,23 +477,8 @@ class App extends Component {
                     <Grid container style={{ marginTop: 32 }}>
                         <Grid item xs={6}>
                             <Typography variant="h5">
-                                {"Specify Ticket ID for buying"}
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={6}>
-                            <TextField
-                                id="bet-amount"
-                                className="input"
-                                value={this.state.fundAmount}
-                                onChange={e => this.handleUpdateFundForm('fundAmount', e.target.value)}
-                            />
-                        </Grid>
-                    </Grid>
-
-                    <Grid container style={{ marginTop: 32 }}>
-                        <Grid item xs={6}>
-                            <Typography variant="h5">
-                                {"Buy Event Ticket"}
+                                {"Buy Event Ticket"} <br />
+                                {"（The ticket price is 0.0001 OCEAN）"}
                             </Typography>
                         </Grid>
                         <Grid item xs={6}>
@@ -516,34 +501,85 @@ class App extends Component {
                         </Grid>
                     </Grid>
 
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                            <Typography variant="h5">
+                                {"Ticket ID which bought"}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Typography variant="h5">
+                                {"1"}
+                            </Typography>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                            <Typography variant="h5">
+                                {"Issued timestamp of ticket"}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Typography variant="h5">
+                                {"15123445452"}
+                            </Typography>
+                        </Grid>
+                    </Grid>
+
+                    <Grid container style={{ marginTop: 32 }}>
+                        <Grid item xs={6}>
+                            <Typography variant="h5">
+                                {"Ticket ID of transaction hash which bought"}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Typography variant="h5">
+                                {"0x........................"}
+                            </Typography>
+                        </Grid>
+                    </Grid>
+
                     <hr />
 
                     <Typography variant="h5" style={{ marginTop: 32 }}>
-                        {"Index of Purchaseable Ticket"}
+                        {"All of tickets status for admin"}
                     </Typography>
 
                     <Card>
                         <Grid container style={{ marginTop: 32 }}>
-                            <Grid item xs={6}>
+                            <Grid item xs={4}>
                                 <Typography variant="h5">
                                     {"Ticket ID"}
                                 </Typography>
                             </Grid>
 
-                            <Grid item xs={6}>
+                            <Grid item xs={4}>
+                                <Typography variant="h5">
+                                    {"Issued"}
+                                </Typography>
+                            </Grid>
+
+                            <Grid item xs={4}>
                                 <Typography variant="h5">
                                     {"Owner Address"}
                                 </Typography>
                             </Grid>
                         </Grid>
                         <Grid container style={{ marginTop: 32 }}>
-                            <Grid item xs={6}>
+                            <Grid item xs={4}>
                                 <Typography variant="h5">
                                     {"1"}
                                 </Typography>
                             </Grid>
 
-                            <Grid item xs={6}>
+                            <Grid item xs={4}>
+                                <Typography variant="h5">
+                                    {"False"}
+                                </Typography>
+                            </Grid>
+
+                            <Grid item xs={4}>
                                 <Typography variant="h5">
                                     {"0xd91df4880c64343e10F75d8E5f281BcBa4318e4b"}
                                 </Typography>
@@ -649,7 +685,12 @@ class App extends Component {
 
                     <Grid container style={{ marginTop: 32 }}>
                         <Grid item xs={6}>
-                            test
+                            <TextField
+                                id="bet-amount"
+                                className="input"
+                                value={this.state.fundAmount}
+                                onChange={e => this.handleUpdateFundForm('fundAmount', e.target.value)}
+                            />
                         </Grid>
                         <Grid item xs={1}>
                         </Grid>
