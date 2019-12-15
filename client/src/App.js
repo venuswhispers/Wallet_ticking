@@ -385,9 +385,12 @@ class App extends Component {
         let _externalContract = ticket_market_contractAddr                    // External ContractAddress
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
         //let _purchasePrice = 10e12
-        let _ticketId = 2
         let _adminAddr = accounts[0]
         let _buyer = accounts[0]
+
+        const _totalSupply = await ticket_factory.methods.totalSupply().call();
+        let _ticketId = _totalSupply - 1
+        //let _ticketId = 2
 
         // Get price of selling ticket（ERC20）
         const ticketPrice = await ticket_factory.methods.getTicketPrice(_adminAddr).call();
