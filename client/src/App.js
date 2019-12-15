@@ -647,10 +647,16 @@ class App extends Component {
                             </Grid>
                         </Grid>
 
-                        <Grid item xs={3}>
-                            <Button variant="contained" color="secondary" onClick={() => this._ticketStatus()}>
-                                Get Ticket Status
-                            </Button>
+                        <Grid container style={{ marginTop: 32 }}>
+                            <Grid item xs={4}>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Button variant="contained" color="secondary" onClick={() => this._ticketStatus()}>
+                                    Get Ticket Status
+                                </Button>
+                            </Grid>
+                            <Grid item xs={4}>
+                            </Grid>
                         </Grid>
                     </Card>
 
