@@ -630,19 +630,19 @@ class App extends Component {
                         <Grid container style={{ marginTop: 32 }}>
                             <Grid item xs={4}>
                                 <Typography variant="h5">
-                                    {"1"}
+                                    {`${this.state.ticketIdList}`}
                                 </Typography>
                             </Grid>
 
                             <Grid item xs={4}>
                                 <Typography variant="h5">
-                                    {"False"}
+                                    {`${this.state.isIssuedList}`}
                                 </Typography>
                             </Grid>
 
                             <Grid item xs={4}>
                                 <Typography variant="h5">
-                                    {"0xd91df4880c64343e10F75d8E5f281BcBa4318e4b"}
+                                    {`${this.state.ticketOwnerList}`}
                                 </Typography>
                             </Grid>
                         </Grid>
