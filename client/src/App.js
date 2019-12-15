@@ -386,7 +386,7 @@ class App extends Component {
         let _externalContract = ticket_market_contractAddr                    // External ContractAddress
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
         //let _purchasePrice = 10e12
-        let _ticketId = 2
+        let _ticketId = 5
         let _adminAddr = accounts[0]
         let _buyer = accounts[0]
 
@@ -432,7 +432,7 @@ class App extends Component {
             const response_6 = await ticket_factory.methods.issueOnTicket(_ticketId, _walletConnectSignature).send({ from: accounts[0] });
             console.log("=== issueOnTicket() ===", response_6);
 
-            let _issuedTxHash = response_6.events.issueOnTicket.transactionHash;
+            let _issuedTxHash = response_6.events.IssueOnTicket.transactionHash;
             //let _issuedTxHash = ''
             const response_7 = await ticket_factory.methods.saveAddtionalIssuedInfo(_ticketId, _buyer, _issuedTxHash).send({ from: accounts[0] });
             console.log("=== saveAddtionalIssuedInfo() ===", response_6);
@@ -604,7 +604,7 @@ class App extends Component {
                         </Grid>
 
                         <Grid item xs={3}>
-                            <Button variant="contained" color="primary" onClick={() => this._ticketStatus()}>
+                            <Button variant="contained" color="secondary" onClick={() => this._ticketStatus()}>
                                 Get Ticket Status
                             </Button>
                         </Grid>
