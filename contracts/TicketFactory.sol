@@ -160,7 +160,10 @@ contract TicketFactory is ERC721Full, WtStorage, WtConstants {
              bool forSale, 
              uint256 sellingPrice,
              bool isIssued,
-             string memory issuedSignature) 
+             string memory issuedSignature,
+             address ticketOwner,
+             uint256 issuedTimestamp,
+             string memory issuedTxHash) 
     {
         PurchasableTicket storage ticket = purchasableTickets[_ticketId];
 
@@ -168,7 +171,10 @@ contract TicketFactory is ERC721Full, WtStorage, WtConstants {
                 ticket.forSale,
                 ticket.sellingPrice,
                 ticket.isIssued,
-                ticket.issuedSignature);
+                ticket.issuedSignature,
+                ticket.ticketOwner,
+                ticket.issuedTimestamp,
+                ticket.issuedTxHash);
     }
     
 
