@@ -379,7 +379,6 @@ class App extends Component {
     }
 
 
-
     _buyTicket = async () => {
         const { accounts, ticket_market, ticket_factory, ocean_token, ticket_market_contractAddr, web3 } = this.state;  
         let _from = accounts[0]                                               // From Address
@@ -451,6 +450,35 @@ class App extends Component {
         }
     }
 
+
+    _showTicket = async () => {
+        const { accounts, ticket_factory } = this.state;
+        const _ticketId = 0;
+
+        const _totalSupply = await ticket_factory.methods.totalSupply().call();
+
+        let t;
+        for (t=0; t < _totalSupply; t++) {
+            const response = await ticket_factory.methods.ticketStatus(t).call();
+            console.log("=== ticketStatus() ===", response)
+
+            if (accounts[0] == response.ticketOwner) {
+                _ticketId = response.ticketId;
+            }
+        }
+
+        const ticketDetailOfCallAddr = await ticket_factory.methods.ticketStatus(_ticketId).call();
+        console.log("=== ticketDetailOfCallAddr ===", ticketDetailOfCallAddr)
+        let ticketOwnerOfCallAddr = ticketDetailOfCallAddr.ticketOwner;
+        let issuedTimestampOfCallAddr = ticketDetailOfCallAddr.issuedTimestamp;
+        let issuedTxHashOfCallAddr = ticketDetailOfCallAddr.issuedTxHash;
+        this.setState({ 
+            ticketOwnerOfCallAddr: ticketOwnerOfCallAddr,
+            issuedTimestampOfCallAddr: issuedTimestampOfCallAddr,
+            issuedTxHashOfCallAddr: issuedTxHashOfCallAddr,
+        });
+    }
+
     render() {
         const { accounts } = this.state;
 
@@ -512,7 +540,7 @@ class App extends Component {
                             </Typography>
                         </Grid>
                         <Grid item xs={6}>
-                          <Button variant="contained" color="secondary" onClick={() => this._buyTicket()}>
+                          <Button variant="contained" color="secondary" onClick={() => this._showTicket()}>
                                 Show Ticket
                           </Button>
                         </Grid>
@@ -526,7 +554,7 @@ class App extends Component {
                         </Grid>
                         <Grid item xs={6}>
                             <Typography variant="h5">
-                                {"1"}
+                                {`${this.state.ticketOwnerOfCallAddr}`}
                             </Typography>
                         </Grid>
                     </Grid>
@@ -539,7 +567,7 @@ class App extends Component {
                         </Grid>
                         <Grid item xs={6}>
                             <Typography variant="h5">
-                                {"15123445452"}
+                                {`${this.state.issuedTimestampOfCallAddr}`}
                             </Typography>
                         </Grid>
                     </Grid>
@@ -552,7 +580,7 @@ class App extends Component {
                         </Grid>
                         <Grid item xs={6}>
                             <Typography variant="h5">
-                                {"0x........................"}
+                                {`${this.state.issuedTxHashOfCallAddr}`}
                             </Typography>
                         </Grid>
                     </Grid>
