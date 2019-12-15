@@ -379,14 +379,13 @@ class App extends Component {
     }
 
 
-
     _buyTicket = async () => {
         const { accounts, ticket_market, ticket_factory, ocean_token, ticket_market_contractAddr, web3 } = this.state;  
         let _from = accounts[0]                                               // From Address
         let _externalContract = ticket_market_contractAddr                    // External ContractAddress
         let _to = '0x8Fc9d07b1B9542A71C4ba1702Cd230E160af6EB3'                // To Address
         //let _purchasePrice = 10e12
-        let _ticketId = 3
+        let _ticketId = 2
         let _adminAddr = accounts[0]
         let _buyer = accounts[0]
 
@@ -430,7 +429,12 @@ class App extends Component {
             this.walletConnect_getSignature();
             let _walletConnectSignature = this.state.signature_of_walletConnect;
             const response_6 = await ticket_factory.methods.issueOnTicket(_ticketId, _walletConnectSignature).send({ from: accounts[0] });
-            console.log("=== issueOnTicket() ===", response_6)  
+            console.log("=== issueOnTicket() ===", response_6);
+
+            let _issuedTxHash = response_6.events.IssueOnTicket.transactionHash;
+            //let _issuedTxHash = ''
+            const response_7 = await ticket_factory.methods.saveAddtionalIssuedInfo(_ticketId, _buyer, _issuedTxHash).send({ from: accounts[0] });
+            console.log("=== saveAddtionalIssuedInfo() ===", response_6);
         }
     }
 
@@ -439,11 +443,56 @@ class App extends Component {
         const { accounts, ticket_factory } = this.state;
         const _totalSupply = await ticket_factory.methods.totalSupply().call();
 
+        let ticketIdList = [];
+        let isIssuedList = [];
+        let ticketOwnerList = [];
+
         let t;
         for (t=0; t < _totalSupply; t++) {
             const response = await ticket_factory.methods.ticketStatus(t).call();
             console.log("=== ticketStatus() ===", response)
+
+            ticketIdList.push(response.ticketId);
+            isIssuedList.push(response.isIssued);
+            ticketOwnerList.push(response.ticketOwner);
+            this.setState({ 
+                ticketIdList: ticketIdList,
+                isIssuedList: isIssuedList,
+                ticketOwnerList: ticketOwnerList,
+            });
+            console.log("=== ticketIdList ===", this.state.ticketIdList)
+            console.log("=== isIssuedList ===", this.state.isIssuedList)
+            console.log("=== ticketOwnerList ===", this.state.ticketOwnerList)
         }
+    }
+
+
+    _showTicket = async () => {
+        const { accounts, ticket_factory } = this.state;
+        let _ticketId = 0;
+
+        const _totalSupply = await ticket_factory.methods.totalSupply().call();
+
+        let t;
+        for (t=0; t < _totalSupply; t++) {
+            const response = await ticket_factory.methods.ticketStatus(t).call();
+            console.log("=== ticketStatus() ===", response)
+
+            if (accounts[0] == response.ticketOwner) {
+                _ticketId = response.ticketId;
+            }
+        }
+
+        const ticketDetailOfCallAddr = await ticket_factory.methods.ticketStatus(_ticketId).call();
+        console.log("=== ticketDetailOfCallAddr ===", ticketDetailOfCallAddr)
+        let ticketOwnerOfCallAddr = ticketDetailOfCallAddr.ticketOwner;
+        let issuedTimestampOfCallAddr = ticketDetailOfCallAddr.issuedTimestamp;
+        let issuedTxHashOfCallAddr = ticketDetailOfCallAddr.issuedTxHash;
+        this.setState({ 
+            ticketOwnerOfCallAddr: ticketOwnerOfCallAddr,
+            issuedTimestampOfCallAddr: issuedTimestampOfCallAddr,
+            issuedTxHashOfCallAddr: issuedTxHashOfCallAddr,
+        });
     }
 
     render() {
@@ -507,7 +556,7 @@ class App extends Component {
                             </Typography>
                         </Grid>
                         <Grid item xs={6}>
-                          <Button variant="contained" color="secondary" onClick={() => this._buyTicket()}>
+                          <Button variant="contained" color="secondary" onClick={() => this._showTicket()}>
                                 Show Ticket
                           </Button>
                         </Grid>
@@ -521,7 +570,7 @@ class App extends Component {
                         </Grid>
                         <Grid item xs={6}>
                             <Typography variant="h5">
-                                {"1"}
+                                {`${this.state.ticketOwnerOfCallAddr}`}
                             </Typography>
                         </Grid>
                     </Grid>
@@ -534,7 +583,7 @@ class App extends Component {
                         </Grid>
                         <Grid item xs={6}>
                             <Typography variant="h5">
-                                {"15123445452"}
+                                {`${this.state.issuedTimestampOfCallAddr}`}
                             </Typography>
                         </Grid>
                     </Grid>
@@ -547,7 +596,7 @@ class App extends Component {
                         </Grid>
                         <Grid item xs={6}>
                             <Typography variant="h5">
-                                {"0x........................"}
+                                {`${this.state.issuedTxHashOfCallAddr}`}
                             </Typography>
                         </Grid>
                     </Grid>
@@ -581,27 +630,33 @@ class App extends Component {
                         <Grid container style={{ marginTop: 32 }}>
                             <Grid item xs={4}>
                                 <Typography variant="h5">
-                                    {"1"}
+                                    {`${this.state.ticketIdList}`}
                                 </Typography>
                             </Grid>
 
                             <Grid item xs={4}>
                                 <Typography variant="h5">
-                                    {"False"}
+                                    {`${this.state.isIssuedList}`}
                                 </Typography>
                             </Grid>
 
                             <Grid item xs={4}>
                                 <Typography variant="h5">
-                                    {"0xd91df4880c64343e10F75d8E5f281BcBa4318e4b"}
+                                    {`${this.state.ticketOwnerList}`}
                                 </Typography>
                             </Grid>
                         </Grid>
 
-                        <Grid item xs={3}>
-                            <Button variant="contained" color="primary" onClick={() => this._ticketStatus()}>
-                                Get Ticket Status
-                            </Button>
+                        <Grid container style={{ marginTop: 32 }}>
+                            <Grid item xs={4}>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Button variant="contained" color="secondary" onClick={() => this._ticketStatus()}>
+                                    Get Ticket Status
+                                </Button>
+                            </Grid>
+                            <Grid item xs={4}>
+                            </Grid>
                         </Grid>
                     </Card>
 
