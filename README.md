@@ -45,8 +45,7 @@ https://metamask.io/
 
 2. Adjust appropriate newwork below 
 ```
-Kovan Test Network
-
+Rinkeby Test Network
 ```
 
 &nbsp;
@@ -66,8 +65,9 @@ $ npm run migrate:rinkeby
 ### Setup frontend
 1. Execute command below in root directory.
 ```
-
 $ npm run client
+
+（@Note: This time, it use ./client as frontend. It doesn't use ./client2 as them）
 ```
 
 2. Access to browser by using link 
