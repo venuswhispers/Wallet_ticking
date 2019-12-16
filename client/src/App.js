@@ -483,6 +483,7 @@ class App extends Component {
 
             if (accounts[0] == response.ticketOwner) {
                 _ticketId = response.ticketId;
+                this.setState({ showTicketId: _ticketId });
             }
         }
 
@@ -568,12 +569,12 @@ class App extends Component {
                     <Grid container style={{ marginTop: 32 }}>
                         <Grid item xs={6}>
                             <Typography variant="h5">
-                                {"Ticket ID which bought"}
+                                {"Ticket ID which attendence bought"}
                             </Typography>
                         </Grid>
                         <Grid item xs={6}>
                             <Typography variant="h5">
-                                {`${this.state.ticketOwnerOfCallAddr}`}
+                                {`${this.state.showTicketId}`}
                             </Typography>
                         </Grid>
                     </Grid>
@@ -594,7 +595,7 @@ class App extends Component {
                     <Grid container style={{ marginTop: 32 }}>
                         <Grid item xs={6}>
                             <Typography variant="h5">
-                                {"Ticket ID of transaction hash which bought"}
+                                {"Ticket ID of transaction hash which attendence bought"}
                             </Typography>
                         </Grid>
                         <Grid item xs={6}>
